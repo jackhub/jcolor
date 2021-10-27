@@ -489,7 +489,7 @@ highlight! link CocSymbolNumber TSNumber
 highlight! link CocSymbolBoolean TSBoolean
 highlight! link CocSymbolArray TSVariable
 highlight! link CocSymbolObject TSVariable
-highlight! link CocSymbolKey TSKeyword
+highlight! link CocSymbolKey TSType
 highlight! link CocSymbolNull TSVariableBuiltin
 highlight! link CocSymbolEnumMember TSProperty
 highlight! link CocSymbolStruct TSStructure
