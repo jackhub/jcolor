@@ -32,31 +32,36 @@ endfunction "}}}
 function! jcolor#get_palette(style) "{{{
   if a:style ==# 'default'
     let palette = {
-          \ 'black':      '#181a1c',
-          \ 'bg0':        '#282a2a',
-          \ 'bg1':        '#333836',
-          \ 'bg2':        '#373c3b',
-          \ 'bg3':        '#3d4445',
-          \ 'bg4':        '#424b4b',
-          \ 'bg_red':     '#ff6d7e',
-          \ 'diff_red':   '#55393d',
-          \ 'bg_green':   '#a5e179',
-          \ 'diff_green': '#394634',
-          \ 'bg_blue':    '#7ad5f1',
-          \ 'diff_blue':  '#354157',
-          \ 'diff_yellow':'#4e432f',
-          \ 'fg':         '#dedfe0',
-          \ 'red':        '#ff7ab2',
-          \ 'red_orange': '#fe8170',
-          \ 'orange':     '#ffa14f',
-          \ 'yellow':     '#eacb64',
-          \ 'green':      '#93c76b',
-          \ 'blue':       '#88deff',
-          \ 'blue_dim':   '#78c1b3',
-          \ 'purple':     '#d9bbfe',
-          \ 'grey':       '#828a9a',
-          \ 'grey_dim':   '#5a6477',
-          \ 'none':       'NONE',   
+          \ 'black':      ['#181a1c',   '0'],
+          \ 'bg0':        ['#282a2a',   '0'],
+          \ 'bg1':        ['#333836',   '0'],
+          \ 'bg2':        ['#373c3b',   '0'],
+          \ 'bg3':        ['#3d4445',   '0'],
+          \ 'bg4':        ['#424b4b',   '0'],
+          \ 'bg_red':     ['#ff6d7e',   '0'],
+          \ 'diff_red':   ['#55393d',   '0'],
+          \ 'bg_green':   ['#a5e179',   '0'],
+          \ 'diff_green': ['#394634',   '0'],
+          \ 'bg_blue':    ['#7ad5f1',   '0'],
+          \ 'diff_blue':  ['#354157',   '0'],
+          \ 'diff_yellow':['#4e432f',   '0'],
+          \ 'fg':         ['#dedfe0',   '0'],
+          \ 'red':        ['#ff7ab2',   '0'],
+          \ 'red2':       ['#fe8170',   '0'],
+          \ 'red3':       ['#fe8170',   '0'],
+          \ 'orange':     ['#ffa14f',   '0'],
+          \ 'orange2':    ['#ffa14f',   '0'],
+          \ 'yellow':     ['#eacb64',   '0'],
+          \ 'green':      ['#93c76b',   '0'],
+          \ 'blue':       ['#88deff',   '0'],
+          \ 'blue2':      ['#78c1b3',   '0'],
+          \ 'blue3':      ['#78c1b3',   '0'],
+          \ 'blue4':      ['#78c1b3',   '0'],
+          \ 'purple':     ['#d9bbfe',   '0'],
+          \ 'purple2':    ['#d9bbfe',   '0'],
+          \ 'grey':       ['#828a9a',   '0'],
+          \ 'grey2':      ['#5a6477',   '0'],
+          \ 'none':       ['NONE',      '0']
           \ }
   " elseif a:style ==# 'shusia'
   endif
@@ -64,8 +69,10 @@ function! jcolor#get_palette(style) "{{{
 endfunction "}}}
 function! jcolor#highlight(group, fg, bg, ...) "{{{
   execute 'highlight' a:group
-        \ 'guifg=' . a:fg
-        \ 'guibg=' . a:bg
+        \ 'guifg=' . a:fg[0]
+        \ 'guibg=' . a:bg[0]
+        \ 'ctermfg=' . a:fg[1]
+        \ 'ctermbg=' . a:bg[1]
         \ 'gui=' . (a:0 >= 1 ?
           \ (a:1 ==# 'undercurl' ?
             \ (g:jcolor#tmux ?

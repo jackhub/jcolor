@@ -1,5 +1,5 @@
 " =============================================================================
-" URL: https://github.com/sainnhe/jcolor/
+" URL: https://github.com/jackhub/jcolor/
 " Filename: autoload/airline/themes/jcolor.vim
 " Author: Sainnhepark
 " Email: sainnhe@gmail.com

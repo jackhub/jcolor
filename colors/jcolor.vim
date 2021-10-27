@@ -38,7 +38,7 @@ if s:configuration.transparent_background
   endif
   call jcolor#highlight('Folded', s:palette.grey, s:palette.none)
   call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.none)
-  call jcolor#highlight('FoldColumn', s:palette.grey_dim, s:palette.none)
+  call jcolor#highlight('FoldColumn', s:palette.grey2, s:palette.none)
 else
   call jcolor#highlight('Normal', s:palette.fg, s:palette.bg0)
   call jcolor#highlight('Terminal', s:palette.fg, s:palette.bg0)
@@ -49,13 +49,13 @@ else
   endif
   call jcolor#highlight('Folded', s:palette.grey, s:palette.bg1)
   call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.bg2)
-  call jcolor#highlight('FoldColumn', s:palette.grey_dim, s:palette.none)
+  call jcolor#highlight('FoldColumn', s:palette.grey2, s:palette.none)
 endif
 call jcolor#highlight('SignColumn', s:palette.fg, s:palette.none)
 call jcolor#highlight('IncSearch', s:palette.bg0, s:palette.bg_red)
 call jcolor#highlight('Search', s:palette.bg0, s:palette.bg_green)
 call jcolor#highlight('ColorColumn', s:palette.none, s:palette.bg1)
-call jcolor#highlight('Conceal', s:palette.grey_dim, s:palette.none)
+call jcolor#highlight('Conceal', s:palette.grey2, s:palette.none)
 if s:configuration.cursor ==# 'auto'
   call jcolor#highlight('Cursor', s:palette.none, s:palette.none, 'reverse')
 else
@@ -72,7 +72,7 @@ else
   call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg1)
   call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg1)
 endif
-call jcolor#highlight('LineNr', s:palette.grey_dim, s:palette.none)
+call jcolor#highlight('LineNr', s:palette.grey2, s:palette.none)
 if &diff
   call jcolor#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
 else
@@ -154,56 +154,71 @@ if has('nvim')
   highlight! link healthWarning Yellow
 endif
 " }}}
+" Xcode: {{{
+call jcolor#highlight('xPlainText', s:palette.fg, s:palette.none)
+call jcolor#highlight('xComments', s:palette.grey, s:palette.none)
+call jcolor#highlight('xCommentsKeywords', s:palette.grey2, s:palette.none, 'bold')
+call jcolor#highlight('xStrings', s:palette.red2, s:palette.none)
+call jcolor#highlight('xCharactersNumbers', s:palette.yellow, s:palette.none)
+call jcolor#highlight('xKeywords', s:palette.red, s:palette.none, 'bold')
+call jcolor#highlight('xPreprocessor', s:palette.orange, s:palette.none)
+call jcolor#highlight('xURLs', s:palette.blue3, s:palette.none)
+call jcolor#highlight('xAttributes', s:palette.orange2, s:palette.none)
+call jcolor#highlight('xDeclarations', s:palette.blue4, s:palette.none)
+call jcolor#highlight('xFunctions', s:palette.green, s:palette.none)
+call jcolor#highlight('xType', s:palette.blue, s:palette.none)
+call jcolor#highlight('xField', s:palette.blue2, s:palette.none)
+call jcolor#highlight('xOtherType', s:palette.purple, s:palette.none)
+call jcolor#highlight('xOtherField', s:palette.purple2, s:palette.none)
+
+" }}}
 " Syntax: {{{
-if s:configuration.enable_italic
-  call jcolor#highlight('Type', s:palette.blue, s:palette.none, 'italic')
-  call jcolor#highlight('Structure', s:palette.blue, s:palette.none, 'italic')
-  call jcolor#highlight('StorageClass', s:palette.blue, s:palette.none, 'italic')
-  call jcolor#highlight('Identifier', s:palette.orange, s:palette.none, 'italic')
-  call jcolor#highlight('Constant', s:palette.purple, s:palette.none, 'italic')
-else
-  call jcolor#highlight('Type', s:palette.blue, s:palette.none)
-  call jcolor#highlight('Structure', s:palette.red, s:palette.none, 'bold')
-  call jcolor#highlight('StorageClass', s:palette.red, s:palette.none, 'bold')
-  call jcolor#highlight('Identifier', s:palette.orange, s:palette.none)
-  call jcolor#highlight('Constant', s:palette.purple, s:palette.none)
-endif
-call jcolor#highlight('PreProc', s:palette.orange, s:palette.none)
-call jcolor#highlight('PreCondit', s:palette.orange, s:palette.none)
-call jcolor#highlight('Include', s:palette.orange, s:palette.none)
-call jcolor#highlight('Keyword', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Define', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Typedef', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Exception', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Conditional', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Repeat', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Statement', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Macro', s:palette.orange, s:palette.none)
-call jcolor#highlight('Error', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Label', s:palette.purple, s:palette.none, 'bold')
-call jcolor#highlight('Special', s:palette.purple, s:palette.none, 'bold')
-call jcolor#highlight('SpecialChar', s:palette.red_orange, s:palette.none, 'bold')
-call jcolor#highlight('Boolean', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('String', s:palette.red_orange, s:palette.none)
-call jcolor#highlight('Character', s:palette.yellow, s:palette.none)
-call jcolor#highlight('Number', s:palette.yellow, s:palette.none)
-call jcolor#highlight('Float', s:palette.yellow, s:palette.none)
-call jcolor#highlight('Function', s:palette.green, s:palette.none)
-call jcolor#highlight('Operator', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Title', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('Tag', s:palette.orange, s:palette.none)
-call jcolor#highlight('Delimiter', s:palette.fg, s:palette.none)
-if s:configuration.disable_italic_comment
-  call jcolor#highlight('Comment', s:palette.grey, s:palette.none)
-  call jcolor#highlight('SpecialComment', s:palette.grey, s:palette.none)
-  call jcolor#highlight('Todo', s:palette.blue, s:palette.none)
-else
-  call jcolor#highlight('Comment', s:palette.grey, s:palette.none, 'italic')
-  call jcolor#highlight('SpecialComment', s:palette.grey, s:palette.none, 'italic')
-  call jcolor#highlight('Todo', s:palette.blue, s:palette.none, 'italic')
-endif
-call jcolor#highlight('Ignore', s:palette.grey, s:palette.none)
+"
+highlight! link Delimiter      xPlainText
+
+highlight! link Comment        xComments
+highlight! link SpecialComment xCommentsKeywords
+highlight! link Todo           xCommentsKeywords
+
+highlight! link Special        xStrings
+highlight! link SpecialChar    xStrings
+highlight! link String         xStrings
+
+highlight! link Character      xCharactersNumbers
+highlight! link Number         xCharactersNumbers
+highlight! link Float          xCharactersNumbers
+
+highlight! link Keyword        xKeywords
+highlight! link Define         xKeywords
+highlight! link Typedef        xKeywords
+highlight! link Exception      xKeywords
+highlight! link Repeat         xKeywords
+highlight! link Statement      xKeywords
+highlight! link Error          xKeywords
+highlight! link Label          xKeywords
+highlight! link Structure      xKeywords
+highlight! link StorageClass   xKeywords
+highlight! link Label          xKeywords
+highlight! link Boolean        xKeywords
+highlight! link Operator       xKeywords
+
+highlight! link Macro          xPreprocessor
+highlight! link PreProc        xPreprocessor
+highlight! link PreCondit      xPreprocessor
+highlight! link Include        xPreprocessor
+
+highlight! link Function       xFunctions
+highlight! link Tag            xFunctions
+
+highlight! link Type           xType
+highlight! link Constant       xField
+
+highlight! link Identifier     xOtherType
+highlight! link Title          xOtherType
+
+
 call jcolor#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
+
 " }}}
 " Predefined Highlight Groups: {{{
 call jcolor#highlight('Fg', s:palette.fg, s:palette.none)
@@ -213,7 +228,6 @@ call jcolor#highlight('Orange', s:palette.orange, s:palette.none)
 call jcolor#highlight('Yellow', s:palette.yellow, s:palette.none)
 call jcolor#highlight('Green', s:palette.green, s:palette.none)
 call jcolor#highlight('Blue', s:palette.blue, s:palette.none)
-call jcolor#highlight('BlueDim', s:palette.blue_dim, s:palette.none)
 call jcolor#highlight('Purple', s:palette.purple, s:palette.none)
 if s:configuration.enable_italic
   call jcolor#highlight('RedItalic', s:palette.red, s:palette.none, 'italic')
@@ -223,12 +237,12 @@ if s:configuration.enable_italic
   call jcolor#highlight('BlueItalic', s:palette.blue, s:palette.none, 'italic')
   call jcolor#highlight('PurpleItalic', s:palette.purple, s:palette.none, 'italic')
 else
-  call jcolor#highlight('RedItalic', s:palette.red, s:palette.none, 'bold')
+  call jcolor#highlight('RedItalic', s:palette.red, s:palette.none)
   call jcolor#highlight('OrangeItalic', s:palette.orange, s:palette.none)
-  call jcolor#highlight('YellowItalic', s:palette.yellow, s:palette.none, 'bold')
-  call jcolor#highlight('GreenItalic', s:palette.green, s:palette.none, 'bold')
+  call jcolor#highlight('YellowItalic', s:palette.yellow, s:palette.none)
+  call jcolor#highlight('GreenItalic', s:palette.green, s:palette.none)
   call jcolor#highlight('BlueItalic', s:palette.blue, s:palette.none)
-  call jcolor#highlight('PurpleItalic', s:palette.purple, s:palette.none, 'bold')
+  call jcolor#highlight('PurpleItalic', s:palette.purple, s:palette.none)
 endif
 call jcolor#highlight('RedSign', s:palette.red, s:palette.none)
 call jcolor#highlight('OrangeSign', s:palette.orange, s:palette.none)
@@ -329,54 +343,54 @@ call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline'
 call jcolor#highlight('TSNote', s:palette.bg0, s:palette.blue, 'bold')
 call jcolor#highlight('TSWarning', s:palette.bg0, s:palette.yellow, 'bold')
 call jcolor#highlight('TSDanger', s:palette.bg0, s:palette.red, 'bold')
-highlight! link TSAnnotation BlueItalic
-highlight! link TSAttribute BlueItalic
-highlight! link TSBoolean Boolean
-highlight! link TSCharacter Yellow
+highlight! link TSAnnotation xAttributes
+highlight! link TSAttribute xAttributes
+highlight! link TSBoolean Keyword
+highlight! link TSCharacter Character
 highlight! link TSComment Comment
 highlight! link TSConditional Keyword
-highlight! link TSConstBuiltin Purple
-highlight! link TSConstMacro Orange
-highlight! link TSConstant Purple
-highlight! link TSConstructor Green
+highlight! link TSConstBuiltin xOtherField
+highlight! link TSConstMacro Macro
+highlight! link TSConstant Constant
+highlight! link TSConstructor Function
 highlight! link TSException Keyword
-highlight! link TSField BlueDim
-highlight! link TSFloat Yellow
-highlight! link TSFuncBuiltin Purple
-highlight! link TSFuncMacro Orange
-highlight! link TSFunction Green
+highlight! link TSField xField
+highlight! link TSFloat Float
+highlight! link TSFuncBuiltin Function
+highlight! link TSFuncMacro Macro
+highlight! link TSFunction Function
 highlight! link TSInclude Include
 highlight! link TSKeyword Keyword
 highlight! link TSKeywordFunction Keyword
 highlight! link TSKeywordOperator Keyword
-highlight! link TSLabel Keyword
-highlight! link TSMethod Green
-highlight! link TSNamespace BlueItalic
+highlight! link TSLabel Label
+highlight! link TSMethod Function
+highlight! link TSNamespace Type
 highlight! link TSNone Fg
-highlight! link TSNumber Yellow
+highlight! link TSNumber Number
 highlight! link TSOperator Keyword
 highlight! link TSParameter Fg
 highlight! link TSParameterReference Fg
-highlight! link TSProperty BlueDim
+highlight! link TSProperty xField
 highlight! link TSPunctBracket Grey
 highlight! link TSPunctDelimiter Grey
 highlight! link TSPunctSpecial Yellow
 highlight! link TSRepeat Keyword
 highlight! link TSString String
-highlight! link TSStringEscape Green
-highlight! link TSStringRegex Green
-highlight! link TSStructure OrangeItalic
+highlight! link TSStringEscape Character
+highlight! link TSStringRegex Character
+highlight! link TSStructure Structure
 highlight! link TSSymbol Fg
-highlight! link TSTag BlueItalic
+highlight! link TSTag Tag
 highlight! link TSTagDelimiter Keyword
 highlight! link TSText Green
 highlight! link TSStrike Grey
 highlight! link TSMath Yellow
-highlight! link TSType BlueItalic
-highlight! link TSTypeBuiltin Purple
-highlight! link TSURI markdownUrl
+highlight! link TSType Type
+highlight! link TSTypeBuiltin xOtherType
+highlight! link TSURI xURLs
 highlight! link TSVariable Fg
-highlight! link TSVariableBuiltin Purple
+highlight! link TSVariableBuiltin xOtherField
 " }}}
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
@@ -537,30 +551,6 @@ highlight! link LspInformationHighlight InfoText
 highlight! link LspHintHighlight HintText
 highlight! link lspReference CurrentWord
 " }}}
-" ycm-core/YouCompleteMe {{{
-highlight! link YcmErrorSign RedSign
-highlight! link YcmWarningSign YellowSign
-highlight! link YcmErrorLine ErrorLine
-highlight! link YcmWarningLine WarningLine
-highlight! link YcmErrorSection ErrorText
-highlight! link YcmWarningSection WarningText
-" }}}
-" dense-analysis/ale {{{
-highlight! link ALEError ErrorText
-highlight! link ALEWarning WarningText
-highlight! link ALEInfo InfoText
-highlight! link ALEErrorSign RedSign
-highlight! link ALEWarningSign YellowSign
-highlight! link ALEInfoSign BlueSign
-highlight! link ALEErrorLine ErrorLine
-highlight! link ALEWarningLine WarningLine
-highlight! link ALEInfoLine InfoLine
-highlight! link ALEVirtualTextError VirtualTextError
-highlight! link ALEVirtualTextWarning VirtualTextWarning
-highlight! link ALEVirtualTextInfo VirtualTextInfo
-highlight! link ALEVirtualTextStyleError VirtualTextHint
-highlight! link ALEVirtualTextStyleWarning VirtualTextHint
-" }}}
 " neomake/neomake {{{
 highlight! link NeomakeError ErrorText
 highlight! link NeomakeWarning WarningText
@@ -574,14 +564,6 @@ highlight! link NeomakeVirtualtextError VirtualTextError
 highlight! link NeomakeVirtualtextWarning VirtualTextWarning
 highlight! link NeomakeVirtualtextInfo VirtualTextInfo
 highlight! link NeomakeVirtualtextMessag VirtualTextHint
-" }}}
-" vim-syntastic/syntastic {{{
-highlight! link SyntasticError ErrorText
-highlight! link SyntasticWarning WarningText
-highlight! link SyntasticErrorSign RedSign
-highlight! link SyntasticWarningSign YellowSign
-highlight! link SyntasticErrorLine ErrorLine
-highlight! link SyntasticWarningLine WarningLine
 " }}}
 " Yggdroot/LeaderF{{{
 if !exists('g:Lf_StlColorscheme')
@@ -615,76 +597,11 @@ highlight! link Lf_hl_popup_cwd Pmenu
 highlight! link Lf_hl_popup_blank Lf_hl_popup_window
 highlight! link Lf_hl_popup_spin Purple
 " }}}
-" liuchengxu/vim-clap {{{
-call jcolor#highlight('ClapSelected', s:palette.red, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapCurrentSelection', s:palette.blue, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapBlines', s:palette.fg, s:palette.bg2)
-call jcolor#highlight('ClapProviderId', s:palette.fg, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapMatches1', s:palette.red, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapMatches2', s:palette.orange, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapMatches3', s:palette.yellow, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapMatches4', s:palette.blue, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapMatches5', s:palette.purple, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapFuzzyMatches', s:palette.green, s:palette.bg2, 'bold')
-call jcolor#highlight('ClapNoMatchesFound', s:palette.red, s:palette.bg2, 'bold')
-highlight! link ClapInput Pmenu
-highlight! link ClapDisplay Pmenu
-highlight! link ClapPreview Pmenu
-highlight! link ClapFuzzyMatches1 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches2 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches3 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches4 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches5 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches6 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches7 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches8 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches9 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches10 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches11 ClapFuzzyMatches
-highlight! link ClapFuzzyMatches12 ClapFuzzyMatches
-highlight! link ClapBlinesLineNr Grey
-highlight! link ClapProviderColon ClapBlines
-highlight! link ClapProviderAbout ClapBlines
-" }}}
-" junegunn/fzf.vim {{{
-let g:fzf_colors = {
-      \ 'fg': ['fg', 'Normal'],
-      \ 'bg': ['bg', 'Normal'],
-      \ 'hl': ['fg', 'Green'],
-      \ 'fg+': ['fg', 'CursorLine', 'CursorColumn', 'Normal'],
-      \ 'bg+': ['bg', 'CursorLine', 'CursorColumn'],
-      \ 'hl+': ['fg', 'Green'],
-      \ 'info': ['fg', 'Yellow'],
-      \ 'prompt': ['fg', 'Red'],
-      \ 'pointer': ['fg', 'Blue'],
-      \ 'marker': ['fg', 'Blue'],
-      \ 'spinner': ['fg', 'Yellow'],
-      \ 'header': ['fg', 'Blue']
-      \ }
-" }}}
 " nvim-telescope/telescope.nvim {{{
 call jcolor#highlight('TelescopeMatching', s:palette.green, s:palette.none, 'bold')
 highlight! link TelescopeBorder Grey
 highlight! link TelescopePromptPrefix Blue
 highlight! link TelescopeSelection DiffAdd
-" }}}
-" Shougo/denite.nvim{{{
-call jcolor#highlight('deniteMatchedChar', s:palette.green, s:palette.none, 'bold')
-call jcolor#highlight('deniteMatchedRange', s:palette.green, s:palette.none, 'bold,underline')
-call jcolor#highlight('deniteInput', s:palette.green, s:palette.bg1, 'bold')
-call jcolor#highlight('deniteStatusLineNumber', s:palette.purple, s:palette.bg1)
-call jcolor#highlight('deniteStatusLinePath', s:palette.fg, s:palette.bg1)
-highlight! link deniteSelectedLine Green
-" }}}
-" kien/ctrlp.vim{{{
-call jcolor#highlight('CtrlPMatch', s:palette.green, s:palette.none, 'bold')
-call jcolor#highlight('CtrlPPrtBase', s:palette.grey, s:palette.none)
-call jcolor#highlight('CtrlPLinePre', s:palette.grey, s:palette.none)
-call jcolor#highlight('CtrlPMode1', s:palette.blue, s:palette.bg1, 'bold')
-call jcolor#highlight('CtrlPMode2', s:palette.bg1, s:palette.blue, 'bold')
-call jcolor#highlight('CtrlPStats', s:palette.grey, s:palette.bg1, 'bold')
-highlight! link CtrlPNoEntries Red
-highlight! link CtrlPPrtCursor Blue
 " }}}
 " airblade/vim-gitgutter {{{
 highlight! link GitGutterAdd GreenSign
@@ -692,127 +609,9 @@ highlight! link GitGutterChange BlueSign
 highlight! link GitGutterDelete RedSign
 highlight! link GitGutterChangeDelete PurpleSign
 " }}}
-" mhinz/vim-signify {{{
-highlight! link SignifySignAdd GreenSign
-highlight! link SignifySignChange BlueSign
-highlight! link SignifySignDelete RedSign
-highlight! link SignifySignChangeDelete PurpleSign
-" }}}
-" lewis6991/gitsigns.nvim {{{
-highlight! link GitSignsAdd GreenSign
-highlight! link GitSignsChange BlueSign
-highlight! link GitSignsDelete RedSign
-highlight! link GitSignsChangeDelete PurpleSign
-" }}}
-" andymass/vim-matchup {{{
-call jcolor#highlight('MatchParenCur', s:palette.none, s:palette.none, 'bold')
-call jcolor#highlight('MatchWord', s:palette.none, s:palette.none, 'underline')
-call jcolor#highlight('MatchWordCur', s:palette.none, s:palette.none, 'underline')
-" }}}
 " easymotion/vim-easymotion {{{
 highlight! link EasyMotionTarget Search
 highlight! link EasyMotionShade Grey
-" }}}
-" justinmk/vim-sneak {{{
-call jcolor#highlight('SneakLabelMask', s:palette.bg_green, s:palette.bg_green)
-highlight! link Sneak Search
-highlight! link SneakLabel Search
-highlight! link SneakScope DiffText
-" }}}
-" terryma/vim-multiple-cursors {{{
-highlight! link multiple_cursors_cursor Cursor
-highlight! link multiple_cursors_visual Visual
-" }}}
-" mg979/vim-visual-multi {{{
-let g:VM_Mono_hl = 'Cursor'
-let g:VM_Extend_hl = 'Visual'
-let g:VM_Cursor_hl = 'Cursor'
-let g:VM_Insert_hl = 'Cursor'
-" }}}
-" dominikduda/vim_current_word {{{
-highlight! link CurrentWordTwins CurrentWord
-" }}}
-" RRethy/vim-illuminate {{{
-highlight! link illuminatedWord CurrentWord
-" }}}
-" itchyny/vim-cursorword {{{
-highlight! link CursorWord0 CurrentWord
-highlight! link CursorWord1 CurrentWord
-" }}}
-" Yggdroot/indentLine {{{
-let g:indentLine_color_gui = s:palette.grey_dim[0]
-let g:indentLine_color_term = s:palette.grey_dim[1]
-" }}}
-" lukas-reineke/indent-blankline.nvim {{{
-highlight! link IndentBlanklineChar Conceal
-highlight! link IndentBlanklineSpaceChar Conceal
-highlight! link IndentBlanklineSpaceCharBlankline Conceal
-highlight! link IndentBlanklineContextChar Grey
-" }}}
-" nathanaelkane/vim-indent-guides {{{
-if get(g:, 'indent_guides_auto_colors', 1) == 0
-  call jcolor#highlight('IndentGuidesOdd', s:palette.bg0, s:palette.bg1)
-  call jcolor#highlight('IndentGuidesEven', s:palette.bg0, s:palette.bg2)
-endif
-" }}}
-" thiagoalessio/rainbow_levels.vim {{{
-highlight! link RainbowLevel0 Red
-highlight! link RainbowLevel1 Orange
-highlight! link RainbowLevel2 Yellow
-highlight! link RainbowLevel3 Green
-highlight! link RainbowLevel4 Blue
-highlight! link RainbowLevel5 Purple
-highlight! link RainbowLevel6 Yellow
-highlight! link RainbowLevel7 Green
-highlight! link RainbowLevel8 Blue
-" }}}
-" p00f/nvim-ts-rainbow {{{
-highlight! link rainbowcol1 Red
-highlight! link rainbowcol2 Orange
-highlight! link rainbowcol3 Yellow
-highlight! link rainbowcol4 Green
-highlight! link rainbowcol5 Blue
-highlight! link rainbowcol6 Purple
-highlight! link rainbowcol7 Green
-" }}}
-" kshenoy/vim-signature {{{
-highlight! link SignatureMarkText BlueSign
-highlight! link SignatureMarkerText PurpleSign
-" }}}
-" ap/vim-buftabline {{{
-highlight! link BufTabLineCurrent TabLineSel
-highlight! link BufTabLineActive TabLine
-highlight! link BufTabLineHidden TabLineFill
-highlight! link BufTabLineFill TabLineFill
-" }}}
-" liuchengxu/vim-which-key {{{
-highlight! link WhichKey Red
-highlight! link WhichKeySeperator Green
-highlight! link WhichKeyGroup Orange
-highlight! link WhichKeyDesc Blue
-" }}}
-" unblevable/quick-scope {{{
-call jcolor#highlight('QuickScopePrimary', s:palette.green, s:palette.none, 'underline')
-call jcolor#highlight('QuickScopeSecondary', s:palette.blue, s:palette.none, 'underline')
-" }}}
-" APZelos/blamer.nvim {{{
-highlight! link Blamer Grey
-" }}}
-" cohama/agit.vim {{{
-highlight! link agitTree Grey
-highlight! link agitDate Green
-highlight! link agitRemote Red
-highlight! link agitHead Blue
-highlight! link agitRef Orange
-highlight! link agitTag Blue
-highlight! link agitStatFile Blue
-highlight! link agitStatRemoved Red
-highlight! link agitStatAdded Green
-highlight! link agitStatMessage Orange
-highlight! link agitDiffRemove Red
-highlight! link agitDiffAdd Green
-highlight! link agitDiffHeader Blue
-highlight! link agitAuthor Yellow
 " }}}
 " }}}
 " Extended File Types: {{{
@@ -846,50 +645,6 @@ else
     finish
   endif
 endif
-" ft_begin: vim-plug {{{
-" https://github.com/junegunn/vim-plug
-call jcolor#highlight('plug1', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('plugNumber', s:palette.yellow, s:palette.none, 'bold')
-highlight! link plug2 Blue
-highlight! link plugBracket Blue
-highlight! link plugName Green
-highlight! link plugDash Red
-highlight! link plugNotLoaded Grey
-highlight! link plugH2 Purple
-highlight! link plugMessage Purple
-highlight! link plugError Red
-highlight! link plugRelDate Grey
-highlight! link plugStar Purple
-highlight! link plugUpdate Blue
-highlight! link plugDeleted Grey
-highlight! link plugEdge Purple
-" ft_end }}}
-" ft_begin: tagbar {{{
-" https://github.com/majutsushi/tagbar
-highlight! link TagbarFoldIcon Blue
-highlight! link TagbarSignature Green
-highlight! link TagbarKind Red
-highlight! link TagbarScope Orange
-highlight! link TagbarNestedKind Blue
-highlight! link TagbarVisibilityPrivate Red
-highlight! link TagbarVisibilityPublic Blue
-" ft_end }}}
-" ft_begin: vista/vista_kind/vista_markdown {{{
-" https://github.com/liuchengxu/vista.vim
-highlight! link VistaBracket Grey
-highlight! link VistaChildrenNr Orange
-highlight! link VistaScope Red
-highlight! link VistaTag Green
-highlight! link VistaPrefix Grey
-highlight! link VistaIcon Blue
-highlight! link VistaScopeKind Yellow
-highlight! link VistaColon Grey
-highlight! link VistaLineNr Grey
-highlight! link VistaHeadNr Fg
-highlight! link VistaPublic Green
-highlight! link VistaProtected Yellow
-highlight! link VistaPrivate Red
-" ft_end }}}
 " ft_begin: nerdtree {{{
 " https://github.com/preservim/nerdtree
 highlight! link NERDTreeDir Green
@@ -906,11 +661,6 @@ highlight! link NERDTreeToggleOff Red
 highlight! link NERDTreeFlags Blue
 highlight! link NERDTreeLinkFile Grey
 highlight! link NERDTreeLinkTarget Green
-" ft_end }}}
-" ft_begin: dirvish {{{
-" https://github.com/justinmk/vim-dirvish
-highlight! link DirvishPathTail Blue
-highlight! link DirvishArg Yellow
 " ft_end }}}
 " ft_begin: NvimTree {{{
 " https://github.com/kyazdani42/nvim-tree.lua
@@ -932,40 +682,6 @@ highlight! link NvimTreeGitMerge Orange
 highlight! link NvimTreeGitRenamed Purple
 highlight! link NvimTreeGitNew Green
 highlight! link NvimTreeGitDeleted Red
-" ft_end }}}
-" ft_begin: netrw {{{
-" https://www.vim.org/scripts/script.php?script_id=1075
-highlight! link netrwDir Green
-highlight! link netrwClassify Green
-highlight! link netrwLink Grey
-highlight! link netrwSymLink Fg
-highlight! link netrwExe Red
-highlight! link netrwComment Grey
-highlight! link netrwList Yellow
-highlight! link netrwHelpCmd Blue
-highlight! link netrwCmdSep Grey
-highlight! link netrwVersion Purple
-" ft_end }}}
-" ft_begin: startify/quickmenu {{{
-" https://github.com/mhinz/vim-startify
-" https://github.com/skywind3000/quickmenu.vim
-highlight! link StartifyBracket Grey
-highlight! link StartifyFile Green
-highlight! link StartifyNumber Orange
-highlight! link StartifyPath Grey
-highlight! link StartifySlash Grey
-highlight! link StartifySection Blue
-highlight! link StartifyHeader Red
-highlight! link StartifySpecial Grey
-" ft_end }}}
-" ft_begin: quickmenu {{{
-" https://github.com/skywind3000/quickmenu.vim
-highlight! link QuickmenuOption Green
-highlight! link QuickmenuNumber Orange
-highlight! link QuickmenuBracket Grey
-highlight! link QuickmenuHelp Blue
-highlight! link QuickmenuSpecial Grey
-highlight! link QuickmenuHeader Purple
 " ft_end }}}
 " ft_begin: undotree {{{
 " https://github.com/mbbill/undotree
@@ -1024,49 +740,6 @@ highlight! link mkdDelimiter Grey
 highlight! link mkdId Yellow
 " }}}
 " ft_end }}}
-" ft_begin: rst {{{
-" builtin: https://github.com/marshallward/vim-restructuredtext{{{
-call jcolor#highlight('rstStandaloneHyperlink', s:palette.purple, s:palette.none, 'underline')
-call jcolor#highlight('rstEmphasis', s:palette.none, s:palette.none, 'italic')
-call jcolor#highlight('rstStrongEmphasis', s:palette.none, s:palette.none, 'bold')
-call jcolor#highlight('rstStandaloneHyperlink', s:palette.blue, s:palette.none, 'underline')
-call jcolor#highlight('rstHyperlinkTarget', s:palette.blue, s:palette.none, 'underline')
-highlight! link rstSubstitutionReference Blue
-highlight! link rstInterpretedTextOrHyperlinkReference Green
-highlight! link rstTableLines Grey
-highlight! link rstInlineLiteral Green
-highlight! link rstLiteralBlock Green
-highlight! link rstQuotedLiteralBlock Green
-" }}}
-" ft_end }}}
-" ft_begin: tex {{{
-" builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_TEX{{{
-highlight! link texStatement BlueItalic
-highlight! link texOnlyMath Grey
-highlight! link texDefName Yellow
-highlight! link texNewCmd Orange
-highlight! link texCmdName Blue
-highlight! link texBeginEnd Red
-highlight! link texBeginEndName Green
-highlight! link texDocType RedItalic
-highlight! link texDocTypeArgs Orange
-highlight! link texInputFile Green
-" }}}
-" vimtex: https://github.com/lervag/vimtex {{{
-highlight! link texFileArg Green
-highlight! link texCmd BlueItalic
-highlight! link texCmdPackage BlueItalic
-highlight! link texCmdDef Red
-highlight! link texDefArgName Yellow
-highlight! link texCmdNewcmd Red
-highlight! link texCmdClass Red
-highlight! link texCmdTitle Red
-highlight! link texCmdAuthor Red
-highlight! link texCmdEnv Red
-highlight! link texCmdPart Red
-highlight! link texEnvArgName Green
-" }}}
-" ft_end }}}
 " ft_begin: html/markdown/javascriptreact/typescriptreact {{{
 " builtin: https://notabug.org/jorgesumle/vim-html-syntax{{{
 call jcolor#highlight('htmlH1', s:palette.red, s:palette.none, 'bold')
@@ -1091,11 +764,6 @@ highlight! link htmlArg Blue
 highlight! link htmlScriptTag Purple
 highlight! link htmlSpecialTagName RedItalic
 highlight! link htmlString Green
-" }}}
-" ft_end }}}
-" ft_begin: htmldjango {{{
-" builtin: https://github.com/vim/vim/blob/master/runtime/syntax/htmldjango.vim{{{
-highlight! link djangoTagBlock Yellow
 " }}}
 " ft_end }}}
 " ft_begin: xml {{{
@@ -1143,29 +811,6 @@ highlight! link cssValueTime Green
 highlight! link cssValueFrequency Green
 highlight! link cssVendor Grey
 highlight! link cssNoise Grey
-" }}}
-" ft_end }}}
-" ft_begin: scss {{{
-" scss-syntax: https://github.com/cakebaker/scss-syntax.vim{{{
-highlight! link scssMixinName Orange
-highlight! link scssSelectorChar Grey
-highlight! link scssSelectorName Red
-highlight! link scssInterpolationDelimiter Yellow
-highlight! link scssVariableValue Green
-highlight! link scssNull Purple
-highlight! link scssBoolean Purple
-highlight! link scssVariableAssignment Grey
-highlight! link scssAttribute Green
-highlight! link scssFunctionName Orange
-highlight! link scssVariable Fg
-highlight! link scssAmpersand Purple
-" }}}
-" ft_end }}}
-" ft_begin: less {{{
-" vim-less: https://github.com/groenewege/vim-less{{{
-highlight! link lessMixinChar Grey
-highlight! link lessClass Red
-highlight! link lessFunction Orange
 " }}}
 " ft_end }}}
 " ft_begin: javascript/javascriptreact {{{
@@ -1531,39 +1176,21 @@ highlight! link dartMetadata OrangeItalic
 " ft_end }}}
 " ft_begin: c/cpp/objc/objcpp {{{
 " vim-cpp-enhanced-highlight: https://github.com/octol/vim-cpp-enhanced-highlight{{{
-highlight! link cLabel Red
+highlight! link cLabel Keyword
 highlight! link cType TSTypeBuiltin
-highlight! link cppSTLnamespace BlueItalic
+highlight! link cConstant TSConstBuiltin
+highlight! link cppSTLnamespace Type
 highlight! link cppSTLtype Keyword
 highlight! link cppAccess Keyword
 highlight! link cppStructure Keyword
-highlight! link cppSTLios BlueItalic
-highlight! link cppSTLiterator BlueItalic
+highlight! link cppSTLios TSTypeBuiltin
+highlight! link cppSTLiterator TSTypeBuiltin
 highlight! link cppSTLexception Keyword
 highlight! link cppModifier Keyword
 highlight! link cppType TSTypeBuiltin
 " }}}
 " vim-cpp-modern: https://github.com/bfrg/vim-cpp-modern{{{
 highlight! link cppSTLVariable BlueItalic
-" }}}
-" chromatica: https://github.com/arakashic/chromatica.nvim{{{
-highlight! link Member TSVariable
-highlight! link Variable TSVariable
-highlight! link Namespace TSNamespace
-highlight! link EnumConstant TSStructure
-highlight! link chromaticaException TSException
-highlight! link chromaticaCast TSLabel
-highlight! link OperatorOverload TSOperator
-highlight! link AccessQual TSOperator
-highlight! link Linkage TSOperator
-highlight! link AutoType TSType
-" }}}
-" vim-lsp-cxx-highlight https://github.com/jackguo380/vim-lsp-cxx-highlight{{{
-highlight! link LspCxxHlSkippedRegion Grey
-highlight! link LspCxxHlSkippedRegionBeginEnd TSKeyword
-highlight! link LspCxxHlGroupEnumConstant TSStructure
-highlight! link LspCxxHlGroupNamespace TSNamespace
-highlight! link LspCxxHlGroupMemberVariable Orange
 " }}}
 " ft_end }}}
 " ft_begin: objc {{{
@@ -1572,7 +1199,7 @@ highlight! link objcModuleImport Keyword
 highlight! link objcException Keyword
 highlight! link objcProtocolList Fg
 highlight! link objcDirective Keyword
-highlight! link objcPropertyAttribute Purple
+highlight! link objcPropertyAttribute xAttributes
 highlight! link objcHiddenArgument Keyword
 highlight! link objcPrincipalType TSTypeBuiltin
 " }}}
@@ -1650,41 +1277,6 @@ highlight! link luaEllipsis Red
 highlight! link luaDocTag Green
 " }}}
 " ft_end }}}
-" ft_begin: java {{{
-" builtin: {{{
-highlight! link javaClassDecl Red
-highlight! link javaMethodDecl Red
-highlight! link javaVarArg Fg
-highlight! link javaAnnotation Purple
-highlight! link javaUserLabel Purple
-highlight! link javaTypedef OrangeItalic
-highlight! link javaParen Fg
-highlight! link javaParen1 Fg
-highlight! link javaParen2 Fg
-highlight! link javaParen3 Fg
-highlight! link javaParen4 Fg
-highlight! link javaParen5 Fg
-" }}}
-" ft_end }}}
-" ft_begin: kotlin {{{
-" kotlin-vim: https://github.com/udalov/kotlin-vim{{{
-highlight! link ktSimpleInterpolation Purple
-highlight! link ktComplexInterpolation Purple
-highlight! link ktComplexInterpolationBrace Purple
-highlight! link ktStructure Red
-highlight! link ktKeyword OrangeItalic
-" }}}
-" ft_end }}}
-" ft_begin: scala {{{
-" builtin: https://github.com/derekwyatt/vim-scala{{{
-highlight! link scalaNameDefinition Fg
-highlight! link scalaInterpolationBoundary Purple
-highlight! link scalaInterpolation Purple
-highlight! link scalaTypeOperator Red
-highlight! link scalaOperator Red
-highlight! link scalaKeywordModifier Red
-" }}}
-" ft_end }}}
 " ft_begin: go {{{
 " builtin: https://github.com/google/vim-ft-go{{{
 highlight! link goDirective Red
@@ -1714,40 +1306,6 @@ highlight! link rustAssert Green
 highlight! link rustPanic Green
 highlight! link rustPubScopeCrate BlueItalic
 highlight! link rustAttribute Purple
-" }}}
-" ft_end }}}
-" ft_begin: swift {{{
-" swift.vim: https://github.com/keith/swift.vim{{{
-highlight! link swiftInterpolatedWrapper Purple
-highlight! link swiftInterpolatedString Purple
-highlight! link swiftProperty Fg
-highlight! link swiftTypeDeclaration Red
-highlight! link swiftClosureArgument OrangeItalic
-highlight! link swiftStructure Red
-" }}}
-" ft_end }}}
-" ft_begin: php {{{
-" builtin: https://jasonwoof.com/gitweb/?p=vim-syntax.git;a=blob;f=php.vim;hb=HEAD{{{
-highlight! link phpVarSelector Fg
-highlight! link phpIdentifier Fg
-highlight! link phpDefine Green
-highlight! link phpStructure Red
-highlight! link phpSpecialFunction Green
-highlight! link phpInterpSimpleCurly Purple
-highlight! link phpComparison Red
-highlight! link phpMethodsVar Fg
-highlight! link phpInterpVarname Fg
-highlight! link phpMemberSelector Red
-highlight! link phpLabel Red
-" }}}
-" php.vim: https://github.com/StanAngeloff/php.vim{{{
-highlight! link phpParent Fg
-highlight! link phpNowDoc Yellow
-highlight! link phpFunction Green
-highlight! link phpMethod Green
-highlight! link phpClass BlueItalic
-highlight! link phpSuperglobals BlueItalic
-highlight! link phpNullValue OrangeItalic
 " }}}
 " ft_end }}}
 " ft_begin: ruby {{{
@@ -1792,65 +1350,6 @@ highlight! link perlVarPlain Fg
 highlight! link perlVarPlain2 Fg
 " }}}
 " ft_end }}}
-" ft_begin: ocaml {{{
-" builtin: https://github.com/rgrinberg/vim-ocaml{{{
-highlight! link ocamlArrow Red
-highlight! link ocamlEqual Red
-highlight! link ocamlOperator Red
-highlight! link ocamlKeyChar Red
-highlight! link ocamlModPath Green
-highlight! link ocamlFullMod Green
-highlight! link ocamlModule BlueItalic
-highlight! link ocamlConstructor Orange
-highlight! link ocamlModParam Fg
-highlight! link ocamlModParam1 Fg
-highlight! link ocamlAnyVar Fg " aqua
-highlight! link ocamlPpxEncl Red
-highlight! link ocamlPpxIdentifier Fg
-highlight! link ocamlSigEncl Red
-highlight! link ocamlModParam1 Fg
-" }}}
-" ft_end }}}
-" ft_begin: erlang {{{
-" builtin: https://github.com/vim-erlang/vim-erlang-runtime{{{
-highlight! link erlangAtom Fg
-highlight! link erlangVariable Fg
-highlight! link erlangLocalFuncRef Green
-highlight! link erlangLocalFuncCall Green
-highlight! link erlangGlobalFuncRef Green
-highlight! link erlangGlobalFuncCall Green
-highlight! link erlangAttribute BlueItalic
-highlight! link erlangPipe Red
-" }}}
-" ft_end }}}
-" ft_begin: elixir {{{
-" vim-elixir: https://github.com/elixir-editors/vim-elixir{{{
-highlight! link elixirStringDelimiter Yellow
-highlight! link elixirKeyword Red
-highlight! link elixirInterpolation Purple
-highlight! link elixirInterpolationDelimiter Purple
-highlight! link elixirSelf BlueItalic
-highlight! link elixirPseudoVariable OrangeItalic
-highlight! link elixirModuleDefine Red
-highlight! link elixirBlockDefinition Red
-highlight! link elixirDefine Red
-highlight! link elixirPrivateDefine Red
-highlight! link elixirGuard Red
-highlight! link elixirPrivateGuard Red
-highlight! link elixirProtocolDefine Red
-highlight! link elixirImplDefine Red
-highlight! link elixirRecordDefine Red
-highlight! link elixirPrivateRecordDefine Red
-highlight! link elixirMacroDefine Red
-highlight! link elixirPrivateMacroDefine Red
-highlight! link elixirDelegateDefine Red
-highlight! link elixirOverridableDefine Red
-highlight! link elixirExceptionDefine Red
-highlight! link elixirCallbackDefine Red
-highlight! link elixirStructDefine Red
-highlight! link elixirExUnitMacro Red
-" }}}
-" ft_end }}}
 " ft_begin: lisp {{{
 " builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_LISP{{{
 highlight! link lispAtomMark Purple
@@ -1871,29 +1370,6 @@ highlight! link clojureMeta Purple
 highlight! link clojureDeref Purple
 " }}}
 " ft_end }}}
-" ft_begin: matlab {{{
-" builtin: {{{
-highlight! link matlabSemicolon Fg
-highlight! link matlabFunction RedItalic
-highlight! link matlabImplicit Green
-highlight! link matlabDelimiter Fg
-highlight! link matlabOperator Green
-highlight! link matlabArithmeticOperator Red
-highlight! link matlabArithmeticOperator Red
-highlight! link matlabRelationalOperator Red
-highlight! link matlabRelationalOperator Red
-highlight! link matlabLogicalOperator Red
-" }}}
-" ft_end }}}
-" ft_begin: octave {{{
-" vim-octave: https://github.com/McSinyx/vim-octave{{{
-highlight! link octaveDelimiter Orange
-highlight! link octaveSemicolon Grey
-highlight! link octaveOperator Orange
-highlight! link octaveVariable BlueItalic
-highlight! link octaveVarKeyword BlueItalic
-" }}}
-" ft_end }}}
 " ft_begin: sh/zsh {{{
 " builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_SH{{{
 highlight! link shRange Fg
@@ -1907,21 +1383,6 @@ highlight! link shDerefOff BlueItalic
 highlight! link shVarAssign Red
 highlight! link shFunctionOne Green
 highlight! link shFunctionKey Red
-" }}}
-" ft_end }}}
-" ft_begin: zsh {{{
-" builtin: https://github.com/chrisbra/vim-zsh{{{
-highlight! link zshOption BlueItalic
-highlight! link zshSubst Orange
-highlight! link zshFunction Green
-" }}}
-" ft_end }}}
-" ft_begin: ps1 {{{
-" vim-ps1: https://github.com/PProvost/vim-ps1{{{
-highlight! link ps1FunctionInvocation Green
-highlight! link ps1FunctionDeclaration Green
-highlight! link ps1InterpolationDelimiter Purple
-highlight! link ps1BuiltIn BlueItalic
 " }}}
 " ft_end }}}
 " ft_begin: vim {{{
@@ -2071,13 +1532,6 @@ highlight! link yamlKey Red
 highlight! link yamlConstant BlueItalic
 highlight! link yamlString Green
 " ft_end }}}
-" ft_begin: toml {{{
-call jcolor#highlight('tomlTable', s:palette.purple, s:palette.none, 'bold')
-highlight! link tomlKey Red
-highlight! link tomlBoolean Blue
-highlight! link tomlString Green
-highlight! link tomlTableArray tomlTable
-" ft_end }}}
 " ft_begin: gitcommit {{{
 highlight! link gitcommitSummary Red
 highlight! link gitcommitUntracked Grey
@@ -2087,12 +1541,6 @@ highlight! link gitcommitUnmerged Grey
 highlight! link gitcommitOnBranch Grey
 highlight! link gitcommitArrow Grey
 highlight! link gitcommitFile Green
-" ft_end }}}
-" ft_begin: dosini {{{
-call jcolor#highlight('dosiniHeader', s:palette.red, s:palette.none, 'bold')
-highlight! link dosiniLabel Blue
-highlight! link dosiniValue Green
-highlight! link dosiniNumber Green
 " ft_end }}}
 " ft_begin: help {{{
 call jcolor#highlight('helpNote', s:palette.purple, s:palette.none, 'bold')
