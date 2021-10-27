@@ -32,9 +32,11 @@ endfunction "}}}
 function! jcolor#get_palette(style) "{{{
   if a:style ==# 'default'
     let palette = {
-          \ 'black':      ['#181a1c',   '0'],
+          \ 'white':      ['#ffffff',   '0'],
+          \ 'black':      ['#1a1b1a',   '0'],
           \ 'bg0':        ['#282a2f',   '0'],
-          \ 'bg1':        ['#333836',   '0'],
+          \ 'bg01':       ['#2e2f36',   '0'],
+          \ 'bg1':        ['#2f3238',   '0'],
           \ 'bg2':        ['#373c3b',   '0'],
           \ 'bg3':        ['#3d4445',   '0'],
           \ 'bg4':        ['#424b4b',   '0'],
@@ -66,6 +68,7 @@ function! jcolor#get_palette(style) "{{{
           \ }
   elseif a:style ==# 'everforest'
     let palette = {
+          \ 'white':      ['#ffffff',   '0'],
           \ 'black':      ['#181a1c',   '0'],
           \ 'bg0':        ['#21292f',   '235'],
           \ 'bg1':        ['#293138',   '236'],
