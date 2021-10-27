@@ -114,7 +114,7 @@ call jcolor#highlight('StatusLineNC', s:palette.grey, s:palette.bg1)
 call jcolor#highlight('StatusLineTermNC', s:palette.grey, s:palette.bg1)
 call jcolor#highlight('TabLine', s:palette.fg, s:palette.bg4)
 call jcolor#highlight('TabLineFill', s:palette.grey, s:palette.bg1)
-call jcolor#highlight('TabLineSel', s:palette.bg0, s:palette.bg_red)
+call jcolor#highlight('TabLineSel', s:palette.fg, s:palette.bg0, 'bold')
 call jcolor#highlight('VertSplit', s:palette.black, s:palette.none)
 call jcolor#highlight('Visual', s:palette.none, s:palette.bg3)
 call jcolor#highlight('VisualNOS', s:palette.none, s:palette.bg3, 'underline')
@@ -213,6 +213,8 @@ highlight! link Tag            xFunctions
 highlight! link Type           xType
 highlight! link Constant       xField
 
+highlight! link TypeBuiltin    xOtherType
+highlight! link ConstantBuiltin xOtherField
 highlight! link Identifier     xOtherType
 highlight! link Title          xOtherType
 
@@ -1175,7 +1177,7 @@ highlight! link dartMetadata OrangeItalic
 " }}}
 " ft_end }}}
 " ft_begin: c/cpp/objc/objcpp {{{
-" vim-cpp-enhanced-highlight: https://github.com/octol/vim-cpp-enhanced-highlight{{{
+" builtin: {{{
 highlight! link cLabel Keyword
 highlight! link cType TSTypeBuiltin
 highlight! link cConstant TSConstBuiltin
@@ -1186,11 +1188,10 @@ highlight! link cppStructure Keyword
 highlight! link cppSTLios TSTypeBuiltin
 highlight! link cppSTLiterator TSTypeBuiltin
 highlight! link cppSTLexception Keyword
+highlight! link cppSTLVariable ConstantBuiltin
 highlight! link cppModifier Keyword
 highlight! link cppType TSTypeBuiltin
-" }}}
-" vim-cpp-modern: https://github.com/bfrg/vim-cpp-modern{{{
-highlight! link cppSTLVariable BlueItalic
+highlight! link cppConstant ConstantBuiltin
 " }}}
 " ft_end }}}
 " ft_begin: objc {{{
