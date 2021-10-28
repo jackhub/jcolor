@@ -67,39 +67,6 @@ function! jcolor#get_palette(style) "{{{
           \ 'none':       ['NONE',      '0']
           \ }
   elseif a:style ==# 'everforest'
-    let palette = {
-          \ 'white':      ['#ffffff',   '0'],
-          \ 'black':      ['#181a1c',   '0'],
-          \ 'bg0':        ['#21292f',   '235'],
-          \ 'bg1':        ['#293138',   '236'],
-          \ 'bg2':        ['#2d363d',   '237'],
-          \ 'bg3':        ['#445055',   '238'],
-          \ 'bg4':        ['#4c555b',   '239'],
-          \ 'bg_red':     ['#4e3e43',   '52'],
-          \ 'diff_red':   ['#55393d',   '0'],
-          \ 'bg_green':   ['#404d44',   '22'],
-          \ 'diff_green': ['#394634',   '0'],
-          \ 'bg_blue':    ['#394f5a',   '17'],
-          \ 'diff_blue':  ['#354157',   '0'],
-          \ 'bg_yellow':  ['#4a4940',   '136'],
-          \ 'fg':         ['#cfd3d0',   '223'],
-          \ 'red':        ['#f85552',   '160'],
-          \ 'red2':       ['#fe8170',   '0'],
-          \ 'red3':       ['#fe8170',   '0'],
-          \ 'orange':     ['#f57d26',   '116'],
-          \ 'orange2':    ['#ffa14f',   '0'],
-          \ 'yellow':     ['#dfa000',   '136'],
-          \ 'green':      ['#8da101',   '106'],
-          \ 'blue':       ['#3a94c5',   '32'],
-          \ 'blue2':      ['#78c1b3',   '0'],
-          \ 'blue3':      ['#78c1b3',   '0'],
-          \ 'blue4':      ['#78c1b3',   '0'],
-          \ 'purple':     ['#df69ba',   '162'],
-          \ 'purple2':    ['#d9bbfe',   '0'],
-          \ 'grey':       ['#a6b0a0',   '247'],
-          \ 'grey2':      ['#939f91',   '247'],
-          \ 'none':       ['NONE',      '0']
-          \ }
   endif
   return palette
 endfunction "}}}
