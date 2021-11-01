@@ -54,6 +54,7 @@ endif
 call jcolor#highlight('SignColumn', s:palette.fg, s:palette.none)
 call jcolor#highlight('IncSearch', s:palette.bg0, s:palette.bg_red)
 call jcolor#highlight('Search', s:palette.bg0, s:palette.bg_green)
+call jcolor#highlight('MsgArea', s:palette.fg, s:palette.bg01)
 call jcolor#highlight('ColorColumn', s:palette.none, s:palette.bg01)
 call jcolor#highlight('Conceal', s:palette.grey2, s:palette.none)
 if s:configuration.cursor ==# 'auto'
