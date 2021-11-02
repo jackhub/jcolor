@@ -17,74 +17,74 @@ let s:error_fg = s:palette.bg0
 let s:error_bg = s:palette.bg_red
 let s:warning_fg = s:palette.bg0
 let s:warning_bg = s:palette.yellow
-let s:term_fg = s:palette.grey
+let s:term_fg = s:palette.grey2
 let s:term_bg = s:palette.bg1
 
-let s:tab_fg = s:palette.grey
+let s:tab_fg = s:palette.grey2
 let s:tab_bg = s:palette.bg4
 let s:tab_sel_fg = s:palette.bg0
 let s:tab_sel_bg = s:palette.bg_red
-let s:tab_mid_fg = s:palette.grey
+let s:tab_mid_fg = s:palette.grey2
 let s:tab_mid_bg = s:palette.bg1
 let s:tab_mod_fg = s:palette.bg0
 let s:tab_mod_bg = s:palette.bg_blue
 let s:tab_type_fg = s:palette.bg0
 let s:tab_type_bg = s:palette.purple
-let s:tab_label_fg = s:palette.grey
+let s:tab_label_fg = s:palette.grey2
 let s:tab_label_bg = s:palette.bg4
 
 let s:normal_side_fg = s:palette.bg0
 let s:normal_side_bg = s:palette.bg_blue
-let s:normal_sub_fg = s:palette.grey
+let s:normal_sub_fg = s:palette.grey2
 let s:normal_sub_bg = s:palette.bg4
-let s:normal_mid_fg = s:palette.grey
+let s:normal_mid_fg = s:palette.grey2
 let s:normal_mid_bg = s:palette.bg1
 let s:normal_mod_fg = s:palette.blue
 let s:normal_mod_bg = s:palette.bg1
 
 let s:insert_side_fg = s:palette.bg0
 let s:insert_side_bg = s:palette.bg_green
-let s:insert_sub_fg = s:palette.grey
+let s:insert_sub_fg = s:palette.grey2
 let s:insert_sub_bg = s:palette.bg4
-let s:insert_mid_fg = s:palette.grey
+let s:insert_mid_fg = s:palette.grey2
 let s:insert_mid_bg = s:palette.bg1
 let s:insert_mod_fg = s:palette.green
 let s:insert_mod_bg = s:palette.bg1
 
 let s:visual_side_fg = s:palette.bg0
 let s:visual_side_bg = s:palette.purple
-let s:visual_sub_fg = s:palette.grey
+let s:visual_sub_fg = s:palette.grey2
 let s:visual_sub_bg = s:palette.bg4
-let s:visual_mid_fg = s:palette.grey
+let s:visual_mid_fg = s:palette.grey2
 let s:visual_mid_bg = s:palette.bg1
 let s:visual_mod_fg = s:palette.purple
 let s:visual_mod_bg = s:palette.bg1
 
 let s:replace_side_fg = s:palette.bg0
 let s:replace_side_bg = s:palette.yellow
-let s:replace_sub_fg = s:palette.grey
+let s:replace_sub_fg = s:palette.grey2
 let s:replace_sub_bg = s:palette.bg4
-let s:replace_mid_fg = s:palette.grey
+let s:replace_mid_fg = s:palette.grey2
 let s:replace_mid_bg = s:palette.bg1
 let s:replace_mod_fg = s:palette.yellow
 let s:replace_mod_bg = s:palette.bg1
 
 let s:commandline_side_fg = s:palette.bg0
 let s:commandline_side_bg = s:palette.orange
-let s:commandline_sub_fg = s:palette.grey
+let s:commandline_sub_fg = s:palette.grey2
 let s:commandline_sub_bg = s:palette.bg4
-let s:commandline_mid_fg = s:palette.grey
+let s:commandline_mid_fg = s:palette.grey2
 let s:commandline_mid_bg = s:palette.bg1
 let s:commandline_mod_fg = s:palette.orange
 let s:commandline_mod_bg = s:palette.bg1
 
-let s:inactive_side_fg = s:palette.grey2
+let s:inactive_side_fg = s:palette.grey0
 let s:inactive_side_bg = s:palette.bg1
-let s:inactive_sub_fg = s:palette.grey2
+let s:inactive_sub_fg = s:palette.grey0
 let s:inactive_sub_bg = s:palette.bg1
-let s:inactive_mid_fg = s:palette.grey2
+let s:inactive_mid_fg = s:palette.grey0
 let s:inactive_mid_bg = s:palette.bg1
-let s:inactive_mod_fg = s:palette.grey2
+let s:inactive_mod_fg = s:palette.grey0
 let s:inactive_mod_bg = s:palette.bg1
 "}}}
 " Implementation: {{{

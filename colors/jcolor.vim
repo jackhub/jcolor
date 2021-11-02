@@ -38,7 +38,7 @@ if s:configuration.transparent_background
   endif
   call jcolor#highlight('Folded', s:palette.grey, s:palette.none)
   call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.none)
-  call jcolor#highlight('FoldColumn', s:palette.grey2, s:palette.none)
+  call jcolor#highlight('FoldColumn', s:palette.grey0, s:palette.none)
 else
   call jcolor#highlight('Normal', s:palette.fg, s:palette.bg0)
   call jcolor#highlight('Terminal', s:palette.fg, s:palette.bg0)
@@ -49,14 +49,14 @@ else
   endif
   call jcolor#highlight('Folded', s:palette.grey, s:palette.bg1)
   call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.bg2)
-  call jcolor#highlight('FoldColumn', s:palette.grey2, s:palette.none)
+  call jcolor#highlight('FoldColumn', s:palette.grey0, s:palette.none)
 endif
 call jcolor#highlight('SignColumn', s:palette.fg, s:palette.none)
 call jcolor#highlight('IncSearch', s:palette.bg0, s:palette.bg_red)
 call jcolor#highlight('Search', s:palette.bg0, s:palette.bg_green)
 call jcolor#highlight('MsgArea', s:palette.fg, s:palette.bg0)
 call jcolor#highlight('ColorColumn', s:palette.none, s:palette.bg01)
-call jcolor#highlight('Conceal', s:palette.grey2, s:palette.none)
+call jcolor#highlight('Conceal', s:palette.grey0, s:palette.none)
 if s:configuration.cursor ==# 'auto'
   call jcolor#highlight('Cursor', s:palette.none, s:palette.none, 'reverse')
 else
@@ -73,7 +73,7 @@ else
   call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg1)
   call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg1)
 endif
-call jcolor#highlight('LineNr', s:palette.grey2, s:palette.none)
+call jcolor#highlight('LineNr', s:palette.grey0, s:palette.none)
 if &diff
   call jcolor#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
 else
@@ -113,7 +113,7 @@ call jcolor#highlight('StatusLine', s:palette.fg, s:palette.bg3)
 call jcolor#highlight('StatusLineTerm', s:palette.fg, s:palette.bg3)
 call jcolor#highlight('StatusLineNC', s:palette.grey, s:palette.bg1)
 call jcolor#highlight('StatusLineTermNC', s:palette.grey, s:palette.bg1)
-call jcolor#highlight('TabLine', s:palette.fg, s:palette.bg01)
+call jcolor#highlight('TabLine', s:palette.grey2, s:palette.bg01)
 call jcolor#highlight('TabLineFill', s:palette.grey, s:palette.bg01)
 call jcolor#highlight('TabLineSel', s:palette.green, s:palette.bg4, 'bold')
 call jcolor#highlight('VertSplit', s:palette.black, s:palette.none)
