@@ -27,14 +27,14 @@ let s:tab_sel_bg = s:palette.bg_red
 let s:tab_mid_fg = s:palette.grey2
 let s:tab_mid_bg = s:palette.bg1
 let s:tab_mod_fg = s:palette.bg0
-let s:tab_mod_bg = s:palette.bg_blue
+let s:tab_mod_bg = s:palette.green
 let s:tab_type_fg = s:palette.bg0
 let s:tab_type_bg = s:palette.purple
 let s:tab_label_fg = s:palette.grey2
 let s:tab_label_bg = s:palette.bg4
 
 let s:normal_side_fg = s:palette.bg0
-let s:normal_side_bg = s:palette.bg_blue
+let s:normal_side_bg = s:palette.green
 let s:normal_sub_fg = s:palette.grey2
 let s:normal_sub_bg = s:palette.bg4
 let s:normal_mid_fg = s:palette.grey2
@@ -43,7 +43,7 @@ let s:normal_mod_fg = s:palette.blue
 let s:normal_mod_bg = s:palette.bg1
 
 let s:insert_side_fg = s:palette.bg0
-let s:insert_side_bg = s:palette.bg_green
+let s:insert_side_bg = s:palette.purple
 let s:insert_sub_fg = s:palette.grey2
 let s:insert_sub_bg = s:palette.bg4
 let s:insert_mid_fg = s:palette.grey2
@@ -52,7 +52,7 @@ let s:insert_mod_fg = s:palette.green
 let s:insert_mod_bg = s:palette.bg1
 
 let s:visual_side_fg = s:palette.bg0
-let s:visual_side_bg = s:palette.purple
+let s:visual_side_bg = s:palette.yellow
 let s:visual_sub_fg = s:palette.grey2
 let s:visual_sub_bg = s:palette.bg4
 let s:visual_mid_fg = s:palette.grey2

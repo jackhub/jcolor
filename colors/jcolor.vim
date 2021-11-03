@@ -28,6 +28,12 @@ endif
 " }}}
 " Common Highlight Groups: {{{
 " UI: {{{
+augroup JCOLOR_UI
+  autocmd!
+  autocmd InsertEnter * highlight  CursorLine guibg='#342d3e' guifg='NONE'
+  autocmd InsertLeave * highlight  CursorLine guibg='#2f3238' guifg='NONE'
+augroup END
+
 if s:configuration.transparent_background
   call jcolor#highlight('Normal', s:palette.fg, s:palette.none)
   call jcolor#highlight('Terminal', s:palette.fg, s:palette.none)
@@ -70,7 +76,7 @@ if &diff
   call jcolor#highlight('CursorLine', s:palette.none, s:palette.none, 'underline')
   call jcolor#highlight('CursorColumn', s:palette.none, s:palette.none, 'bold')
 else
-  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg_cursor)
+  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg1)
   call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg1)
 endif
 call jcolor#highlight('LineNr', s:palette.grey0, s:palette.none)
