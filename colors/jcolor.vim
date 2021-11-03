@@ -28,10 +28,12 @@ endif
 " }}}
 " Common Highlight Groups: {{{
 " UI: {{{
+let g:jcolor_bg1 = s:palette.bg1[0]
+let g:jcolor_bg_cursor = s:palette.bg_cursor[0]
 augroup JCOLOR_UI
   autocmd!
-  autocmd InsertEnter * highlight  CursorLine guibg='#342d3e' guifg='NONE'
-  autocmd InsertLeave * highlight  CursorLine guibg='#2f3238' guifg='NONE'
+  autocmd InsertEnter * execute 'highlight CursorLine guibg=' . g:jcolor_bg_cursor . ' guifg=NONE'
+  autocmd InsertLeave * execute 'highlight CursorLine guibg=' . g:jcolor_bg1 . ' guifg=NONE'
 augroup END
 
 if s:configuration.transparent_background
