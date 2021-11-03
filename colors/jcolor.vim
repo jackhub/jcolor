@@ -70,7 +70,7 @@ if &diff
   call jcolor#highlight('CursorLine', s:palette.none, s:palette.none, 'underline')
   call jcolor#highlight('CursorColumn', s:palette.none, s:palette.none, 'bold')
 else
-  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg1)
+  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg_cursor)
   call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg1)
 endif
 call jcolor#highlight('LineNr', s:palette.grey0, s:palette.none)

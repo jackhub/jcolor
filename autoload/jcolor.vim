@@ -40,6 +40,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'bg2':        ['#383b42',   '0'],
           \ 'bg3':        ['#3f434a',   '0'],
           \ 'bg4':        ['#484c55',   '0'],
+          \ 'bg_cursor':  ['#342d3e',   '0'],
           \ 'bg_red':     ['#ff6d7e',   '0'],
           \ 'bg_green':   ['#a5e179',   '0'],
           \ 'bg_blue':    ['#76bed3',   '0'],
