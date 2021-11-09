@@ -621,7 +621,7 @@ highlight! link GitGutterDelete RedSign
 highlight! link GitGutterChangeDelete PurpleSign
 " }}}
 " easymotion/vim-easymotion {{{
-highlight! link EasyMotionTarget Search
+highlight! link EasyMotionTarget Keyword
 highlight! link EasyMotionShade Grey
 " }}}
 " }}}
