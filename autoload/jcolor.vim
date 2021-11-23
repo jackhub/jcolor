@@ -58,7 +58,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'red2':       ['#fe8170',   '0'],
           \ 'red3':       ['#fe8170',   '0'],
           \ 'green':      ['#93c76b',   '0'],
-          \ 'blue':       ['#6bdffe',   '0'],
+          \ 'blue':       ['#8addff',   '0'],
           \ 'blue2':      ['#78c1b3',   '0'],
           \ 'blue3':      ['#6599ff',   '0'],
           \ 'blue4':      ['#69dffe',   '0'],
