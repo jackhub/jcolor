@@ -9,6 +9,8 @@
 " Initialization: {{{
 let s:configuration = jcolor#get_configuration()
 let s:palette = jcolor#get_palette(s:configuration.style)
+let g:jcolor_palette = s:palette
+
 let s:path = expand('<sfile>:p') " the path of this script
 let s:last_modified = 'Fri Aug  6 11:26:03 AM UTC 2021'
 let g:jcolor_loaded_file_types = []
