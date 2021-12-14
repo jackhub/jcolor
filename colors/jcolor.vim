@@ -629,6 +629,16 @@ highlight! link EasyMotionShade Grey
 " lewis6991/gitsigns.nvim {{{
 highlight! link GitSignsCurrentLineBlame Grey
 " }}}
+" nvim-lualine/lualine.nvim {{{
+call jcolor#highlight('TRed', s:palette.red, s:palette.bg01)
+call jcolor#highlight('TYellow', s:palette.yellow, s:palette.bg01)
+call jcolor#highlight('TGrey', s:palette.grey, s:palette.bg01)
+call jcolor#highlight('TGreen', s:palette.green, s:palette.bg01)
+highligh! link DiagnosticError Red
+highligh! link DiagnosticWarn Yellow
+highligh! link DiagnosticInfo Grey
+highligh! link DiagnosticHint Green
+" }}}
 " }}}
 " Extended File Types: {{{
 " Whitelist: {{{ File type optimizations that will always be loaded.
