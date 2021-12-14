@@ -626,6 +626,9 @@ highlight! link GitGutterChangeDelete PurpleSign
 highlight! link EasyMotionTarget Keyword
 highlight! link EasyMotionShade Grey
 " }}}
+" lewis6991/gitsigns.nvim {{{
+highlight! link GitSignsCurrentLineBlame Grey
+" }}}
 " }}}
 " Extended File Types: {{{
 " Whitelist: {{{ File type optimizations that will always be loaded.
@@ -667,7 +670,7 @@ highlight! link NERDTreeClosable Blue
 highlight! link NERDTreeFile Fg
 highlight! link NERDTreeExecFile Red
 highlight! link NERDTreeUp Grey
-highlight! link NERDTreeCWD Purple
+highlight! link NERDTreeCWD Grey
 highlight! link NERDTreeHelp Grey
 highlight! link NERDTreeToggleOn Green
 highlight! link NERDTreeToggleOff Red
