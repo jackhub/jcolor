@@ -91,6 +91,7 @@ call jcolor#highlight('Whitespace', s:palette.bg_a4, s:palette.none)
 call jcolor#highlight('SpecialKey', s:palette.bg_a4, s:palette.none)
 call jcolor#highlight('Pmenu', s:palette.fg, s:palette.bg_a2)
 call jcolor#highlight('PmenuSbar', s:palette.none, s:palette.bg_a2)
+call jcolor#highlight('PmenuThumb', s:palette.none, s:palette.bg_a2)
 if s:configuration.menu_selection_background ==# 'blue'
   call jcolor#highlight('PmenuSel', s:palette.bg, s:palette.bg_blue)
 elseif s:configuration.menu_selection_background ==# 'green'
@@ -99,7 +100,6 @@ elseif s:configuration.menu_selection_background ==# 'red'
   call jcolor#highlight('PmenuSel', s:palette.bg, s:palette.bg_red)
 endif
 highlight! link WildMenu PmenuSel
-call jcolor#highlight('PmenuThumb', s:palette.none, s:palette.grey)
 call jcolor#highlight('NormalFloat', s:palette.fg, s:palette.bg_a2)
 call jcolor#highlight('Question', s:palette.yellow, s:palette.none)
 call jcolor#highlight('SpellBad', s:palette.none, s:palette.none, 'undercurl', s:palette.red)
@@ -576,16 +576,17 @@ call jcolor#highlight('Lf_hl_match2', s:palette.red, s:palette.none, 'bold')
 call jcolor#highlight('Lf_hl_match3', s:palette.yellow, s:palette.none, 'bold')
 call jcolor#highlight('Lf_hl_match4', s:palette.purple, s:palette.none, 'bold')
 call jcolor#highlight('Lf_hl_matchRefine', s:palette.yellow, s:palette.none, 'bold')
-call jcolor#highlight('Lf_hl_popup_normalMode', s:palette.bg, s:palette.blue, 'bold')
-call jcolor#highlight('Lf_hl_popup_inputMode', s:palette.bg, s:palette.green, 'bold')
-call jcolor#highlight('Lf_hl_popup_category', s:palette.fg, s:palette.bg_a4)
-call jcolor#highlight('Lf_hl_popup_nameOnlyMode', s:palette.fg, s:palette.bg_a3)
-call jcolor#highlight('Lf_hl_popup_fullPathMode', s:palette.fg, s:palette.bg_a3)
-call jcolor#highlight('Lf_hl_popup_fuzzyMode', s:palette.fg, s:palette.bg_a3)
-call jcolor#highlight('Lf_hl_popup_regexMode', s:palette.fg, s:palette.bg_a3)
-call jcolor#highlight('Lf_hl_popup_lineInfo', s:palette.bg, s:palette.blue)
-call jcolor#highlight('Lf_hl_popup_total', s:palette.bg, s:palette.red)
-call jcolor#highlight('Lf_hl_popup_cursor', s:palette.bg, s:palette.blue)
+call jcolor#highlight('Lf_hl_popup_normalMode', s:palette.bg, s:palette.green, 'bold')
+call jcolor#highlight('Lf_hl_popup_inputMode', s:palette.bg, s:palette.purple, 'bold')
+call jcolor#highlight('Lf_hl_popup_category', s:palette.grey_a1, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_nameOnlyMode', s:palette.grey_a1, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_fullPathMode', s:palette.grey_a1, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_fuzzyMode', s:palette.grey_a1, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_regexMode', s:palette.grey_a1, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_cwd', s:palette.grey_a1, s:palette.bg_a2)
+call jcolor#highlight('Lf_hl_popup_lineInfo', s:palette.grey_a1, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_total', s:palette.bg_a3, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_cursor', s:palette.fg, s:palette.fg)
 highlight! link Lf_hl_cursorline Fg
 highlight! link Lf_hl_selection DiffAdd
 highlight! link Lf_hl_rgHighlight Visual
@@ -593,7 +594,6 @@ highlight! link Lf_hl_gtagsHighlight Visual
 highlight! link Lf_hl_popup_inputText Pmenu
 highlight! link Lf_hl_popup_window Pmenu
 highlight! link Lf_hl_popup_prompt Blue
-highlight! link Lf_hl_popup_cwd Pmenu
 highlight! link Lf_hl_popup_blank Lf_hl_popup_window
 highlight! link Lf_hl_popup_spin Purple
 " }}}
