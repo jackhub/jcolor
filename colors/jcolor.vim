@@ -30,47 +30,34 @@ endif
 " }}}
 " Common Highlight Groups: {{{
 " UI: {{{
-let g:jcolor_bg1 = s:palette.bg1[0]
+let g:jcolor_bg_a1 = s:palette.bg_a1[0]
 let g:jcolor_bg_cursor = s:palette.bg_cursor[0]
 augroup JCOLOR_UI
   autocmd!
   autocmd InsertEnter * execute 'highlight CursorLine guibg=' . g:jcolor_bg_cursor . ' guifg=NONE'
-  autocmd InsertLeave * execute 'highlight CursorLine guibg=' . g:jcolor_bg1 . ' guifg=NONE'
+  autocmd InsertLeave * execute 'highlight CursorLine guibg=' . g:jcolor_bg_a1 . ' guifg=NONE'
 augroup END
 
-if s:configuration.transparent_background
-  call jcolor#highlight('Normal', s:palette.fg, s:palette.none)
-  call jcolor#highlight('Terminal', s:palette.fg, s:palette.none)
-  if s:configuration.show_eob
-    call jcolor#highlight('EndOfBuffer', s:palette.bg4, s:palette.none)
-  else
-    call jcolor#highlight('EndOfBuffer', s:palette.bg0, s:palette.none)
-  endif
-  call jcolor#highlight('Folded', s:palette.grey, s:palette.none)
-  call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.none)
-  call jcolor#highlight('FoldColumn', s:palette.grey0, s:palette.none)
+call jcolor#highlight('Normal', s:palette.fg, s:palette.bg)
+call jcolor#highlight('Terminal', s:palette.fg, s:palette.bg)
+if s:configuration.show_eob
+  call jcolor#highlight('EndOfBuffer', s:palette.bg_a4, s:palette.bg)
 else
-  call jcolor#highlight('Normal', s:palette.fg, s:palette.bg0)
-  call jcolor#highlight('Terminal', s:palette.fg, s:palette.bg0)
-  if s:configuration.show_eob
-    call jcolor#highlight('EndOfBuffer', s:palette.bg4, s:palette.bg0)
-  else
-    call jcolor#highlight('EndOfBuffer', s:palette.bg0, s:palette.bg0)
-  endif
-  call jcolor#highlight('Folded', s:palette.grey, s:palette.bg1)
-  call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.bg2)
-  call jcolor#highlight('FoldColumn', s:palette.grey0, s:palette.none)
+  call jcolor#highlight('EndOfBuffer', s:palette.bg, s:palette.bg)
 endif
+call jcolor#highlight('Folded', s:palette.grey, s:palette.bg_a1)
+call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.bg_a2)
+call jcolor#highlight('FoldColumn', s:palette.grey_m1, s:palette.none)
 call jcolor#highlight('SignColumn', s:palette.fg, s:palette.none)
-call jcolor#highlight('IncSearch', s:palette.bg0, s:palette.bg_red)
-call jcolor#highlight('Search', s:palette.bg0, s:palette.bg_green)
-call jcolor#highlight('MsgArea', s:palette.fg, s:palette.bg0)
-call jcolor#highlight('ColorColumn', s:palette.none, s:palette.bg01)
-call jcolor#highlight('Conceal', s:palette.grey0, s:palette.none)
+call jcolor#highlight('IncSearch', s:palette.bg, s:palette.bg_red)
+call jcolor#highlight('Search', s:palette.bg, s:palette.bg_green)
+call jcolor#highlight('MsgArea', s:palette.fg, s:palette.bg)
+call jcolor#highlight('ColorColumn', s:palette.none, s:palette.bg_line)
+call jcolor#highlight('Conceal', s:palette.grey_m1, s:palette.none)
 if s:configuration.cursor ==# 'auto'
   call jcolor#highlight('Cursor', s:palette.none, s:palette.none, 'reverse')
 else
-  call jcolor#highlight('Cursor', s:palette.bg0, s:palette[s:configuration.cursor])
+  call jcolor#highlight('Cursor', s:palette.bg, s:palette[s:configuration.cursor])
 endif
 highlight! link vCursor Cursor
 highlight! link iCursor Cursor
@@ -80,10 +67,10 @@ if &diff
   call jcolor#highlight('CursorLine', s:palette.none, s:palette.none, 'underline')
   call jcolor#highlight('CursorColumn', s:palette.none, s:palette.none, 'bold')
 else
-  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg1)
-  call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg1)
+  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg_a1)
+  call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg_a1)
 endif
-call jcolor#highlight('LineNr', s:palette.grey0, s:palette.none)
+call jcolor#highlight('LineNr', s:palette.grey_m1, s:palette.none)
 if &diff
   call jcolor#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
 else
@@ -92,50 +79,50 @@ endif
 call jcolor#highlight('DiffAdd', s:palette.none, s:palette.diff_green)
 call jcolor#highlight('DiffChange', s:palette.none, s:palette.diff_blue)
 call jcolor#highlight('DiffDelete', s:palette.none, s:palette.diff_red)
-call jcolor#highlight('DiffText', s:palette.bg0, s:palette.blue)
+call jcolor#highlight('DiffText', s:palette.bg, s:palette.blue)
 call jcolor#highlight('Directory', s:palette.green, s:palette.none)
 call jcolor#highlight('ErrorMsg', s:palette.red, s:palette.none, 'bold,underline')
 call jcolor#highlight('WarningMsg', s:palette.yellow, s:palette.none, 'bold')
 call jcolor#highlight('ModeMsg', s:palette.fg, s:palette.none, 'bold')
 call jcolor#highlight('MoreMsg', s:palette.blue, s:palette.none, 'bold')
-call jcolor#highlight('MatchParen', s:palette.none, s:palette.bg4)
-call jcolor#highlight('NonText', s:palette.bg4, s:palette.none)
-call jcolor#highlight('Whitespace', s:palette.bg4, s:palette.none)
-call jcolor#highlight('SpecialKey', s:palette.bg4, s:palette.none)
-call jcolor#highlight('Pmenu', s:palette.fg, s:palette.bg2)
-call jcolor#highlight('PmenuSbar', s:palette.none, s:palette.bg2)
+call jcolor#highlight('MatchParen', s:palette.none, s:palette.bg_a4)
+call jcolor#highlight('NonText', s:palette.bg_a4, s:palette.none)
+call jcolor#highlight('Whitespace', s:palette.bg_a4, s:palette.none)
+call jcolor#highlight('SpecialKey', s:palette.bg_a4, s:palette.none)
+call jcolor#highlight('Pmenu', s:palette.fg, s:palette.bg_a2)
+call jcolor#highlight('PmenuSbar', s:palette.none, s:palette.bg_a2)
 if s:configuration.menu_selection_background ==# 'blue'
-  call jcolor#highlight('PmenuSel', s:palette.bg0, s:palette.bg_blue)
+  call jcolor#highlight('PmenuSel', s:palette.bg, s:palette.bg_blue)
 elseif s:configuration.menu_selection_background ==# 'green'
-  call jcolor#highlight('PmenuSel', s:palette.bg0, s:palette.bg_green)
+  call jcolor#highlight('PmenuSel', s:palette.bg, s:palette.bg_green)
 elseif s:configuration.menu_selection_background ==# 'red'
-  call jcolor#highlight('PmenuSel', s:palette.bg0, s:palette.bg_red)
+  call jcolor#highlight('PmenuSel', s:palette.bg, s:palette.bg_red)
 endif
 highlight! link WildMenu PmenuSel
 call jcolor#highlight('PmenuThumb', s:palette.none, s:palette.grey)
-call jcolor#highlight('NormalFloat', s:palette.fg, s:palette.bg2)
+call jcolor#highlight('NormalFloat', s:palette.fg, s:palette.bg_a2)
 call jcolor#highlight('Question', s:palette.yellow, s:palette.none)
 call jcolor#highlight('SpellBad', s:palette.none, s:palette.none, 'undercurl', s:palette.red)
 call jcolor#highlight('SpellCap', s:palette.none, s:palette.none, 'undercurl', s:palette.yellow)
 call jcolor#highlight('SpellLocal', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
 call jcolor#highlight('SpellRare', s:palette.none, s:palette.none, 'undercurl', s:palette.purple)
-call jcolor#highlight('StatusLine', s:palette.fg, s:palette.bg3)
-call jcolor#highlight('StatusLineTerm', s:palette.fg, s:palette.bg3)
-call jcolor#highlight('StatusLineNC', s:palette.grey, s:palette.bg1)
-call jcolor#highlight('StatusLineTermNC', s:palette.grey, s:palette.bg1)
-call jcolor#highlight('TabLine', s:palette.grey2, s:palette.bg01)
-call jcolor#highlight('TabLineFill', s:palette.grey, s:palette.bg01)
-call jcolor#highlight('TabLineSel', s:palette.green, s:palette.bg4, 'bold')
+call jcolor#highlight('StatusLine', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('StatusLineTerm', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('StatusLineNC', s:palette.grey, s:palette.bg_a1)
+call jcolor#highlight('StatusLineTermNC', s:palette.grey, s:palette.bg_a1)
+call jcolor#highlight('TabLine', s:palette.grey_a1, s:palette.bg_line)
+call jcolor#highlight('TabLineFill', s:palette.grey, s:palette.bg_line)
+call jcolor#highlight('TabLineSel', s:palette.green, s:palette.bg_a4, 'bold')
 call jcolor#highlight('VertSplit', s:palette.black, s:palette.none)
 call jcolor#highlight('Visual', s:palette.none, s:palette.diff_green)
-call jcolor#highlight('VisualNOS', s:palette.none, s:palette.bg3, 'underline')
+call jcolor#highlight('VisualNOS', s:palette.none, s:palette.bg_a3, 'underline')
 call jcolor#highlight('QuickFixLine', s:palette.blue, s:palette.none, 'bold')
 call jcolor#highlight('Debug', s:palette.yellow, s:palette.none)
-call jcolor#highlight('debugPC', s:palette.bg0, s:palette.green)
-call jcolor#highlight('debugBreakpoint', s:palette.bg0, s:palette.red)
-call jcolor#highlight('ToolbarButton', s:palette.bg0, s:palette.bg_blue)
+call jcolor#highlight('debugPC', s:palette.bg, s:palette.green)
+call jcolor#highlight('debugBreakpoint', s:palette.bg, s:palette.red)
+call jcolor#highlight('ToolbarButton', s:palette.bg, s:palette.bg_blue)
 if has('nvim')
-  call jcolor#highlight('Substitute', s:palette.bg0, s:palette.yellow)
+  call jcolor#highlight('Substitute', s:palette.bg, s:palette.yellow)
   highlight! link LspDiagnosticsFloatingError ErrorFloat
   highlight! link LspDiagnosticsFloatingWarning WarningFloat
   highlight! link LspDiagnosticsFloatingInformation InfoFloat
@@ -167,67 +154,67 @@ endif
 " }}}
 " Xcode: {{{
 call jcolor#highlight('xPlainText', s:palette.fg, s:palette.none)
-call jcolor#highlight('xComments', s:palette.grey, s:palette.none)
-call jcolor#highlight('xCommentsKeywords', s:palette.grey2, s:palette.none, 'bold')
-call jcolor#highlight('xStrings', s:palette.red2, s:palette.none)
-call jcolor#highlight('xCharactersNumbers', s:palette.yellow, s:palette.none)
-call jcolor#highlight('xKeywords', s:palette.red, s:palette.none, 'bold')
+call jcolor#highlight('xComment', s:palette.grey, s:palette.none)
+call jcolor#highlight('xCommentsKeyword', s:palette.grey_a1, s:palette.none, 'bold')
+call jcolor#highlight('xString', s:palette.red_m1, s:palette.none)
+call jcolor#highlight('xCharactersNumber', s:palette.yellow, s:palette.none)
+call jcolor#highlight('xKeyword', s:palette.red, s:palette.none, 'bold')
 call jcolor#highlight('xPreprocessor', s:palette.orange, s:palette.none)
-call jcolor#highlight('xURLs', s:palette.blue3, s:palette.none)
-call jcolor#highlight('xAttributes', s:palette.orange2, s:palette.none)
-call jcolor#highlight('xDeclarations', s:palette.blue4, s:palette.none)
-call jcolor#highlight('xFunctions', s:palette.green, s:palette.none)
+call jcolor#highlight('xURL', s:palette.blue_a2, s:palette.none)
+call jcolor#highlight('xAttribute', s:palette.orange_a1, s:palette.none)
+call jcolor#highlight('xDeclaration', s:palette.blue_a3, s:palette.none)
+call jcolor#highlight('xFunction', s:palette.green, s:palette.none)
 call jcolor#highlight('xType', s:palette.blue, s:palette.none)
-call jcolor#highlight('xField', s:palette.blue2, s:palette.none)
+call jcolor#highlight('xField', s:palette.blue_a1, s:palette.none)
 call jcolor#highlight('xOtherType', s:palette.purple, s:palette.none)
-call jcolor#highlight('xOtherField', s:palette.purple2, s:palette.none)
+call jcolor#highlight('xOtherField', s:palette.purple_a1, s:palette.none)
 
 " }}}
 " Syntax: {{{
 "
-highlight! link Delimiter      xPlainText
+highlight! link Delimiter       xPlainText
 
-highlight! link Comment        xComments
-highlight! link SpecialComment xCommentsKeywords
-highlight! link Todo           xCommentsKeywords
+highlight! link Comment         xComment
+highlight! link SpecialComment  xCommentsKeyword
+highlight! link Todo            xCommentsKeyword
 
-highlight! link Special        xStrings
-highlight! link SpecialChar    xStrings
-highlight! link String         xStrings
+highlight! link Special         xString
+highlight! link SpecialChar     xString
+highlight! link String          xString
 
-highlight! link Character      xCharactersNumbers
-highlight! link Number         xCharactersNumbers
-highlight! link Float          xCharactersNumbers
+highlight! link Character       xCharactersNumber
+highlight! link Number          xCharactersNumber
+highlight! link Float           xCharactersNumber
 
-highlight! link Keyword        xKeywords
-highlight! link Define         xKeywords
-highlight! link Typedef        xKeywords
-highlight! link Exception      xKeywords
-highlight! link Repeat         xKeywords
-highlight! link Statement      xKeywords
-highlight! link Error          xKeywords
-highlight! link Label          xKeywords
-highlight! link Structure      xKeywords
-highlight! link StorageClass   xKeywords
-highlight! link Label          xKeywords
-highlight! link Boolean        xKeywords
-highlight! link Operator       xKeywords
+highlight! link Keyword         xKeyword
+highlight! link Define          xKeyword
+highlight! link Typedef         xKeyword
+highlight! link Exception       xKeyword
+highlight! link Repeat          xKeyword
+highlight! link Statement       xKeyword
+highlight! link Error           xKeyword
+highlight! link Label           xKeyword
+highlight! link Structure       xKeyword
+highlight! link StorageClass    xKeyword
+highlight! link Label           xKeyword
+highlight! link Boolean         xKeyword
+highlight! link Operator        xKeyword
 
-highlight! link Macro          xPreprocessor
-highlight! link PreProc        xPreprocessor
-highlight! link PreCondit      xPreprocessor
-highlight! link Include        xPreprocessor
+highlight! link Macro           xPreprocessor
+highlight! link PreProc         xPreprocessor
+highlight! link PreCondit       xPreprocessor
+highlight! link Include         xPreprocessor
 
-highlight! link Function       xFunctions
-highlight! link Tag            xFunctions
+highlight! link Function        xFunction
+highlight! link Tag             xFunction
 
-highlight! link Type           xType
-highlight! link Constant       xField
+highlight! link Type            xType
+highlight! link Constant        xField
 
-highlight! link TypeBuiltin    xOtherType
+highlight! link TypeBuiltin     xOtherType
 highlight! link ConstantBuiltin xOtherField
-highlight! link Identifier     xOtherType
-highlight! link Title          xOtherType
+highlight! link Identifier      xOtherType
+highlight! link Title           xOtherType
 
 
 call jcolor#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
@@ -296,14 +283,14 @@ else
   highlight! link VirtualTextInfo Blue
   highlight! link VirtualTextHint Green
 endif
-call jcolor#highlight('ErrorFloat', s:palette.red, s:palette.bg2)
-call jcolor#highlight('WarningFloat', s:palette.yellow, s:palette.bg2)
-call jcolor#highlight('InfoFloat', s:palette.blue, s:palette.bg2)
-call jcolor#highlight('HintFloat', s:palette.green, s:palette.bg2)
+call jcolor#highlight('ErrorFloat', s:palette.red, s:palette.bg_a2)
+call jcolor#highlight('WarningFloat', s:palette.yellow, s:palette.bg_a2)
+call jcolor#highlight('InfoFloat', s:palette.blue, s:palette.bg_a2)
+call jcolor#highlight('HintFloat', s:palette.green, s:palette.bg_a2)
 if &diff
-  call jcolor#highlight('CurrentWord', s:palette.bg0, s:palette.green)
+  call jcolor#highlight('CurrentWord', s:palette.bg, s:palette.green)
 elseif s:configuration.current_word ==# 'grey background'
-  call jcolor#highlight('CurrentWord', s:palette.none, s:palette.bg2)
+  call jcolor#highlight('CurrentWord', s:palette.none, s:palette.bg_a2)
 else
   call jcolor#highlight('CurrentWord', s:palette.none, s:palette.none, s:configuration.current_word)
 endif
@@ -353,9 +340,9 @@ endif
 call jcolor#highlight('TSStrong', s:palette.none, s:palette.none, 'bold')
 call jcolor#highlight('TSEmphasis', s:palette.none, s:palette.none, 'bold')
 call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline')
-call jcolor#highlight('TSNote', s:palette.bg0, s:palette.blue, 'bold')
-call jcolor#highlight('TSWarning', s:palette.bg0, s:palette.yellow, 'bold')
-call jcolor#highlight('TSDanger', s:palette.bg0, s:palette.red, 'bold')
+call jcolor#highlight('TSNote', s:palette.bg, s:palette.blue, 'bold')
+call jcolor#highlight('TSWarning', s:palette.bg, s:palette.yellow, 'bold')
+call jcolor#highlight('TSDanger', s:palette.bg, s:palette.red, 'bold')
 highlight! link TSAnnotation xAttributes
 highlight! link TSAttribute xAttributes
 highlight! link TSBoolean Keyword
@@ -589,16 +576,16 @@ call jcolor#highlight('Lf_hl_match2', s:palette.red, s:palette.none, 'bold')
 call jcolor#highlight('Lf_hl_match3', s:palette.yellow, s:palette.none, 'bold')
 call jcolor#highlight('Lf_hl_match4', s:palette.purple, s:palette.none, 'bold')
 call jcolor#highlight('Lf_hl_matchRefine', s:palette.yellow, s:palette.none, 'bold')
-call jcolor#highlight('Lf_hl_popup_normalMode', s:palette.bg0, s:palette.blue, 'bold')
-call jcolor#highlight('Lf_hl_popup_inputMode', s:palette.bg0, s:palette.green, 'bold')
-call jcolor#highlight('Lf_hl_popup_category', s:palette.fg, s:palette.bg4)
-call jcolor#highlight('Lf_hl_popup_nameOnlyMode', s:palette.fg, s:palette.bg3)
-call jcolor#highlight('Lf_hl_popup_fullPathMode', s:palette.fg, s:palette.bg3)
-call jcolor#highlight('Lf_hl_popup_fuzzyMode', s:palette.fg, s:palette.bg3)
-call jcolor#highlight('Lf_hl_popup_regexMode', s:palette.fg, s:palette.bg3)
-call jcolor#highlight('Lf_hl_popup_lineInfo', s:palette.bg0, s:palette.blue)
-call jcolor#highlight('Lf_hl_popup_total', s:palette.bg0, s:palette.red)
-call jcolor#highlight('Lf_hl_popup_cursor', s:palette.bg0, s:palette.blue)
+call jcolor#highlight('Lf_hl_popup_normalMode', s:palette.bg, s:palette.blue, 'bold')
+call jcolor#highlight('Lf_hl_popup_inputMode', s:palette.bg, s:palette.green, 'bold')
+call jcolor#highlight('Lf_hl_popup_category', s:palette.fg, s:palette.bg_a4)
+call jcolor#highlight('Lf_hl_popup_nameOnlyMode', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_fullPathMode', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_fuzzyMode', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_regexMode', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('Lf_hl_popup_lineInfo', s:palette.bg, s:palette.blue)
+call jcolor#highlight('Lf_hl_popup_total', s:palette.bg, s:palette.red)
+call jcolor#highlight('Lf_hl_popup_cursor', s:palette.bg, s:palette.blue)
 highlight! link Lf_hl_cursorline Fg
 highlight! link Lf_hl_selection DiffAdd
 highlight! link Lf_hl_rgHighlight Visual
@@ -630,10 +617,10 @@ highlight! link EasyMotionShade Grey
 highlight! link GitSignsCurrentLineBlame Grey
 " }}}
 " nvim-lualine/lualine.nvim {{{
-call jcolor#highlight('TRed', s:palette.red, s:palette.bg01)
-call jcolor#highlight('TYellow', s:palette.yellow, s:palette.bg01)
-call jcolor#highlight('TGrey', s:palette.grey, s:palette.bg01)
-call jcolor#highlight('TGreen', s:palette.green, s:palette.bg01)
+call jcolor#highlight('TRed', s:palette.red, s:palette.bg_line)
+call jcolor#highlight('TYellow', s:palette.yellow, s:palette.bg_line)
+call jcolor#highlight('TGrey', s:palette.grey, s:palette.bg_line)
+call jcolor#highlight('TGreen', s:palette.green, s:palette.bg_line)
 highligh! link DiagnosticError Red
 highligh! link DiagnosticWarn Yellow
 highligh! link DiagnosticInfo Grey
