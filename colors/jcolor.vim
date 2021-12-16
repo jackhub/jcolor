@@ -30,68 +30,81 @@ endif
 " }}}
 " Common Highlight Groups: {{{
 " UI: {{{
+" Cursor, column, lines {{{
 let g:jcolor_bg_a1 = s:palette.bg_a1[0]
-let g:jcolor_bg_cursor = s:palette.bg_cursor[0]
+let g:jcolor_bg_cursor = s:palette.bg_cursor_i[0]
 augroup JCOLOR_UI
   autocmd!
   autocmd InsertEnter * execute 'highlight CursorLine guibg=' . g:jcolor_bg_cursor . ' guifg=NONE'
   autocmd InsertLeave * execute 'highlight CursorLine guibg=' . g:jcolor_bg_a1 . ' guifg=NONE'
 augroup END
-
-call jcolor#highlight('Normal', s:palette.fg, s:palette.bg)
-call jcolor#highlight('Terminal', s:palette.fg, s:palette.bg)
-if s:configuration.show_eob
-  call jcolor#highlight('EndOfBuffer', s:palette.bg_a4, s:palette.bg)
+if &diff
+  call jcolor#highlight('CursorLine', s:palette.none, s:palette.none, 'underline')
+  call jcolor#highlight('CursorColumn', s:palette.none, s:palette.none, 'bold')
+  call jcolor#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
 else
-  call jcolor#highlight('EndOfBuffer', s:palette.bg, s:palette.bg)
+  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg_a1)
+  call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg_a1)
+  call jcolor#highlight('CursorLineNr', s:palette.fg, s:palette.none)
 endif
+call jcolor#highlight('ColorColumn', s:palette.none, s:palette.bg_line_t)
+call jcolor#highlight('Cursor', s:palette.none, s:palette.none, 'reverse')
+call jcolor#highlight('LineNr', s:palette.grey_m1, s:palette.none)
+
 call jcolor#highlight('Folded', s:palette.grey, s:palette.bg_a1)
-call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.bg_a2)
 call jcolor#highlight('FoldColumn', s:palette.grey_m1, s:palette.none)
 call jcolor#highlight('SignColumn', s:palette.fg, s:palette.none)
-call jcolor#highlight('IncSearch', s:palette.bg, s:palette.bg_red)
-call jcolor#highlight('Search', s:palette.bg, s:palette.bg_green)
-call jcolor#highlight('MsgArea', s:palette.fg, s:palette.bg)
-call jcolor#highlight('ColorColumn', s:palette.none, s:palette.bg_line)
-call jcolor#highlight('Conceal', s:palette.grey_m1, s:palette.none)
-if s:configuration.cursor ==# 'auto'
-  call jcolor#highlight('Cursor', s:palette.none, s:palette.none, 'reverse')
-else
-  call jcolor#highlight('Cursor', s:palette.bg, s:palette[s:configuration.cursor])
-endif
+call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.bg_a2)
+
+call jcolor#highlight('StatusLine', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('StatusLineTerm', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('StatusLineNC', s:palette.grey, s:palette.bg_a1)
+call jcolor#highlight('StatusLineTermNC', s:palette.grey, s:palette.bg_a1)
+
+call jcolor#highlight('TabLine', s:palette.grey_a1, s:palette.bg_line_t)
+call jcolor#highlight('TabLineFill', s:palette.grey, s:palette.bg_line_t)
+call jcolor#highlight('TabLineSel', s:palette.green, s:palette.bg_a4, 'bold')
+
+call jcolor#highlight('VertSplit', s:palette.black, s:palette.none)
+call jcolor#highlight('QuickFixLine', s:palette.blue, s:palette.none, 'bold')
+
 highlight! link vCursor Cursor
 highlight! link iCursor Cursor
 highlight! link lCursor Cursor
 highlight! link CursorIM Cursor
-if &diff
-  call jcolor#highlight('CursorLine', s:palette.none, s:palette.none, 'underline')
-  call jcolor#highlight('CursorColumn', s:palette.none, s:palette.none, 'bold')
-else
-  call jcolor#highlight('CursorLine', s:palette.none, s:palette.bg_a1)
-  call jcolor#highlight('CursorColumn', s:palette.none, s:palette.bg_a1)
-endif
-call jcolor#highlight('LineNr', s:palette.grey_m1, s:palette.none)
-if &diff
-  call jcolor#highlight('CursorLineNr', s:palette.fg, s:palette.none, 'underline')
-else
-  call jcolor#highlight('CursorLineNr', s:palette.fg, s:palette.none)
-endif
+highlight! link TermCursor Cursor
+" }}}
+call jcolor#highlight('Normal', s:palette.fg, s:palette.bg)
+call jcolor#highlight('Visual', s:palette.none, s:palette.diff_green)
+call jcolor#highlight('VisualNOS', s:palette.none, s:palette.bg_a3, 'underline')
+call jcolor#highlight('Terminal', s:palette.fg, s:palette.bg)
+
+call jcolor#highlight('Search', s:palette.bg, s:palette.bg_green)
+call jcolor#highlight('IncSearch', s:palette.bg, s:palette.bg_red)
+call jcolor#highlight('MatchParen', s:palette.none, s:palette.bg_a4)
+
 call jcolor#highlight('DiffAdd', s:palette.none, s:palette.diff_green)
 call jcolor#highlight('DiffChange', s:palette.none, s:palette.diff_blue)
 call jcolor#highlight('DiffDelete', s:palette.none, s:palette.diff_red)
 call jcolor#highlight('DiffText', s:palette.bg, s:palette.blue)
+
 call jcolor#highlight('Directory', s:palette.green, s:palette.none)
+
+call jcolor#highlight('MsgArea', s:palette.fg, s:palette.bg)
+call jcolor#highlight('Conceal', s:palette.grey_m1, s:palette.none)
 call jcolor#highlight('ErrorMsg', s:palette.red, s:palette.none, 'bold,underline')
 call jcolor#highlight('WarningMsg', s:palette.yellow, s:palette.none, 'bold')
 call jcolor#highlight('ModeMsg', s:palette.fg, s:palette.none, 'bold')
 call jcolor#highlight('MoreMsg', s:palette.blue, s:palette.none, 'bold')
-call jcolor#highlight('MatchParen', s:palette.none, s:palette.bg_a4)
 call jcolor#highlight('NonText', s:palette.bg_a4, s:palette.none)
 call jcolor#highlight('Whitespace', s:palette.bg_a4, s:palette.none)
 call jcolor#highlight('SpecialKey', s:palette.bg_a4, s:palette.none)
+call jcolor#highlight('Title', s:palette.yellow, s:palette.none, 'bold')
+
+call jcolor#highlight('NormalFloat', s:palette.fg, s:palette.bg_a2)
 call jcolor#highlight('Pmenu', s:palette.fg, s:palette.bg_a2)
 call jcolor#highlight('PmenuSbar', s:palette.none, s:palette.bg_a2)
-call jcolor#highlight('PmenuThumb', s:palette.none, s:palette.bg_a2)
+call jcolor#highlight('PmenuThumb', s:palette.none, s:palette.bg_a4)
 if s:configuration.menu_selection_background ==# 'blue'
   call jcolor#highlight('PmenuSel', s:palette.bg, s:palette.bg_blue)
 elseif s:configuration.menu_selection_background ==# 'green'
@@ -100,124 +113,22 @@ elseif s:configuration.menu_selection_background ==# 'red'
   call jcolor#highlight('PmenuSel', s:palette.bg, s:palette.bg_red)
 endif
 highlight! link WildMenu PmenuSel
-call jcolor#highlight('NormalFloat', s:palette.fg, s:palette.bg_a2)
+
 call jcolor#highlight('Question', s:palette.yellow, s:palette.none)
 call jcolor#highlight('SpellBad', s:palette.none, s:palette.none, 'undercurl', s:palette.red)
 call jcolor#highlight('SpellCap', s:palette.none, s:palette.none, 'undercurl', s:palette.yellow)
 call jcolor#highlight('SpellLocal', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
 call jcolor#highlight('SpellRare', s:palette.none, s:palette.none, 'undercurl', s:palette.purple)
-call jcolor#highlight('StatusLine', s:palette.fg, s:palette.bg_a3)
-call jcolor#highlight('StatusLineTerm', s:palette.fg, s:palette.bg_a3)
-call jcolor#highlight('StatusLineNC', s:palette.grey, s:palette.bg_a1)
-call jcolor#highlight('StatusLineTermNC', s:palette.grey, s:palette.bg_a1)
-call jcolor#highlight('TabLine', s:palette.grey_a1, s:palette.bg_line)
-call jcolor#highlight('TabLineFill', s:palette.grey, s:palette.bg_line)
-call jcolor#highlight('TabLineSel', s:palette.green, s:palette.bg_a4, 'bold')
-call jcolor#highlight('VertSplit', s:palette.black, s:palette.none)
-call jcolor#highlight('Visual', s:palette.none, s:palette.diff_green)
-call jcolor#highlight('VisualNOS', s:palette.none, s:palette.bg_a3, 'underline')
-call jcolor#highlight('QuickFixLine', s:palette.blue, s:palette.none, 'bold')
 call jcolor#highlight('Debug', s:palette.yellow, s:palette.none)
 call jcolor#highlight('debugPC', s:palette.bg, s:palette.green)
 call jcolor#highlight('debugBreakpoint', s:palette.bg, s:palette.red)
-call jcolor#highlight('ToolbarButton', s:palette.bg, s:palette.bg_blue)
-if has('nvim')
-  call jcolor#highlight('Substitute', s:palette.bg, s:palette.yellow)
-  highlight! link LspDiagnosticsFloatingError ErrorFloat
-  highlight! link LspDiagnosticsFloatingWarning WarningFloat
-  highlight! link LspDiagnosticsFloatingInformation InfoFloat
-  highlight! link LspDiagnosticsFloatingHint HintFloat
-  highlight! link LspDiagnosticsDefaultError ErrorText
-  highlight! link LspDiagnosticsDefaultWarning WarningText
-  highlight! link LspDiagnosticsDefaultInformation InfoText
-  highlight! link LspDiagnosticsDefaultHint HintText
-  highlight! link LspDiagnosticsVirtualTextError VirtualTextError
-  highlight! link LspDiagnosticsVirtualTextWarning VirtualTextWarning
-  highlight! link LspDiagnosticsVirtualTextInformation VirtualTextInfo
-  highlight! link LspDiagnosticsVirtualTextHint VirtualTextHint
-  highlight! link LspDiagnosticsUnderlineError ErrorText
-  highlight! link LspDiagnosticsUnderlineWarning WarningText
-  highlight! link LspDiagnosticsUnderlineInformation InfoText
-  highlight! link LspDiagnosticsUnderlineHint HintText
-  highlight! link LspDiagnosticsSignError RedSign
-  highlight! link LspDiagnosticsSignWarning YellowSign
-  highlight! link LspDiagnosticsSignInformation BlueSign
-  highlight! link LspDiagnosticsSignHint GreenSign
-  highlight! link LspReferenceText CurrentWord
-  highlight! link LspReferenceRead CurrentWord
-  highlight! link LspReferenceWrite CurrentWord
-  highlight! link TermCursor Cursor
-  highlight! link healthError Red
-  highlight! link healthSuccess Green
-  highlight! link healthWarning Yellow
+call jcolor#highlight('Substitute', s:palette.bg, s:palette.yellow)
+
+if s:configuration.show_eob
+  call jcolor#highlight('EndOfBuffer', s:palette.bg_a4, s:palette.bg)
+else
+  call jcolor#highlight('EndOfBuffer', s:palette.bg, s:palette.bg)
 endif
-" }}}
-" Xcode: {{{
-call jcolor#highlight('xPlainText', s:palette.fg, s:palette.none)
-call jcolor#highlight('xComment', s:palette.grey, s:palette.none)
-call jcolor#highlight('xCommentsKeyword', s:palette.grey_a1, s:palette.none, 'bold')
-call jcolor#highlight('xString', s:palette.red_m1, s:palette.none)
-call jcolor#highlight('xCharactersNumber', s:palette.yellow, s:palette.none)
-call jcolor#highlight('xKeyword', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('xPreprocessor', s:palette.orange, s:palette.none)
-call jcolor#highlight('xURL', s:palette.blue_a2, s:palette.none)
-call jcolor#highlight('xAttribute', s:palette.orange_a1, s:palette.none)
-call jcolor#highlight('xDeclaration', s:palette.blue_a3, s:palette.none)
-call jcolor#highlight('xFunction', s:palette.green, s:palette.none)
-call jcolor#highlight('xType', s:palette.blue, s:palette.none)
-call jcolor#highlight('xField', s:palette.blue_a1, s:palette.none)
-call jcolor#highlight('xOtherType', s:palette.purple, s:palette.none)
-call jcolor#highlight('xOtherField', s:palette.purple_a1, s:palette.none)
-
-" }}}
-" Syntax: {{{
-"
-highlight! link Delimiter       xPlainText
-
-highlight! link Comment         xComment
-highlight! link SpecialComment  xCommentsKeyword
-highlight! link Todo            xCommentsKeyword
-
-highlight! link Special         xString
-highlight! link SpecialChar     xString
-highlight! link String          xString
-
-highlight! link Character       xCharactersNumber
-highlight! link Number          xCharactersNumber
-highlight! link Float           xCharactersNumber
-
-highlight! link Keyword         xKeyword
-highlight! link Define          xKeyword
-highlight! link Typedef         xKeyword
-highlight! link Exception       xKeyword
-highlight! link Repeat          xKeyword
-highlight! link Statement       xKeyword
-highlight! link Error           xKeyword
-highlight! link Label           xKeyword
-highlight! link Structure       xKeyword
-highlight! link StorageClass    xKeyword
-highlight! link Label           xKeyword
-highlight! link Boolean         xKeyword
-highlight! link Operator        xKeyword
-
-highlight! link Macro           xPreprocessor
-highlight! link PreProc         xPreprocessor
-highlight! link PreCondit       xPreprocessor
-highlight! link Include         xPreprocessor
-
-highlight! link Function        xFunction
-highlight! link Tag             xFunction
-
-highlight! link Type            xType
-highlight! link Constant        xField
-
-highlight! link TypeBuiltin     xOtherType
-highlight! link ConstantBuiltin xOtherField
-highlight! link Identifier      xOtherType
-highlight! link Title           xOtherType
-
-
-call jcolor#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
 
 " }}}
 " Predefined Highlight Groups: {{{
@@ -229,6 +140,8 @@ call jcolor#highlight('Yellow', s:palette.yellow, s:palette.none)
 call jcolor#highlight('Green', s:palette.green, s:palette.none)
 call jcolor#highlight('Blue', s:palette.blue, s:palette.none)
 call jcolor#highlight('Purple', s:palette.purple, s:palette.none)
+call jcolor#highlight('Underlined', s:palette.blue_a3, s:palette.none, 'underline')
+
 if s:configuration.enable_italic
   call jcolor#highlight('RedItalic', s:palette.red, s:palette.none, 'italic')
   call jcolor#highlight('OrangeItalic', s:palette.orange, s:palette.none, 'italic')
@@ -250,6 +163,12 @@ call jcolor#highlight('YellowSign', s:palette.yellow, s:palette.none)
 call jcolor#highlight('GreenSign', s:palette.green, s:palette.none)
 call jcolor#highlight('BlueSign', s:palette.blue, s:palette.none)
 call jcolor#highlight('PurpleSign', s:palette.purple, s:palette.none)
+
+call jcolor#highlight('ErrorFloat', s:palette.red, s:palette.bg_a2)
+call jcolor#highlight('WarningFloat', s:palette.yellow, s:palette.bg_a2)
+call jcolor#highlight('InfoFloat', s:palette.blue, s:palette.bg_a2)
+call jcolor#highlight('HintFloat', s:palette.green, s:palette.bg_a2)
+
 if s:configuration.diagnostic_text_highlight
   call jcolor#highlight('ErrorText', s:palette.none, s:palette.diff_red, 'undercurl', s:palette.red)
   call jcolor#highlight('WarningText', s:palette.none, s:palette.diff_yellow, 'undercurl', s:palette.yellow)
@@ -261,32 +180,24 @@ else
   call jcolor#highlight('InfoText', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
   call jcolor#highlight('HintText', s:palette.none, s:palette.none, 'undercurl', s:palette.green)
 endif
+
 if s:configuration.diagnostic_line_highlight
   call jcolor#highlight('ErrorLine', s:palette.none, s:palette.diff_red)
   call jcolor#highlight('WarningLine', s:palette.none, s:palette.diff_yellow)
   call jcolor#highlight('InfoLine', s:palette.none, s:palette.diff_blue)
   call jcolor#highlight('HintLine', s:palette.none, s:palette.diff_green)
+
+  call jcolor#highlight('VGreyError', s:palette.grey_a1, s:palette.diff_red)
+  call jcolor#highlight('VGreyWarn', s:palette.grey_a1, s:palette.diff_yellow)
+  call jcolor#highlight('VGreyInfo', s:palette.grey_a1, s:palette.diff_blue)
+  call jcolor#highlight('VGreyHint', s:palette.grey_a1, s:palette.diff_green)
 else
   highlight clear ErrorLine
   highlight clear WarningLine
   highlight clear InfoLine
   highlight clear HintLine
 endif
-if s:configuration.diagnostic_virtual_text ==# 'grey'
-  highlight! link VirtualTextWarning Grey
-  highlight! link VirtualTextError Grey
-  highlight! link VirtualTextInfo Grey
-  highlight! link VirtualTextHint Grey
-else
-  highlight! link VirtualTextWarning Yellow
-  highlight! link VirtualTextError Red
-  highlight! link VirtualTextInfo Blue
-  highlight! link VirtualTextHint Green
-endif
-call jcolor#highlight('ErrorFloat', s:palette.red, s:palette.bg_a2)
-call jcolor#highlight('WarningFloat', s:palette.yellow, s:palette.bg_a2)
-call jcolor#highlight('InfoFloat', s:palette.blue, s:palette.bg_a2)
-call jcolor#highlight('HintFloat', s:palette.green, s:palette.bg_a2)
+
 if &diff
   call jcolor#highlight('CurrentWord', s:palette.bg, s:palette.green)
 elseif s:configuration.current_word ==# 'grey background'
@@ -294,13 +205,119 @@ elseif s:configuration.current_word ==# 'grey background'
 else
   call jcolor#highlight('CurrentWord', s:palette.none, s:palette.none, s:configuration.current_word)
 endif
+
+" }}}
+" Xcode: {{{
+call jcolor#highlight('xPlainText', s:palette.fg, s:palette.none)
+call jcolor#highlight('xComment', s:palette.grey, s:palette.none)
+call jcolor#highlight('xCommentsKeyword', s:palette.yellow, s:palette.none, 'bold')
+call jcolor#highlight('xString', s:palette.red_m1, s:palette.none)
+call jcolor#highlight('xCharactersNumber', s:palette.yellow, s:palette.none)
+call jcolor#highlight('xKeyword', s:palette.red, s:palette.none, 'bold')
+call jcolor#highlight('xPreprocessor', s:palette.orange, s:palette.none)
+call jcolor#highlight('xURL', s:palette.blue_a2, s:palette.none)
+call jcolor#highlight('xAttribute', s:palette.orange_a1, s:palette.none)
+call jcolor#highlight('xDeclaration', s:palette.blue_a3, s:palette.none)
+call jcolor#highlight('xFunction', s:palette.green, s:palette.none)
+call jcolor#highlight('xType', s:palette.blue, s:palette.none)
+call jcolor#highlight('xField', s:palette.blue_a1, s:palette.none)
+call jcolor#highlight('xOtherType', s:palette.purple, s:palette.none)
+call jcolor#highlight('xOtherField', s:palette.purple_a1, s:palette.none)
+" }}}
+" Syntax: {{{
+highlight! link Comment         xComment
+
+highlight! link Constant        xField
+highlight! link String          xString
+highlight! link Character       xCharactersNumber
+highlight! link Number          xCharactersNumber
+highlight! link Boolean         xKeyword
+highlight! link Float           xCharactersNumber
+
+highlight! link Identifier      xOtherType
+highlight! link Function        xFunction
+
+highlight! link Statement       xKeyword
+highlight! link Conditional     xKeyword
+highlight! link Repeat          xKeyword
+highlight! link Label           xKeyword
+highlight! link Operator        xKeyword
+highlight! link Keyword         xKeyword
+highlight! link Exception       xKeyword
+
+highlight! link PreProc         xPreprocessor
+highlight! link Include         xPreprocessor
+highlight! link Define          xKeyword
+highlight! link Macro           xPreprocessor
+highlight! link PreCondit       xPreprocessor
+
+highlight! link Type            xType
+highlight! link StorageClass    xKeyword
+highlight! link Structure       xKeyword
+highlight! link Typedef         xKeyword
+
+highlight! link Special         xString
+highlight! link SpecialChar     xString
+highlight! link Tag             xFunction
+highlight! link Delimiter       xPlainText
+highlight! link SpecialComment  xCommentsKeyword
+highlight! link Debug           Yellow
+
+highlight! link Error           Red
+highlight! link Todo            xCommentsKeyword
+
+" Self defines.
+highlight! link TypeBuiltin     xOtherType
+highlight! link ConstantBuiltin xOtherField
+" }}}
+" Diagnostic {{{
+if s:configuration.diagnostic_virtual_text ==# 'grey'
+  highlight! link VirtualTextError VGreyError
+  highlight! link VirtualTextWarning VGreyWarn
+  highlight! link VirtualTextInfo VGreyInfo
+  highlight! link VirtualTextHint VGreyHint
+else
+  highlight! link VirtualTextError Red
+  highlight! link VirtualTextWarning Yellow
+  highlight! link VirtualTextInfo Blue
+  highlight! link VirtualTextHint Green
+endif
+
+highlight! link DiagnosticsFloatingError ErrorFloat
+highlight! link DiagnosticsFloatingWarning WarningFloat
+highlight! link DiagnosticsFloatingInformation InfoFloat
+highlight! link DiagnosticsFloatingHint HintFloat
+highlight! link DiagnosticsDefaultError ErrorText
+highlight! link DiagnosticsDefaultWarning WarningText
+highlight! link DiagnosticsDefaultInformation InfoText
+highlight! link DiagnosticsDefaultHint HintText
+highlight! link DiagnosticsVirtualTextError VirtualTextError
+highlight! link DiagnosticsVirtualTextWarning VirtualTextWarning
+highlight! link DiagnosticsVirtualTextInformation VirtualTextInfo
+highlight! link DiagnosticsVirtualTextHint VirtualTextHint
+highlight! link DiagnosticsUnderlineError ErrorText
+highlight! link DiagnosticsUnderlineWarning WarningText
+highlight! link DiagnosticsUnderlineInformation InfoText
+highlight! link DiagnosticsUnderlineHint HintText
+highlight! link DiagnosticsSignError RedSign
+highlight! link DiagnosticsSignWarning YellowSign
+highlight! link DiagnosticsSignInformation BlueSign
+highlight! link DiagnosticsSignHint GreenSign
+highlight! link ReferenceText CurrentWord
+highlight! link ReferenceRead CurrentWord
+highlight! link ReferenceWrite CurrentWord
+
+highlight! link DiagnosticError Red
+highlight! link DiagnosticWarn Yellow
+highlight! link DiagnosticInfo Grey
+highlight! link DiagnosticHint Green
 " }}}
 " }}}
 " Terminal: {{{
 if (has('termguicolors') && &termguicolors) || has('gui_running')
   " Definition
   let s:terminal = {
-        \ 'black':    s:palette.black,
+        \ 'black':    s:palette.grey_m1,
         \ 'red':      s:palette.red,
         \ 'yellow':   s:palette.yellow,
         \ 'green':    s:palette.green,
@@ -343,227 +360,161 @@ call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline'
 call jcolor#highlight('TSNote', s:palette.bg, s:palette.blue, 'bold')
 call jcolor#highlight('TSWarning', s:palette.bg, s:palette.yellow, 'bold')
 call jcolor#highlight('TSDanger', s:palette.bg, s:palette.red, 'bold')
-highlight! link TSAnnotation xAttributes
-highlight! link TSAttribute xAttributes
-highlight! link TSBoolean Keyword
-highlight! link TSCharacter Character
-highlight! link TSComment Comment
-highlight! link TSConditional Keyword
-highlight! link TSConstBuiltin xOtherField
-highlight! link TSConstMacro Macro
-highlight! link TSConstant Constant
-highlight! link TSConstructor Function
-highlight! link TSException Keyword
-highlight! link TSField xField
-highlight! link TSFloat Float
-highlight! link TSFuncBuiltin Function
-highlight! link TSFuncMacro Macro
-highlight! link TSFunction Function
-highlight! link TSInclude Include
-highlight! link TSKeyword Keyword
-highlight! link TSKeywordFunction Keyword
-highlight! link TSKeywordOperator Keyword
-highlight! link TSLabel Label
-highlight! link TSMethod Function
-highlight! link TSNamespace Type
-highlight! link TSNone Fg
-highlight! link TSNumber Number
-highlight! link TSOperator Keyword
-highlight! link TSParameter Fg
+highlight! link TSAnnotation         xAttributes
+highlight! link TSAttribute          xAttributes
+highlight! link TSBoolean            Keyword
+highlight! link TSCharacter          Character
+highlight! link TSComment            Comment
+highlight! link TSConditional        Keyword
+highlight! link TSConstBuiltin       xOtherField
+highlight! link TSConstMacro         Macro
+highlight! link TSConstant           Constant
+highlight! link TSConstructor        Function
+highlight! link TSException          Keyword
+highlight! link TSField              xField
+highlight! link TSFloat              Float
+highlight! link TSFuncBuiltin        Function
+highlight! link TSFuncMacro          Macro
+highlight! link TSFunction           Function
+highlight! link TSInclude            Include
+highlight! link TSKeyword            Keyword
+highlight! link TSKeywordFunction    Keyword
+highlight! link TSKeywordOperator    Keyword
+highlight! link TSLabel              Label
+highlight! link TSMethod             Function
+highlight! link TSNamespace          Type
+highlight! link TSNone               Fg
+highlight! link TSNumber             Number
+highlight! link TSOperator           Keyword
+highlight! link TSParameter          Fg
 highlight! link TSParameterReference Fg
-highlight! link TSProperty xField
-highlight! link TSPunctBracket Grey
-highlight! link TSPunctDelimiter Grey
-highlight! link TSPunctSpecial Yellow
-highlight! link TSRepeat Keyword
-highlight! link TSString String
-highlight! link TSStringEscape Character
-highlight! link TSStringRegex Character
-highlight! link TSStructure Structure
-highlight! link TSSymbol Fg
-highlight! link TSTag Tag
-highlight! link TSTagDelimiter Keyword
-highlight! link TSText Green
-highlight! link TSStrike Grey
-highlight! link TSMath Yellow
-highlight! link TSType Type
-highlight! link TSTypeBuiltin xOtherType
-highlight! link TSURI xURLs
-highlight! link TSVariable Fg
-highlight! link TSVariableBuiltin xOtherField
+highlight! link TSProperty           xField
+highlight! link TSPunctBracket       Grey
+highlight! link TSPunctDelimiter     Grey
+highlight! link TSPunctSpecial       Yellow
+highlight! link TSRepeat             Keyword
+highlight! link TSString             String
+highlight! link TSStringEscape       Character
+highlight! link TSStringRegex        Character
+highlight! link TSStructure          Structure
+highlight! link TSSymbol             Fg
+highlight! link TSTag                Tag
+highlight! link TSTagDelimiter       Keyword
+highlight! link TSText               Green
+highlight! link TSStrike             Grey
+highlight! link TSMath               Yellow
+highlight! link TSType               Type
+highlight! link TSTypeBuiltin        xOtherType
+highlight! link TSURI                xURLs
+highlight! link TSVariable           Fg
+highlight! link TSVariableBuiltin    xOtherField
 " }}}
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
-highlight! link CocSem_angle TSTagDelimiter
-highlight! link CocSem_annotation TSOperator
-highlight! link CocSem_attribute TSAttribute
-highlight! link CocSem_bitwise TSOperator
-highlight! link CocSem_boolean TSBoolean
-highlight! link CocSem_brace TSPunctBracket
-highlight! link CocSem_bracket TSPunctBracket
-highlight! link CocSem_builtinAttribute TSAttribute
-highlight! link CocSem_builtinType TSTypeBuiltin
-highlight! link CocSem_character TSCharacter
-highlight! link CocSem_class TSType
-highlight! link CocSem_colon TSPunctDelimiter
-highlight! link CocSem_comma TSPunctDelimiter
-highlight! link CocSem_comment TSComment
-highlight! link CocSem_comparison TSOperator
-highlight! link CocSem_constParameter TSParameter
-highlight! link CocSem_dependent TSInclude
-highlight! link CocSem_dot TSOperator
-highlight! link CocSem_enum TSType
-highlight! link CocSem_enumMember TSField
-highlight! link CocSem_escapeSequence TSStringEscape
-highlight! link CocSem_event TSType
-highlight! link CocSem_formatSpecifier TSStringEscape
-highlight! link CocSem_function TSFunction
-highlight! link CocSem_interface TSType
-highlight! link CocSem_keyword TSKeyword
-highlight! link CocSem_label TSLabel
-highlight! link CocSem_logical TSOperator
-highlight! link CocSem_macro TSConstMacro
-highlight! link CocSem_method TSMethod
-highlight! link CocSem_modifier TSKeywordOperator
-highlight! link CocSem_namespace TSNamespace
-highlight! link CocSem_number TSNumber
-highlight! link CocSem_operator TSOperator
-highlight! link CocSem_parameter TSParameter
-highlight! link CocSem_parenthesis TSPunctBracket
-highlight! link CocSem_property TSField
-highlight! link CocSem_punctuation TSOperator
-highlight! link CocSem_regexp TSStringRegex
-highlight! link CocSem_selfKeyword TSKeyword
-highlight! link CocSem_semicolon TSPunctDelimiter
-highlight! link CocSem_string TSString
-highlight! link CocSem_struct TSStructure
-highlight! link CocSem_type TSType
-highlight! link CocSem_typeAlias TSType
-highlight! link CocSem_typeParameter TSType
-highlight! link CocSem_variable TSVariable
-highlight! link CocErrorFloat ErrorFloat
-highlight! link CocWarningFloat WarningFloat
-highlight! link CocInfoFloat InfoFloat
-highlight! link CocHintFloat HintFloat
-highlight! link CocErrorHighlight ErrorText
-highlight! link CocWarningHighlight WarningText
-highlight! link CocInfoHighlight InfoText
-highlight! link CocHintHighlight HintText
-highlight! link CocHighlightText CurrentWord
-highlight! link CocHoverRange CurrentWord
-highlight! link CocErrorSign RedSign
-highlight! link CocWarningSign YellowSign
-highlight! link CocInfoSign BlueSign
-highlight! link CocHintSign GreenSign
-highlight! link CocWarningVirtualText VirtualTextWarning
-highlight! link CocErrorVirtualText VirtualTextError
-highlight! link CocInfoVirtualText VirtualTextInfo
-highlight! link CocHintVirtualText VirtualTextHint
-highlight! link CocErrorLine ErrorLine
-highlight! link CocWarningLine WarningLine
-highlight! link CocInfoLine InfoLine
-highlight! link CocHintLine HintLine
-highlight! link CocCodeLens Grey
-highlight! link CocFadeOut Grey
-highlight! link CocStrikeThrough Grey
-highlight! link CocListMode StatusLine
-highlight! link CocListPath StatusLine
-highlight! link CocTreeOpenClose Grey
-highlight! link HighlightedyankRegion Visual
-highlight! link CocSymbolFile Fg
-highlight! link CocSymbolModule TSNamespace
-highlight! link CocSymbolNamespace TSNamespace
-highlight! link CocSymbolPackage TSNamespace
-highlight! link CocSymbolClass TSType
-highlight! link CocSymbolMethod TSMethod
-highlight! link CocSymbolProperty TSProperty
-highlight! link CocSymbolField TSField
-highlight! link CocSymbolConstructor TSConstructor
-highlight! link CocSymbolEnum TSStructure
-highlight! link CocSymbolInterface TSType
-highlight! link CocSymbolFunction TSFunction
-highlight! link CocSymbolVariable TSVariable
-highlight! link CocSymbolConstant TSConstant
-highlight! link CocSymbolString TSString
-highlight! link CocSymbolNumber TSNumber
-highlight! link CocSymbolBoolean TSBoolean
-highlight! link CocSymbolArray TSVariable
-highlight! link CocSymbolObject TSVariable
-highlight! link CocSymbolKey TSType
-highlight! link CocSymbolNull TSVariableBuiltin
-highlight! link CocSymbolEnumMember TSProperty
-highlight! link CocSymbolStruct TSStructure
-highlight! link CocSymbolEvent TSLabel
-highlight! link CocSymbolOperator TSOperator
-highlight! link CocSymbolTypeParameter TSType
-highlight! link CocSymbolDefault TSNone
-highlight! link CocGitAddedSign GreenSign
-highlight! link CocGitChangeRemovedSign PurpleSign
-highlight! link CocGitChangedSign BlueSign
-highlight! link CocGitRemovedSign RedSign
-highlight! link CocGitTopRemovedSign RedSign
-highlight! link CocExplorerBufferRoot Red
-highlight! link CocExplorerBufferExpandIcon Blue
-highlight! link CocExplorerBufferBufnr Yellow
-highlight! link CocExplorerBufferModified Yellow
-highlight! link CocExplorerBufferReadonly Red
-highlight! link CocExplorerBufferBufname Grey
-highlight! link CocExplorerBufferFullpath Grey
-highlight! link CocExplorerFileRoot Red
-highlight! link CocExplorerFileRootName Green
-highlight! link CocExplorerFileExpandIcon Blue
-highlight! link CocExplorerFileFullpath Grey
-highlight! link CocExplorerFileDirectory Green
-highlight! link CocExplorerFileGitStaged Purple
-highlight! link CocExplorerFileGitUnstaged Yellow
-highlight! link CocExplorerFileGitRootStaged Purple
-highlight! link CocExplorerFileGitRootUnstaged Yellow
-highlight! link CocExplorerGitPathChange Fg
-highlight! link CocExplorerGitContentChange Fg
-highlight! link CocExplorerGitRenamed Purple
-highlight! link CocExplorerGitCopied Fg
-highlight! link CocExplorerGitAdded Green
-highlight! link CocExplorerGitUntracked Blue
-highlight! link CocExplorerGitUnmodified Fg
-highlight! link CocExplorerGitUnmerged Orange
-highlight! link CocExplorerGitMixed Fg
-highlight! link CocExplorerGitModified Yellow
-highlight! link CocExplorerGitDeleted Red
-highlight! link CocExplorerGitIgnored Grey
-highlight! link CocExplorerFileSize Blue
-highlight! link CocExplorerTimeAccessed Purple
-highlight! link CocExplorerTimeCreated Purple
-highlight! link CocExplorerTimeModified Purple
-highlight! link CocExplorerFileRootName Orange
-highlight! link CocExplorerBufferNameVisible Green
-highlight! link CocExplorerIndentLine Conceal
-highlight! link CocExplorerHelpDescription Grey
-highlight! link CocExplorerHelpHint Grey
-" }}}
-" prabirshrestha/vim-lsp {{{
-highlight! link LspErrorVirtual VirtualTextError
-highlight! link LspWarningVirtual VirtualTextWarning
-highlight! link LspInformationVirtual VirtualTextInfo
-highlight! link LspHintVirtual VirtualTextHint
-highlight! link LspErrorHighlight ErrorText
-highlight! link LspWarningHighlight WarningText
-highlight! link LspInformationHighlight InfoText
-highlight! link LspHintHighlight HintText
-highlight! link lspReference CurrentWord
-" }}}
-" neomake/neomake {{{
-highlight! link NeomakeError ErrorText
-highlight! link NeomakeWarning WarningText
-highlight! link NeomakeInfo InfoText
-highlight! link NeomakeMessage HintText
-highlight! link NeomakeErrorSign RedSign
-highlight! link NeomakeWarningSign YellowSign
-highlight! link NeomakeInfoSign BlueSign
-highlight! link NeomakeMessageSign GreenSign
-highlight! link NeomakeVirtualtextError VirtualTextError
-highlight! link NeomakeVirtualtextWarning VirtualTextWarning
-highlight! link NeomakeVirtualtextInfo VirtualTextInfo
-highlight! link NeomakeVirtualtextMessag VirtualTextHint
+highlight! link CocSem_angle                   TSTagDelimiter
+highlight! link CocSem_annotation              TSOperator
+highlight! link CocSem_attribute               TSAttribute
+highlight! link CocSem_bitwise                 TSOperator
+highlight! link CocSem_boolean                 TSBoolean
+highlight! link CocSem_brace                   TSPunctBracket
+highlight! link CocSem_bracket                 TSPunctBracket
+highlight! link CocSem_builtinAttribute        TSAttribute
+highlight! link CocSem_builtinType             TSTypeBuiltin
+highlight! link CocSem_character               TSCharacter
+highlight! link CocSem_class                   TSType
+highlight! link CocSem_colon                   TSPunctDelimiter
+highlight! link CocSem_comma                   TSPunctDelimiter
+highlight! link CocSem_comment                 TSComment
+highlight! link CocSem_comparison              TSOperator
+highlight! link CocSem_constParameter          TSParameter
+highlight! link CocSem_dependent               TSInclude
+highlight! link CocSem_dot                     TSOperator
+highlight! link CocSem_enum                    TSType
+highlight! link CocSem_enumMember              TSField
+highlight! link CocSem_escapeSequence          TSStringEscape
+highlight! link CocSem_event                   TSType
+highlight! link CocSem_formatSpecifier         TSStringEscape
+highlight! link CocSem_function                TSFunction
+highlight! link CocSem_interface               TSType
+highlight! link CocSem_keyword                 TSKeyword
+highlight! link CocSem_label                   TSLabel
+highlight! link CocSem_logical                 TSOperator
+highlight! link CocSem_macro                   TSConstMacro
+highlight! link CocSem_method                  TSMethod
+highlight! link CocSem_modifier                TSKeywordOperator
+highlight! link CocSem_namespace               TSNamespace
+highlight! link CocSem_number                  TSNumber
+highlight! link CocSem_operator                TSOperator
+highlight! link CocSem_parameter               TSParameter
+highlight! link CocSem_parenthesis             TSPunctBracket
+highlight! link CocSem_property                TSField
+highlight! link CocSem_punctuation             TSOperator
+highlight! link CocSem_regexp                  TSStringRegex
+highlight! link CocSem_selfKeyword             TSKeyword
+highlight! link CocSem_semicolon               TSPunctDelimiter
+highlight! link CocSem_string                  TSString
+highlight! link CocSem_struct                  TSStructure
+highlight! link CocSem_type                    TSType
+highlight! link CocSem_typeAlias               TSType
+highlight! link CocSem_typeParameter           TSType
+highlight! link CocSem_variable                TSVariable
+highlight! link CocErrorFloat                  ErrorFloat
+highlight! link CocWarningFloat                WarningFloat
+highlight! link CocInfoFloat                   InfoFloat
+highlight! link CocHintFloat                   HintFloat
+highlight! link CocErrorHighlight              ErrorText
+highlight! link CocWarningHighlight            WarningText
+highlight! link CocInfoHighlight               InfoText
+highlight! link CocHintHighlight               HintText
+highlight! link CocHighlightText               CurrentWord
+highlight! link CocHoverRange                  CurrentWord
+highlight! link CocErrorSign                   RedSign
+highlight! link CocWarningSign                 YellowSign
+highlight! link CocInfoSign                    BlueSign
+highlight! link CocHintSign                    GreenSign
+highlight! link CocWarningVirtualText          VirtualTextWarning
+highlight! link CocErrorVirtualText            VirtualTextError
+highlight! link CocInfoVirtualText             VirtualTextInfo
+highlight! link CocHintVirtualText             VirtualTextHint
+highlight! link CocErrorLine                   ErrorLine
+highlight! link CocWarningLine                 WarningLine
+highlight! link CocInfoLine                    InfoLine
+highlight! link CocHintLine                    HintLine
+highlight! link CocCodeLens                    Grey
+highlight! link CocFadeOut                     Grey
+highlight! link CocStrikeThrough               Grey
+highlight! link CocListMode                    StatusLine
+highlight! link CocListPath                    StatusLine
+highlight! link CocTreeOpenClose               Grey
+highlight! link HighlightedyankRegion          Visual
+
+highlight! link CocSymbolFile                  Fg
+highlight! link CocSymbolModule                TSNamespace
+highlight! link CocSymbolNamespace             TSNamespace
+highlight! link CocSymbolPackage               TSNamespace
+highlight! link CocSymbolClass                 TSType
+highlight! link CocSymbolMethod                TSMethod
+highlight! link CocSymbolProperty              TSProperty
+highlight! link CocSymbolField                 TSField
+highlight! link CocSymbolConstructor           TSConstructor
+highlight! link CocSymbolEnum                  TSStructure
+highlight! link CocSymbolInterface             TSType
+highlight! link CocSymbolFunction              TSFunction
+highlight! link CocSymbolVariable              TSVariable
+highlight! link CocSymbolConstant              TSConstant
+highlight! link CocSymbolString                TSString
+highlight! link CocSymbolNumber                TSNumber
+highlight! link CocSymbolBoolean               TSBoolean
+highlight! link CocSymbolArray                 TSVariable
+highlight! link CocSymbolObject                TSVariable
+highlight! link CocSymbolKey                   TSType
+highlight! link CocSymbolNull                  TSVariableBuiltin
+highlight! link CocSymbolEnumMember            TSProperty
+highlight! link CocSymbolStruct                TSStructure
+highlight! link CocSymbolEvent                 TSLabel
+highlight! link CocSymbolOperator              TSOperator
+highlight! link CocSymbolTypeParameter         TSType
+highlight! link CocSymbolDefault               TSNone
 " }}}
 " Yggdroot/LeaderF{{{
 if !exists('g:Lf_StlColorscheme')
@@ -597,12 +548,6 @@ highlight! link Lf_hl_popup_prompt Blue
 highlight! link Lf_hl_popup_blank Lf_hl_popup_window
 highlight! link Lf_hl_popup_spin Purple
 " }}}
-" nvim-telescope/telescope.nvim {{{
-call jcolor#highlight('TelescopeMatching', s:palette.green, s:palette.none, 'bold')
-highlight! link TelescopeBorder Grey
-highlight! link TelescopePromptPrefix Blue
-highlight! link TelescopeSelection DiffAdd
-" }}}
 " airblade/vim-gitgutter {{{
 highlight! link GitGutterAdd GreenSign
 highlight! link GitGutterChange BlueSign
@@ -615,16 +560,6 @@ highlight! link EasyMotionShade Grey
 " }}}
 " lewis6991/gitsigns.nvim {{{
 highlight! link GitSignsCurrentLineBlame Grey
-" }}}
-" nvim-lualine/lualine.nvim {{{
-call jcolor#highlight('TRed', s:palette.red, s:palette.bg_line)
-call jcolor#highlight('TYellow', s:palette.yellow, s:palette.bg_line)
-call jcolor#highlight('TGrey', s:palette.grey, s:palette.bg_line)
-call jcolor#highlight('TGreen', s:palette.green, s:palette.bg_line)
-highligh! link DiagnosticError Red
-highligh! link DiagnosticWarn Yellow
-highligh! link DiagnosticInfo Grey
-highligh! link DiagnosticHint Green
 " }}}
 " }}}
 " Extended File Types: {{{
@@ -1230,42 +1165,6 @@ highlight! link csEndColon Fg
 " ft_end }}}
 " ft_begin: python {{{
 " builtin: {{{
-highlight! link pythonBuiltin BlueItalic
-highlight! link pythonExceptions Red
-highlight! link pythonDecoratorName OrangeItalic
-" }}}
-" python-syntax: https://github.com/vim-python/python-syntax{{{
-highlight! link pythonExClass BlueItalic
-highlight! link pythonBuiltinType BlueItalic
-highlight! link pythonBuiltinObj OrangeItalic
-highlight! link pythonDottedName OrangeItalic
-highlight! link pythonBuiltinFunc Green
-highlight! link pythonFunction Green
-highlight! link pythonDecorator OrangeItalic
-highlight! link pythonInclude Include
-highlight! link pythonImport PreProc
-highlight! link pythonOperator Red
-highlight! link pythonConditional Red
-highlight! link pythonRepeat Red
-highlight! link pythonException Red
-highlight! link pythonNone OrangeItalic
-highlight! link pythonCoding Grey
-highlight! link pythonDot Grey
-" }}}
-" semshi: https://github.com/numirias/semshi{{{
-call jcolor#highlight('semshiUnresolved', s:palette.orange, s:palette.none, 'undercurl')
-highlight! link semshiImported TSInclude
-highlight! link semshiParameter TSParameter
-highlight! link semshiParameterUnused Grey
-highlight! link semshiSelf TSVariableBuiltin
-highlight! link semshiGlobal TSType
-highlight! link semshiBuiltin TSTypeBuiltin
-highlight! link semshiAttribute TSAttribute
-highlight! link semshiLocal TSKeyword
-highlight! link semshiFree TSKeyword
-highlight! link semshiSelected CurrentWord
-highlight! link semshiErrorSign RedSign
-highlight! link semshiErrorChar RedSign
 " }}}
 " ft_end }}}
 " ft_begin: lua {{{
@@ -1274,127 +1173,6 @@ highlight! link luaFunc Green
 highlight! link luaFunction Red
 highlight! link luaTable Fg
 highlight! link luaIn Red
-" }}}
-" vim-lua: https://github.com/tbastos/vim-lua{{{
-highlight! link luaFuncCall Green
-highlight! link luaLocal Red
-highlight! link luaSpecialValue Green
-highlight! link luaBraces Fg
-highlight! link luaBuiltIn BlueItalic
-highlight! link luaNoise Grey
-highlight! link luaLabel Purple
-highlight! link luaFuncTable BlueItalic
-highlight! link luaFuncArgName Fg
-highlight! link luaEllipsis Red
-highlight! link luaDocTag Green
-" }}}
-" ft_end }}}
-" ft_begin: go {{{
-" builtin: https://github.com/google/vim-ft-go{{{
-highlight! link goDirective Red
-highlight! link goConstants OrangeItalic
-highlight! link goDeclType Red
-" }}}
-" polyglot: {{{
-highlight! link goPackage Red
-highlight! link goImport Red
-highlight! link goBuiltins Green
-highlight! link goPredefinedIdentifiers OrangeItalic
-highlight! link goVar Red
-" }}}
-" ft_end }}}
-" ft_begin: rust {{{
-" builtin: https://github.com/rust-lang/rust.vim{{{
-highlight! link rustStructure Red
-highlight! link rustIdentifier OrangeItalic
-highlight! link rustModPath BlueItalic
-highlight! link rustModPathSep Grey
-highlight! link rustSelf OrangeItalic
-highlight! link rustSuper OrangeItalic
-highlight! link rustDeriveTrait Purple
-highlight! link rustEnumVariant Purple
-highlight! link rustMacroVariable OrangeItalic
-highlight! link rustAssert Green
-highlight! link rustPanic Green
-highlight! link rustPubScopeCrate BlueItalic
-highlight! link rustAttribute Purple
-" }}}
-" ft_end }}}
-" ft_begin: ruby {{{
-" builtin: https://github.com/vim-ruby/vim-ruby{{{
-highlight! link rubyKeywordAsMethod Green
-highlight! link rubyInterpolation Purple
-highlight! link rubyInterpolationDelimiter Purple
-highlight! link rubyStringDelimiter Yellow
-highlight! link rubyBlockParameterList Fg
-highlight! link rubyDefine Red
-highlight! link rubyModuleName Red
-highlight! link rubyAccess Red
-highlight! link rubyMacro Red
-highlight! link rubySymbol Fg
-" }}}
-" ft_end }}}
-" ft_begin: haskell {{{
-" haskell-vim: https://github.com/neovimhaskell/haskell-vim{{{
-highlight! link haskellBrackets Fg
-highlight! link haskellIdentifier OrangeItalic
-highlight! link haskellDecl Red
-highlight! link haskellType BlueItalic
-highlight! link haskellDeclKeyword Red
-highlight! link haskellWhere Red
-highlight! link haskellDeriving Red
-highlight! link haskellForeignKeywords Red
-" }}}
-" ft_end }}}
-" ft_begin: perl/pod {{{
-" builtin: https://github.com/vim-perl/vim-perl{{{
-highlight! link perlStatementPackage Red
-highlight! link perlStatementInclude Red
-highlight! link perlStatementStorage Red
-highlight! link perlStatementList Red
-highlight! link perlMatchStartEnd Red
-highlight! link perlVarSimpleMemberName Green
-highlight! link perlVarSimpleMember Fg
-highlight! link perlMethod Green
-highlight! link podVerbatimLine Green
-highlight! link podCmdText Yellow
-highlight! link perlVarPlain Fg
-highlight! link perlVarPlain2 Fg
-" }}}
-" ft_end }}}
-" ft_begin: lisp {{{
-" builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_LISP{{{
-highlight! link lispAtomMark Purple
-highlight! link lispKey Orange
-highlight! link lispFunc Green
-" }}}
-" ft_end }}}
-" ft_begin: clojure {{{
-" builtin: https://github.com/guns/vim-clojure-static{{{
-highlight! link clojureMacro Red
-highlight! link clojureFunc Green
-highlight! link clojureConstant OrangeItalic
-highlight! link clojureSpecial Red
-highlight! link clojureDefine Red
-highlight! link clojureKeyword Blue
-highlight! link clojureVariable Fg
-highlight! link clojureMeta Purple
-highlight! link clojureDeref Purple
-" }}}
-" ft_end }}}
-" ft_begin: sh/zsh {{{
-" builtin: http://www.drchip.org/astronaut/vim/index.html#SYNTAX_SH{{{
-highlight! link shRange Fg
-highlight! link shOption Purple
-highlight! link shQuote Yellow
-highlight! link shVariable BlueItalic
-highlight! link shDerefSimple BlueItalic
-highlight! link shDerefVar BlueItalic
-highlight! link shDerefSpecial BlueItalic
-highlight! link shDerefOff BlueItalic
-highlight! link shVarAssign Red
-highlight! link shFunctionOne Green
-highlight! link shFunctionKey Red
 " }}}
 " ft_end }}}
 " ft_begin: vim {{{
