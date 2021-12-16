@@ -1324,13 +1324,6 @@ highlight! link yamlConstant BlueItalic
 highlight! link yamlString Green
 " ft_end }}}
 " ft_begin: gitcommit {{{
-highlight! link gitcommitSummary Red
-highlight! link gitcommitUntracked Grey
-highlight! link gitcommitDiscarded Grey
-highlight! link gitcommitSelected Grey
-highlight! link gitcommitUnmerged Grey
-highlight! link gitcommitOnBranch Grey
-highlight! link gitcommitArrow Grey
 highlight! link gitcommitFile Green
 " ft_end }}}
 " ft_begin: help {{{
