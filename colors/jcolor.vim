@@ -56,8 +56,8 @@ call jcolor#highlight('FoldColumn', s:palette.grey_m1, s:palette.none)
 call jcolor#highlight('SignColumn', s:palette.fg, s:palette.none)
 call jcolor#highlight('ToolbarLine', s:palette.fg, s:palette.bg_a2)
 
-call jcolor#highlight('StatusLine', s:palette.fg, s:palette.bg_a3)
-call jcolor#highlight('StatusLineTerm', s:palette.fg, s:palette.bg_a3)
+call jcolor#highlight('StatusLine', s:palette.fg, s:palette.bg_line_t)
+call jcolor#highlight('StatusLineTerm', s:palette.fg, s:palette.bg_line_t)
 call jcolor#highlight('StatusLineNC', s:palette.grey, s:palette.bg_a1)
 call jcolor#highlight('StatusLineTermNC', s:palette.grey, s:palette.bg_a1)
 
@@ -360,8 +360,8 @@ call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline'
 call jcolor#highlight('TSNote', s:palette.bg, s:palette.blue, 'bold')
 call jcolor#highlight('TSWarning', s:palette.bg, s:palette.yellow, 'bold')
 call jcolor#highlight('TSDanger', s:palette.bg, s:palette.red, 'bold')
-highlight! link TSAnnotation         xAttributes
-highlight! link TSAttribute          xAttributes
+highlight! link TSAnnotation         xAttribute
+highlight! link TSAttribute          xAttribute
 highlight! link TSBoolean            Keyword
 highlight! link TSCharacter          Character
 highlight! link TSComment            Comment
@@ -373,7 +373,7 @@ highlight! link TSConstructor        Function
 highlight! link TSException          Keyword
 highlight! link TSField              xField
 highlight! link TSFloat              Float
-highlight! link TSFuncBuiltin        Function
+highlight! link TSFuncBuiltin        xOtherField
 highlight! link TSFuncMacro          Macro
 highlight! link TSFunction           Function
 highlight! link TSInclude            Include
@@ -389,8 +389,8 @@ highlight! link TSOperator           Keyword
 highlight! link TSParameter          Fg
 highlight! link TSParameterReference Fg
 highlight! link TSProperty           xField
-highlight! link TSPunctBracket       Grey
-highlight! link TSPunctDelimiter     Grey
+highlight! link TSPunctBracket       Fg
+highlight! link TSPunctDelimiter     Fg
 highlight! link TSPunctSpecial       Yellow
 highlight! link TSRepeat             Keyword
 highlight! link TSString             String
@@ -400,7 +400,7 @@ highlight! link TSStructure          Structure
 highlight! link TSSymbol             Fg
 highlight! link TSTag                Tag
 highlight! link TSTagDelimiter       Keyword
-highlight! link TSText               Green
+highlight! link TSText               Fg
 highlight! link TSStrike             Grey
 highlight! link TSMath               Yellow
 highlight! link TSType               Type
@@ -458,6 +458,7 @@ highlight! link CocSem_type                    TSType
 highlight! link CocSem_typeAlias               TSType
 highlight! link CocSem_typeParameter           TSType
 highlight! link CocSem_variable                TSVariable
+
 highlight! link CocErrorFloat                  ErrorFloat
 highlight! link CocWarningFloat                WarningFloat
 highlight! link CocInfoFloat                   InfoFloat
