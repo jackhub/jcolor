@@ -596,10 +596,10 @@ else
 endif
 " ft_begin: nerdtree {{{
 " https://github.com/preservim/nerdtree
-highlight! link NERDTreeDir Green
-highlight! link NERDTreeDirSlash Green
-highlight! link NERDTreeOpenable Blue
-highlight! link NERDTreeClosable Blue
+call jcolor#highlight('NERDTreeDir', s:palette.grey_a1, s:palette.none, 'bold')
+call jcolor#highlight('NERDTreeDirSlash', s:palette.bg, s:palette.none)
+highlight! link NERDTreeOpenable Green
+highlight! link NERDTreeClosable Green
 highlight! link NERDTreeFile Fg
 highlight! link NERDTreeExecFile Red
 highlight! link NERDTreeUp Grey
