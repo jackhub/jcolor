@@ -359,7 +359,7 @@ call jcolor#highlight('TSEmphasis', s:palette.none, s:palette.none, 'bold')
 call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline')
 call jcolor#highlight('TSNote', s:palette.bg, s:palette.blue, 'bold')
 call jcolor#highlight('TSWarning', s:palette.bg, s:palette.yellow, 'bold')
-call jcolor#highlight('TSDanger', s:palette.bg, s:palette.red, 'bold')
+call jcolor#highlight('TSDanger', s:palette.red, s:palette.bg, 'bold')
 highlight! link TSAnnotation         xAttribute
 highlight! link TSAttribute          xAttribute
 highlight! link TSBoolean            Keyword
