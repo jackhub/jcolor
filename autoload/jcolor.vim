@@ -68,7 +68,8 @@ function! jcolor#get_palette(style) "{{{
           \
           \ 'none':         ['NONE',      '0']
           \ }
-  elseif a:style ==# 'atom'
+  elseif a:style ==# 'onedark'
+    " joshdick / onedark.vim
     let palette = {
           \ 'white':        ['#ffffff',   '0'],
           \ 'black':        ['#1a1b1a',   '0'],
@@ -92,20 +93,20 @@ function! jcolor#get_palette(style) "{{{
           \ 'grey_m1':      ['#5a6477',   '0'],
           \ 'grey':         ['#7e8c98',   '0'],
           \ 'grey_a1':      ['#a2b0be',   '0'],
-          \ 'red_m1':       ['#EF6372',   '0'],
-          \ 'red':          ['#E8675D',   '0'],
-          \ 'green':        ['#8CC46F',   '0'],
+          \ 'red_m1':       ['#d46a60',   '0'],
+          \ 'red':          ['#e06c75',   '0'],
+          \ 'green':        ['#98c379',   '0'],
           \ 'green_a1':     ['#8CC46F',   '0'],
-          \ 'blue':         ['#43B0F4',   '0'],
-          \ 'blue_a1':      ['#56B6C2',   '0'],
+          \ 'blue':         ['#61afef',   '0'],
+          \ 'blue_a1':      ['#56b6c2',   '0'],
           \ 'blue_a2':      ['#6599ff',   '0'],
           \ 'blue_a3':      ['#69dffe',   '0'],
-          \ 'yellow':       ['#EBBE6F',   '0'],
-          \ 'orange':       ['#D19A66',   '0'],
-          \ 'orange_a1':    ['#E5C07B',   '0'],
-          \ 'purple_m1':    ['#C574DC',   '0'],
-          \ 'purple':       ['#C574DC',   '0'],
-          \ 'purple_a1':    ['#C574DC',   '0'],
+          \ 'yellow':       ['#e5c07b',   '0'],
+          \ 'orange':       ['#d19a66',   '0'],
+          \ 'orange_a1':    ['#d19a66',   '0'],
+          \ 'purple_m1':    ['#c678dd',   '0'],
+          \ 'purple':       ['#c678dd',   '0'],
+          \ 'purple_a1':    ['#c678dd',   '0'],
           \
           \ 'none':         ['NONE',      '0']
           \ }
