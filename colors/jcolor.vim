@@ -360,7 +360,7 @@ call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline'
 " Hightlight for comments.
 call jcolor#highlight('TSNote', s:palette.blue, s:palette.none, 'bold')
 call jcolor#highlight('TSWarning', s:palette.yellow, s:palette.none, 'bold')
-call jcolor#highlight('TSDanger', s:palette.red, s:palette.none, 'bold')
+call jcolor#highlight('TSDanger', s:palette.red_m1, s:palette.none, 'bold')
 highlight! link TSAnnotation         xAttribute
 highlight! link TSAttribute          xAttribute
 highlight! link TSBoolean            Keyword
