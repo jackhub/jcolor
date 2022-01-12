@@ -131,7 +131,7 @@ else
 endif
 
 " }}}
-" Predefined Highlight Groups: {{{
+" Predefined Custome Highlight Groups: {{{
 call jcolor#highlight('Fg', s:palette.fg, s:palette.none)
 call jcolor#highlight('Grey', s:palette.grey, s:palette.none)
 call jcolor#highlight('Red', s:palette.red, s:palette.none)
@@ -228,14 +228,16 @@ call jcolor#highlight('xKeyword', s:palette.red, s:palette.none, 'bold')
 call jcolor#highlight('xPreprocessor', s:palette.orange, s:palette.none)
 call jcolor#highlight('xURL', s:palette.blue_a2, s:palette.none)
 call jcolor#highlight('xAttribute', s:palette.orange_a1, s:palette.none)
-call jcolor#highlight('xDeclaration', s:palette.blue_a3, s:palette.none)
-call jcolor#highlight('xFunction', s:palette.green, s:palette.none)
+call jcolor#highlight('xDeclaration', s:palette.blue_a2, s:palette.none)
+call jcolor#highlight('xOtherDeclaration', s:palette.blue_a3, s:palette.none)
 call jcolor#highlight('xType', s:palette.blue, s:palette.none)
 call jcolor#highlight('xField', s:palette.blue_a1, s:palette.none)
-call jcolor#highlight('xOtherType', s:palette.purple, s:palette.none)
-call jcolor#highlight('xOtherField', s:palette.purple_a1, s:palette.none)
+call jcolor#highlight('xFunction', s:palette.green, s:palette.none)
+call jcolor#highlight('xBuiltinType', s:palette.purple, s:palette.none)
+call jcolor#highlight('xBuiltinField', s:palette.purple_a1, s:palette.none)
+call jcolor#highlight('xBuiltinFunction', s:palette.purple_a1, s:palette.none)
 " }}}
-" Syntax: {{{
+" VIM Buildtin Syntax Group: {{{
 highlight! link Comment         xComment
 
 highlight! link Constant        xField
@@ -245,7 +247,7 @@ highlight! link Number          xCharactersNumber
 highlight! link Boolean         xKeyword
 highlight! link Float           xCharactersNumber
 
-highlight! link Identifier      xOtherType
+highlight! link Identifier      xBuiltinType
 highlight! link Function        xFunction
 
 highlight! link Statement       xKeyword
@@ -276,10 +278,6 @@ highlight! link Debug           Yellow
 
 highlight! link Error           Red
 highlight! link Todo            xCommentsKeyword
-
-" Self defines.
-highlight! link TypeBuiltin     xOtherType
-highlight! link ConstantBuiltin xOtherField
 " }}}
 " Diagnostic {{{
 if s:configuration.diagnostic_virtual_text ==# 'grey'
@@ -372,7 +370,7 @@ highlight! link TSCharacter          Character
 highlight! link TSComment            Comment
 highlight! link TSConditional        Keyword
 highlight! link TSConstant           Constant
-highlight! link TSConstBuiltin       xOtherField
+highlight! link TSConstBuiltin       xBuiltinField
 highlight! link TSConstMacro         Macro
 highlight! link TSConstructor        Function
 highlight! link TSError              Keyword
@@ -380,7 +378,7 @@ highlight! link TSException          Keyword
 highlight! link TSField              xField
 highlight! link TSFloat              Float
 highlight! link TSFunction           Function
-highlight! link TSFuncBuiltin        xOtherField
+highlight! link TSFuncBuiltin        xBuiltinFunction
 highlight! link TSFuncMacro          Macro
 highlight! link TSInclude            Include
 highlight! link TSKeyword            Keyword
@@ -424,13 +422,12 @@ highlight! link TSNote               BlueBold
 highlight! link TSWarning            YellowBold
 highlight! link TSDanger             RedBold
 highlight! link TSType               Type
-highlight! link TSTypeBuiltin        xOtherType
+highlight! link TSTypeBuiltin        xBuiltinType
 highlight! link TSVariable           Fg
-highlight! link TSVariableBuiltin    xOtherField
+highlight! link TSVariableBuiltin    xBuiltinField
 
 " Custom Defines.
-highlight! link TSStructure          Structure
-highlight! link TSAnnotation         xAttribute
+
 " }}}
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
@@ -512,33 +509,6 @@ highlight! link CocListPath                    StatusLine
 highlight! link CocTreeOpenClose               Grey
 highlight! link HighlightedyankRegion          Visual
 
-highlight! link CocSymbolFile                  Fg
-highlight! link CocSymbolModule                TSNamespace
-highlight! link CocSymbolNamespace             TSNamespace
-highlight! link CocSymbolPackage               TSNamespace
-highlight! link CocSymbolClass                 TSType
-highlight! link CocSymbolMethod                TSMethod
-highlight! link CocSymbolProperty              TSProperty
-highlight! link CocSymbolField                 TSField
-highlight! link CocSymbolConstructor           TSConstructor
-highlight! link CocSymbolEnum                  TSStructure
-highlight! link CocSymbolInterface             TSType
-highlight! link CocSymbolFunction              TSFunction
-highlight! link CocSymbolVariable              TSVariable
-highlight! link CocSymbolConstant              TSConstant
-highlight! link CocSymbolString                TSString
-highlight! link CocSymbolNumber                TSNumber
-highlight! link CocSymbolBoolean               TSBoolean
-highlight! link CocSymbolArray                 TSVariable
-highlight! link CocSymbolObject                TSVariable
-highlight! link CocSymbolKey                   TSType
-highlight! link CocSymbolNull                  TSVariableBuiltin
-highlight! link CocSymbolEnumMember            TSProperty
-highlight! link CocSymbolStruct                TSStructure
-highlight! link CocSymbolEvent                 TSLabel
-highlight! link CocSymbolOperator              TSOperator
-highlight! link CocSymbolTypeParameter         TSType
-highlight! link CocSymbolDefault               TSNone
 " }}}
 " Yggdroot/LeaderF{{{
 if !exists('g:Lf_StlColorscheme')
@@ -812,10 +782,10 @@ highlight! link cppStructure Keyword
 highlight! link cppSTLios TSTypeBuiltin
 highlight! link cppSTLiterator TSTypeBuiltin
 highlight! link cppSTLexception Keyword
-highlight! link cppSTLVariable ConstantBuiltin
+highlight! link cppSTLVariable TSConstBuiltin
 highlight! link cppModifier Keyword
 highlight! link cppType TSTypeBuiltin
-highlight! link cppConstant ConstantBuiltin
+highlight! link cppConstant TSConstBuiltin
 " }}}
 " ft_end }}}
 " ft_begin: objc {{{
