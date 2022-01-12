@@ -357,9 +357,10 @@ endif
 call jcolor#highlight('TSStrong', s:palette.none, s:palette.none, 'bold')
 call jcolor#highlight('TSEmphasis', s:palette.none, s:palette.none, 'bold')
 call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline')
-call jcolor#highlight('TSNote', s:palette.bg, s:palette.blue, 'bold')
-call jcolor#highlight('TSWarning', s:palette.bg, s:palette.yellow, 'bold')
-call jcolor#highlight('TSDanger', s:palette.red, s:palette.bg, 'bold')
+" Hightlight for comments.
+call jcolor#highlight('TSNote', s:palette.blue, s:palette.none, 'bold')
+call jcolor#highlight('TSWarning', s:palette.yellow, s:palette.none, 'bold')
+call jcolor#highlight('TSDanger', s:palette.red, s:palette.none, 'bold')
 highlight! link TSAnnotation         xAttribute
 highlight! link TSAttribute          xAttribute
 highlight! link TSBoolean            Keyword
@@ -385,7 +386,7 @@ highlight! link TSMethod             Function
 highlight! link TSNamespace          Type
 highlight! link TSNone               Fg
 highlight! link TSNumber             Number
-highlight! link TSOperator           Keyword
+highlight! link TSOperator           Fg
 highlight! link TSParameter          Fg
 highlight! link TSParameterReference Fg
 highlight! link TSProperty           xField
