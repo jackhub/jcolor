@@ -140,7 +140,18 @@ call jcolor#highlight('Yellow', s:palette.yellow, s:palette.none)
 call jcolor#highlight('Green', s:palette.green, s:palette.none)
 call jcolor#highlight('Blue', s:palette.blue, s:palette.none)
 call jcolor#highlight('Purple', s:palette.purple, s:palette.none)
-call jcolor#highlight('Underlined', s:palette.blue_a3, s:palette.none, 'underline')
+
+call jcolor#highlight('FgBold', s:palette.fg, s:palette.none, 'bold')
+call jcolor#highlight('GreyBold', s:palette.grey, s:palette.none, 'bold')
+call jcolor#highlight('RedBold', s:palette.red, s:palette.none, 'bold')
+call jcolor#highlight('OrangeBold', s:palette.orange, s:palette.none, 'bold')
+call jcolor#highlight('YellowBold', s:palette.yellow, s:palette.none, 'bold')
+call jcolor#highlight('GreenBold', s:palette.green, s:palette.none, 'bold')
+call jcolor#highlight('BlueBold', s:palette.blue, s:palette.none, 'bold')
+call jcolor#highlight('PurpleBold', s:palette.purple, s:palette.none, 'bold')
+
+call jcolor#highlight('Underlined', s:palette.none, s:palette.none, 'underline')
+call jcolor#highlight('Bold', s:palette.none, s:palette.none, 'bold')
 
 if s:configuration.enable_italic
   call jcolor#highlight('RedItalic', s:palette.red, s:palette.none, 'italic')
@@ -354,33 +365,28 @@ endif
 " }}}
 " Plugins: {{{
 " nvim-treesitter/nvim-treesitter {{{
-call jcolor#highlight('TSStrong', s:palette.none, s:palette.none, 'bold')
-call jcolor#highlight('TSEmphasis', s:palette.none, s:palette.none, 'bold')
-call jcolor#highlight('TSUnderline', s:palette.none, s:palette.none, 'underline')
-" Hightlight for comments.
-call jcolor#highlight('TSNote', s:palette.blue, s:palette.none, 'bold')
-call jcolor#highlight('TSWarning', s:palette.yellow, s:palette.none, 'bold')
-call jcolor#highlight('TSDanger', s:palette.red_m1, s:palette.none, 'bold')
-highlight! link TSAnnotation         xAttribute
+" Tree-sitter defines highlights.
 highlight! link TSAttribute          xAttribute
 highlight! link TSBoolean            Keyword
 highlight! link TSCharacter          Character
 highlight! link TSComment            Comment
 highlight! link TSConditional        Keyword
+highlight! link TSConstant           Constant
 highlight! link TSConstBuiltin       xOtherField
 highlight! link TSConstMacro         Macro
-highlight! link TSConstant           Constant
 highlight! link TSConstructor        Function
+highlight! link TSError              Keyword
 highlight! link TSException          Keyword
 highlight! link TSField              xField
 highlight! link TSFloat              Float
+highlight! link TSFunction           Function
 highlight! link TSFuncBuiltin        xOtherField
 highlight! link TSFuncMacro          Macro
-highlight! link TSFunction           Function
 highlight! link TSInclude            Include
 highlight! link TSKeyword            Keyword
 highlight! link TSKeywordFunction    Keyword
 highlight! link TSKeywordOperator    Keyword
+highlight! link TSKeywordReturn      Keyword
 highlight! link TSLabel              Label
 highlight! link TSMethod             Function
 highlight! link TSNamespace          Type
@@ -390,25 +396,41 @@ highlight! link TSOperator           Fg
 highlight! link TSParameter          Fg
 highlight! link TSParameterReference Fg
 highlight! link TSProperty           xField
-highlight! link TSPunctBracket       Fg
 highlight! link TSPunctDelimiter     Fg
+highlight! link TSPunctBracket       Fg
 highlight! link TSPunctSpecial       Yellow
 highlight! link TSRepeat             Keyword
 highlight! link TSString             String
-highlight! link TSStringEscape       Character
 highlight! link TSStringRegex        Character
-highlight! link TSStructure          Structure
+highlight! link TSStringEscape       Character
+highlight! link TSStringSpecial      Character
 highlight! link TSSymbol             Fg
 highlight! link TSTag                Tag
-highlight! link TSTagDelimiter       Keyword
+highlight! link TSTagAttribute       xAttribute
+highlight! link TSTagDelimiter       Fg
 highlight! link TSText               Fg
+highlight! link TSStrong             Bold
+highlight! link TSEmphasis           Bold
+highlight! link TSUnderline          Underline
 highlight! link TSStrike             Grey
+highlight! link TSTitle              YellowBold
+highlight! link TSLiteral            Fg
+highlight! link TSURI                xURLs
 highlight! link TSMath               Yellow
+highlight! link TSTextReference      xURLs
+" TSEnvironment
+" TSEnvironmentName
+highlight! link TSNote               BlueBold
+highlight! link TSWarning            YellowBold
+highlight! link TSDanger             RedBold
 highlight! link TSType               Type
 highlight! link TSTypeBuiltin        xOtherType
-highlight! link TSURI                xURLs
 highlight! link TSVariable           Fg
 highlight! link TSVariableBuiltin    xOtherField
+
+" Custom Defines.
+highlight! link TSStructure          Structure
+highlight! link TSAnnotation         xAttribute
 " }}}
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
