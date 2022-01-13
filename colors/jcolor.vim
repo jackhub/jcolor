@@ -372,7 +372,7 @@ highlight! link TSConditional        Keyword
 highlight! link TSConstant           Constant
 highlight! link TSConstBuiltin       xBuiltinField
 highlight! link TSConstMacro         Macro
-highlight! link TSConstructor        Function
+highlight! link TSConstructor        Type
 highlight! link TSError              Keyword
 highlight! link TSException          Keyword
 highlight! link TSField              xField
