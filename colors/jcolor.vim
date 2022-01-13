@@ -770,6 +770,8 @@ highlight! link cssNoise Grey
 " ft_begin: javascript/javascriptreact {{{
 " ft_end }}}
 " ft_begin: typescript/typescriptreact {{{
+highlight! link typescriptGlobal TSTypeBuiltin
+highlight! link typescriptGlobalMethod TSFuncBuiltin
 " ft_end }}}
 " ft_begin: dart {{{
 " dart-lang: https://github.com/dart-lang/dart-vim-plugin{{{
