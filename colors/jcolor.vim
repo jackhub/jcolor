@@ -226,16 +226,16 @@ call jcolor#highlight('xString', s:palette.red_m1, s:palette.none)
 call jcolor#highlight('xCharactersNumber', s:palette.yellow, s:palette.none)
 call jcolor#highlight('xKeyword', s:palette.red, s:palette.none, 'bold')
 call jcolor#highlight('xPreprocessor', s:palette.orange, s:palette.none)
-call jcolor#highlight('xURL', s:palette.blue_a2, s:palette.none)
+call jcolor#highlight('xURL', s:palette.blue_m2, s:palette.none)
 call jcolor#highlight('xAttribute', s:palette.orange_a1, s:palette.none)
-call jcolor#highlight('xDeclaration', s:palette.blue_a2, s:palette.none)
-call jcolor#highlight('xOtherDeclaration', s:palette.blue_a3, s:palette.none)
-call jcolor#highlight('xType', s:palette.blue, s:palette.none)
-call jcolor#highlight('xField', s:palette.blue_a1, s:palette.none)
+call jcolor#highlight('xDeclaration', s:palette.blue, s:palette.none)
+call jcolor#highlight('xOtherDeclaration', s:palette.blue_m1, s:palette.none)
+call jcolor#highlight('xType', s:palette.cyan, s:palette.none)
+call jcolor#highlight('xField', s:palette.cyan_m1, s:palette.none)
 call jcolor#highlight('xFunction', s:palette.green, s:palette.none)
 call jcolor#highlight('xBuiltinType', s:palette.purple, s:palette.none)
-call jcolor#highlight('xBuiltinField', s:palette.purple_a1, s:palette.none)
-call jcolor#highlight('xBuiltinFunction', s:palette.purple_a1, s:palette.none)
+call jcolor#highlight('xBuiltinField', s:palette.purple_m1, s:palette.none)
+call jcolor#highlight('xBuiltinFunction', s:palette.purple_m1, s:palette.none)
 " }}}
 " VIM Buildtin Syntax Group: {{{
 highlight! link Comment         xComment
@@ -393,7 +393,7 @@ highlight! link TSNumber             Number
 highlight! link TSOperator           Fg
 highlight! link TSParameter          Fg
 highlight! link TSParameterReference Fg
-highlight! link TSProperty           xField
+highlight! link TSProperty           TSField
 highlight! link TSPunctDelimiter     Fg
 highlight! link TSPunctBracket       Fg
 highlight! link TSPunctSpecial       Yellow
@@ -426,7 +426,19 @@ highlight! link TSTypeBuiltin        xBuiltinType
 highlight! link TSVariable           Fg
 highlight! link TSVariableBuiltin    xBuiltinField
 
-" Custom Defines.
+"----------------------------
+" Custom Defines for clangd.
+"----------------------------
+highlight! link TSTypeDefaultLibrary  xBuiltinType
+highlight! link TSOtherDefaultLibrary xBuiltinField
+highlight! link TSTypeDeclaration     xDeclaration
+highlight! link TSOtherDeclaration    xOtherDeclaration
+
+highlight! link TSMacro               Macro
+highlight! link TSClass               TSType
+highlight! link TSInterface           TSType
+highlight! link TSEnum                TSType
+highlight! link TSEnumMember          TSField
 
 " }}}
 " neoclide/coc.nvim {{{
