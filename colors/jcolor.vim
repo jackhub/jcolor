@@ -232,7 +232,7 @@ call jcolor#highlight('xDeclaration', s:palette.blue_m1, s:palette.none)
 call jcolor#highlight('xOtherDeclaration', s:palette.blue_m2, s:palette.none)
 call jcolor#highlight('xType', s:palette.cyan, s:palette.none)
 call jcolor#highlight('xField', s:palette.cyan_m1, s:palette.none)
-call jcolor#highlight('xFunction', s:palette.green, s:palette.none)
+call jcolor#highlight('xFunction', s:palette.cyan_m2, s:palette.none)
 call jcolor#highlight('xBuiltinType', s:palette.purple, s:palette.none)
 call jcolor#highlight('xBuiltinField', s:palette.purple_m1, s:palette.none)
 call jcolor#highlight('xBuiltinFunction', s:palette.purple_m1, s:palette.none)
@@ -271,7 +271,7 @@ highlight! link Typedef         xKeyword
 
 highlight! link Special         xString
 highlight! link SpecialChar     xString
-highlight! link Tag             xFunction
+highlight! link Tag             Green
 highlight! link Delimiter       xPlainText
 highlight! link SpecialComment  xCommentsKeyword
 highlight! link Debug           Yellow

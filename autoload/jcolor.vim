@@ -54,11 +54,11 @@ function! jcolor#get_palette(style) "{{{
           \ 'red_m1':       ['#fe8170',   '0'],
           \ 'red':          ['#ff7ab2',   '0'],
           \ 'green':        ['#93c76b',   '0'],
-          \ 'green_a1':     ['#a6e22d',   '0'],
           \ 'blue_m3':      ['#6599ff',   '0'],
           \ 'blue_m2':      ['#4eafcb',   '0'],
           \ 'blue_m1':      ['#69dffe',   '0'],
           \ 'blue':         ['#8addff',   '0'],
+          \ 'cyan_m2':      ['#69d190',   '0'],
           \ 'cyan_m1':      ['#78c1b3',   '0'],
           \ 'cyan':         ['#abf1e3',   '0'],
           \ 'yellow':       ['#d9c87c',   '0'],
@@ -66,7 +66,6 @@ function! jcolor#get_palette(style) "{{{
           \ 'orange_a1':    ['#cb9768',   '0'],
           \ 'purple_m1':    ['#b180eb',   '0'],
           \ 'purple':       ['#d9bbfe',   '0'],
-          \ 'purple_a1':    ['#d9bbfe',   '0'],
           \
           \ 'none':         ['NONE',      '0']
           \ }
@@ -98,11 +97,11 @@ function! jcolor#get_palette(style) "{{{
           \ 'red_m1':       ['#d46a60',   '0'],
           \ 'red':          ['#e06c75',   '0'],
           \ 'green':        ['#98c379',   '0'],
-          \ 'green_a1':     ['#8CC46F',   '0'],
           \ 'blue_m3':      ['#6599ff',   '0'],
           \ 'blue_m2':      ['#4eafcb',   '0'],
           \ 'blue_m1':      ['#69dffe',   '0'],
           \ 'blue':         ['#61afef',   '0'],
+          \ 'cyan_m2':      ['#8CC46F',   '0'],
           \ 'cyan_m1':      ['#78c1b3',   '0'],
           \ 'cyan':         ['#abf1e3',   '0'],
           \ 'yellow':       ['#e5c07b',   '0'],
@@ -110,7 +109,6 @@ function! jcolor#get_palette(style) "{{{
           \ 'orange_a1':    ['#d19a66',   '0'],
           \ 'purple_m1':    ['#c678dd',   '0'],
           \ 'purple':       ['#c678dd',   '0'],
-          \ 'purple_a1':    ['#c678dd',   '0'],
           \
           \ 'none':         ['NONE',      '0']
           \ }
@@ -141,11 +139,11 @@ function! jcolor#get_palette(style) "{{{
           \ 'red_m1':       ['#E06C75',   '0'],
           \ 'red':          ['#f67784',   '0'],
           \ 'green':        ['#98C379',   '0'],
-          \ 'green_a1':     ['#98C379',   '0'],
           \ 'blue_m3':      ['#6599ff',   '0'],
           \ 'blue_m2':      ['#4eafcb',   '0'],
           \ 'blue_m1':      ['#69dffe',   '0'],
           \ 'blue':         ['#6fbcf4',   '0'],
+          \ 'cyan_m2':      ['#8CC46F',   '0'],
           \ 'cyan_m1':      ['#78c1b3',   '0'],
           \ 'cyan':         ['#abf1e3',   '0'],
           \ 'yellow':       ['#E5C07B',   '0'],
@@ -153,7 +151,6 @@ function! jcolor#get_palette(style) "{{{
           \ 'orange_a1':    ['#D19A66',   '0'],
           \ 'purple_m1':    ['#C678DD',   '0'],
           \ 'purple':       ['#C678DD',   '0'],
-          \ 'purple_a1':    ['#C678DD',   '0'],
           \
           \ 'none':         ['NONE',      '0']
           \ }
