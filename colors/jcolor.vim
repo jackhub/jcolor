@@ -786,20 +786,15 @@ highlight! link dartMetadata OrangeItalic
 " ft_end }}}
 " ft_begin: c/cpp/objc/objcpp {{{
 " builtin: {{{
-highlight! link cLabel Keyword
 highlight! link cType TSTypeBuiltin
 highlight! link cConstant TSConstBuiltin
-highlight! link cppSTLnamespace Type
-highlight! link cppSTLtype Keyword
+highlight! link cLabel Keyword
 highlight! link cppAccess Keyword
 highlight! link cppStructure Keyword
-highlight! link cppSTLios TSTypeBuiltin
-highlight! link cppSTLiterator TSTypeBuiltin
-highlight! link cppSTLexception Keyword
-highlight! link cppSTLVariable TSConstBuiltin
 highlight! link cppModifier Keyword
-highlight! link cppType TSTypeBuiltin
-highlight! link cppConstant TSConstBuiltin
+highlight! link cppType Keyword
+highlight! link cppBoolean Keyword
+highlight! link cppConstant Keyword
 " }}}
 " ft_end }}}
 " ft_begin: objc {{{
