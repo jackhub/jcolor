@@ -787,7 +787,7 @@ highlight! link dartMetadata OrangeItalic
 " ft_begin: c/cpp/objc/objcpp {{{
 " builtin: {{{
 highlight! link cType TSTypeBuiltin
-highlight! link cConstant TSConstBuiltin
+highlight! link cConstant TSMacro
 highlight! link cLabel Keyword
 highlight! link cppAccess Keyword
 highlight! link cppStructure Keyword
