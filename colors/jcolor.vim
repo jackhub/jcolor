@@ -792,7 +792,7 @@ highlight! link cLabel Keyword
 highlight! link cppAccess Keyword
 highlight! link cppStructure Keyword
 highlight! link cppModifier Keyword
-highlight! link cppType TSTypeBuiltin
+highlight! link cppType Keyword
 highlight! link cppBoolean Keyword
 highlight! link cppConstant Keyword
 " }}}
