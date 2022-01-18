@@ -792,9 +792,9 @@ highlight! link cLabel Keyword
 highlight! link cppAccess Keyword
 highlight! link cppStructure Keyword
 highlight! link cppModifier Keyword
-highlight! link cppType Keyword
+highlight! link cppType TSTypeBuiltin
 highlight! link cppBoolean Keyword
-highlight! link cppConstant TSTypeBuiltin
+highlight! link cppConstant Keyword
 " }}}
 " ft_end }}}
 " ft_begin: objc {{{
