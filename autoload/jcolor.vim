@@ -29,140 +29,138 @@ endfunction "}}}
 function! jcolor#get_palette(style) "{{{
   if a:style ==# 'default'
     let palette = {
-          \ 'white':        ['#ffffff',   '0'],
-          \ 'black':        ['#1a1b1a',   '0'],
-          \ 'bg':           ['#292a2f',   '0'],
-          \ 'bg_a1':        ['#2f3238',   '0'],
-          \ 'bg_a2':        ['#383b42',   '0'],
-          \ 'bg_a3':        ['#3f434a',   '0'],
-          \ 'bg_a4':        ['#484c55',   '0'],
-          \ 'bg_line_t':    ['#2f3037',   '0'],
-          \ 'bg_cursor_i':  ['#342d3e',   '0'],
-          \ 'bg_red':       ['#ff6d7e',   '0'],
-          \ 'bg_green':     ['#a5e179',   '0'],
-          \ 'bg_blue':      ['#76bed3',   '0'],
-          \ 'bg_yellow':    ['#4a4940',   '0'],
-          \ 'diff_red':     ['#55393d',   '0'],
-          \ 'diff_green':   ['#394634',   '0'],
-          \ 'diff_blue':    ['#354157',   '0'],
-          \ 'diff_yellow':  ['#4e432f',   '0'],
+          \ 'white':        '#ffffff',
+          \ 'black':        '#1a1b1a',
+          \ 'bg':           '#292a2f',
+          \ 'bg_a1':        '#2f3238',
+          \ 'bg_a2':        '#383b42',
+          \ 'bg_a3':        '#3f434a',
+          \ 'bg_a4':        '#484c55',
+          \ 'bg_line_t':    '#2f3037',
+          \ 'bg_cursor_i':  '#342d3e',
+          \ 'bg_red':       '#ff6d7e',
+          \ 'bg_green':     '#a5e179',
+          \ 'bg_blue':      '#76bed3',
+          \ 'bg_yellow':    '#4a4940',
+          \ 'diff_red':     '#55393d',
+          \ 'diff_green':   '#394634',
+          \ 'diff_blue':    '#354157',
+          \ 'diff_yellow':  '#4e432f',
           \
-          \ 'fg':           ['#dedfe0',   '0'],
-          \ 'grey_m1':      ['#5a6477',   '0'],
-          \ 'grey':         ['#7e8c98',   '0'],
-          \ 'grey_a1':      ['#a2b0be',   '0'],
-          \ 'red_m1':       ['#fe8170',   '0'],
-          \ 'red':          ['#ff7ab2',   '0'],
-          \ 'green':        ['#93c76b',   '0'],
-          \ 'blue_m3':      ['#6599ff',   '0'],
-          \ 'blue_m2':      ['#4eafcb',   '0'],
-          \ 'blue_m1':      ['#69dffe',   '0'],
-          \ 'blue':         ['#8addff',   '0'],
-          \ 'cyan_m2':      ['#69d190',   '0'],
-          \ 'cyan_m1':      ['#78c1b3',   '0'],
-          \ 'cyan':         ['#abf1e3',   '0'],
-          \ 'yellow':       ['#d9c87c',   '0'],
-          \ 'orange':       ['#ffa14f',   '0'],
-          \ 'orange_a1':    ['#cb9768',   '0'],
-          \ 'purple_m1':    ['#b180eb',   '0'],
-          \ 'purple':       ['#d9bbfe',   '0'],
+          \ 'fg':           '#dedfe0',
+          \ 'grey_m1':      '#5a6477',
+          \ 'grey':         '#7e8c98',
+          \ 'grey_a1':      '#a2b0be',
+          \ 'red_m1':       '#fe8170',
+          \ 'red':          '#ff7ab2',
+          \ 'green':        '#93c76b',
+          \ 'blue_m3':      '#6599ff',
+          \ 'blue_m2':      '#4eafcb',
+          \ 'blue_m1':      '#69dffe',
+          \ 'blue':         '#8addff',
+          \ 'cyan_m2':      '#69d190',
+          \ 'cyan_m1':      '#78c1b3',
+          \ 'cyan':         '#abf1e3',
+          \ 'yellow':       '#d9c87c',
+          \ 'orange':       '#ffa14f',
+          \ 'orange_a1':    '#cb9768',
+          \ 'purple_m1':    '#b180eb',
+          \ 'purple':       '#d9bbfe',
           \
-          \ 'none':         ['NONE',      '0']
+          \ 'none':         'NONE'
           \ }
   elseif a:style ==# 'onedark'
     " joshdick / onedark.vim
     let palette = {
-          \ 'white':        ['#ffffff',   '0'],
-          \ 'black':        ['#1a1b1a',   '0'],
-          \ 'bg':           ['#282c34',   '0'],
-          \ 'bg_a1':        ['#2f3238',   '0'],
-          \ 'bg_a2':        ['#383b42',   '0'],
-          \ 'bg_a3':        ['#3f434a',   '0'],
-          \ 'bg_a4':        ['#484c55',   '0'],
-          \ 'bg_line_t':    ['#2f3037',   '0'],
-          \ 'bg_cursor_i':  ['#342d3e',   '0'],
-          \ 'bg_red':       ['#ff6d7e',   '0'],
-          \ 'bg_green':     ['#a5e179',   '0'],
-          \ 'bg_blue':      ['#76bed3',   '0'],
-          \ 'bg_yellow':    ['#4a4940',   '0'],
-          \ 'diff_red':     ['#55393d',   '0'],
-          \ 'diff_green':   ['#394634',   '0'],
-          \ 'diff_blue':    ['#354157',   '0'],
-          \ 'diff_yellow':  ['#4e432f',   '0'],
+          \ 'white':        '#ffffff',
+          \ 'black':        '#1a1b1a',
+          \ 'bg':           '#282c34',
+          \ 'bg_a1':        '#2f3238',
+          \ 'bg_a2':        '#383b42',
+          \ 'bg_a3':        '#3f434a',
+          \ 'bg_a4':        '#484c55',
+          \ 'bg_line_t':    '#2f3037',
+          \ 'bg_cursor_i':  '#342d3e',
+          \ 'bg_red':       '#ff6d7e',
+          \ 'bg_green':     '#a5e179',
+          \ 'bg_blue':      '#76bed3',
+          \ 'bg_yellow':    '#4a4940',
+          \ 'diff_red':     '#55393d',
+          \ 'diff_green':   '#394634',
+          \ 'diff_blue':    '#354157',
+          \ 'diff_yellow':  '#4e432f',
           \
-          \ 'fg':           ['#dedfe0',   '0'],
-          \ 'grey_m1':      ['#5a6477',   '0'],
-          \ 'grey':         ['#7e8c98',   '0'],
-          \ 'grey_a1':      ['#a2b0be',   '0'],
-          \ 'red_m1':       ['#d46a60',   '0'],
-          \ 'red':          ['#e06c75',   '0'],
-          \ 'green':        ['#98c379',   '0'],
-          \ 'blue_m3':      ['#6599ff',   '0'],
-          \ 'blue_m2':      ['#4eafcb',   '0'],
-          \ 'blue_m1':      ['#69dffe',   '0'],
-          \ 'blue':         ['#61afef',   '0'],
-          \ 'cyan_m2':      ['#8CC46F',   '0'],
-          \ 'cyan_m1':      ['#78c1b3',   '0'],
-          \ 'cyan':         ['#abf1e3',   '0'],
-          \ 'yellow':       ['#e5c07b',   '0'],
-          \ 'orange':       ['#d19a66',   '0'],
-          \ 'orange_a1':    ['#d19a66',   '0'],
-          \ 'purple_m1':    ['#c678dd',   '0'],
-          \ 'purple':       ['#c678dd',   '0'],
+          \ 'fg':           '#dedfe0',
+          \ 'grey_m1':      '#5a6477',
+          \ 'grey':         '#7e8c98',
+          \ 'grey_a1':      '#a2b0be',
+          \ 'red_m1':       '#d46a60',
+          \ 'red':          '#e06c75',
+          \ 'green':        '#98c379',
+          \ 'blue_m3':      '#6599ff',
+          \ 'blue_m2':      '#4eafcb',
+          \ 'blue_m1':      '#69dffe',
+          \ 'blue':         '#61afef',
+          \ 'cyan_m2':      '#8CC46F',
+          \ 'cyan_m1':      '#78c1b3',
+          \ 'cyan':         '#abf1e3',
+          \ 'yellow':       '#e5c07b',
+          \ 'orange':       '#d19a66',
+          \ 'orange_a1':    '#d19a66',
+          \ 'purple_m1':    '#c678dd',
+          \ 'purple':       '#c678dd',
           \
-          \ 'none':         ['NONE',      '0']
+          \ 'none':         'NONE'
           \ }
   elseif a:style ==# 'monokai'
     let palette = {
-          \ 'white':        ['#ffffff',   '0'],
-          \ 'black':        ['#1a1b1a',   '0'],
-          \ 'bg':           ['#282c34',   '0'],
-          \ 'bg_a1':        ['#2f3238',   '0'],
-          \ 'bg_a2':        ['#383b42',   '0'],
-          \ 'bg_a3':        ['#3f434a',   '0'],
-          \ 'bg_a4':        ['#484c55',   '0'],
-          \ 'bg_line_t':    ['#2f3037',   '0'],
-          \ 'bg_cursor_i':  ['#342d3e',   '0'],
-          \ 'bg_red':       ['#ff6d7e',   '0'],
-          \ 'bg_green':     ['#a5e179',   '0'],
-          \ 'bg_blue':      ['#76bed3',   '0'],
-          \ 'bg_yellow':    ['#4a4940',   '0'],
-          \ 'diff_red':     ['#55393d',   '0'],
-          \ 'diff_green':   ['#394634',   '0'],
-          \ 'diff_blue':    ['#354157',   '0'],
-          \ 'diff_yellow':  ['#4e432f',   '0'],
+          \ 'white':        '#ffffff',
+          \ 'black':        '#1a1b1a',
+          \ 'bg':           '#282c34',
+          \ 'bg_a1':        '#2f3238',
+          \ 'bg_a2':        '#383b42',
+          \ 'bg_a3':        '#3f434a',
+          \ 'bg_a4':        '#484c55',
+          \ 'bg_line_t':    '#2f3037',
+          \ 'bg_cursor_i':  '#342d3e',
+          \ 'bg_red':       '#ff6d7e',
+          \ 'bg_green':     '#a5e179',
+          \ 'bg_blue':      '#76bed3',
+          \ 'bg_yellow':    '#4a4940',
+          \ 'diff_red':     '#55393d',
+          \ 'diff_green':   '#394634',
+          \ 'diff_blue':    '#354157',
+          \ 'diff_yellow':  '#4e432f',
           \
-          \ 'fg':           ['#dedfe0',   '0'],
-          \ 'grey_m1':      ['#5a6477',   '0'],
-          \ 'grey':         ['#7e8c98',   '0'],
-          \ 'grey_a1':      ['#a2b0be',   '0'],
-          \ 'red_m1':       ['#E06C75',   '0'],
-          \ 'red':          ['#f67784',   '0'],
-          \ 'green':        ['#98C379',   '0'],
-          \ 'blue_m3':      ['#6599ff',   '0'],
-          \ 'blue_m2':      ['#4eafcb',   '0'],
-          \ 'blue_m1':      ['#69dffe',   '0'],
-          \ 'blue':         ['#6fbcf4',   '0'],
-          \ 'cyan_m2':      ['#8CC46F',   '0'],
-          \ 'cyan_m1':      ['#78c1b3',   '0'],
-          \ 'cyan':         ['#abf1e3',   '0'],
-          \ 'yellow':       ['#E5C07B',   '0'],
-          \ 'orange':       ['#d09a66',   '0'],
-          \ 'orange_a1':    ['#D19A66',   '0'],
-          \ 'purple_m1':    ['#C678DD',   '0'],
-          \ 'purple':       ['#C678DD',   '0'],
+          \ 'fg':           '#dedfe0',
+          \ 'grey_m1':      '#5a6477',
+          \ 'grey':         '#7e8c98',
+          \ 'grey_a1':      '#a2b0be',
+          \ 'red_m1':       '#E06C75',
+          \ 'red':          '#f67784',
+          \ 'green':        '#98C379',
+          \ 'blue_m3':      '#6599ff',
+          \ 'blue_m2':      '#4eafcb',
+          \ 'blue_m1':      '#69dffe',
+          \ 'blue':         '#6fbcf4',
+          \ 'cyan_m2':      '#8CC46F',
+          \ 'cyan_m1':      '#78c1b3',
+          \ 'cyan':         '#abf1e3',
+          \ 'yellow':       '#E5C07B',
+          \ 'orange':       '#d09a66',
+          \ 'orange_a1':    '#D19A66',
+          \ 'purple_m1':    '#C678DD',
+          \ 'purple':       '#C678DD',
           \
-          \ 'none':         ['NONE',      '0']
+          \ 'none':         'NONE'
           \ }
   endif
   return palette
 endfunction "}}}
 function! jcolor#highlight(group, fg, bg, ...) "{{{
   execute 'highlight' a:group
-        \ 'guifg=' . a:fg[0]
-        \ 'guibg=' . a:bg[0]
-        \ 'ctermfg=' . a:fg[1]
-        \ 'ctermbg=' . a:bg[1]
+        \ 'guifg=' . a:fg
+        \ 'guibg=' . a:bg
         \ 'gui=' . (a:0 >= 1 ?
           \ (a:1 ==# 'undercurl' ?
             \ (g:jcolor#tmux ?
@@ -170,13 +168,8 @@ function! jcolor#highlight(group, fg, bg, ...) "{{{
               \ 'undercurl') :
             \ a:1) :
           \ 'NONE')
-        \ 'cterm=' . (a:0 >= 1 ?
-          \ (a:1 ==# 'undercurl' ?
-            \ 'underline' :
-            \ a:1) :
-          \ 'NONE')
         \ 'guisp=' . (a:0 >= 2 ?
-          \ a:2[0] :
+          \ a:2 :
           \ 'NONE')
 endfunction "}}}
 function! jcolor#ft_gen(path, last_modified, msg) "{{{
