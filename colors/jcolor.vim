@@ -440,57 +440,26 @@ highlight! link TSInterface           TSType
 highlight! link TSEnum                TSType
 highlight! link TSEnumMember          TSField
 
+hi link CocSemDefaultLibrary TSOtherDefaultLibrary
+hi link CocSemDefaultLibraryClass TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryInterface TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryEnum TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryType TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryNamespace TSTypeDefaultLibrary
+
+hi link CocSemDeclaration TSOtherDeclaration
+hi link CocSemDeclarationClass TSTypeDeclaration
+hi link CocSemDeclarationInterface TSTypeDeclaration
+hi link CocSemDeclarationEnum TSTypeDeclaration
+hi link CocSemDeclarationType TSTypeDeclaration
+hi link CocSemDeclarationNamespace TSTypeDeclaration
+hi link CocSemDeclarationVariable TSVariable
+hi link CocSemDeclarationParameter TSVariable
+hi link CocSemDeclarationMacro TSMacro
+
 " }}}
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
-highlight! link CocSem_angle                   TSTagDelimiter
-highlight! link CocSem_annotation              TSOperator
-highlight! link CocSem_attribute               TSAttribute
-highlight! link CocSem_bitwise                 TSOperator
-highlight! link CocSem_boolean                 TSBoolean
-highlight! link CocSem_brace                   TSPunctBracket
-highlight! link CocSem_bracket                 TSPunctBracket
-highlight! link CocSem_builtinAttribute        TSAttribute
-highlight! link CocSem_builtinType             TSTypeBuiltin
-highlight! link CocSem_character               TSCharacter
-highlight! link CocSem_class                   TSType
-highlight! link CocSem_colon                   TSPunctDelimiter
-highlight! link CocSem_comma                   TSPunctDelimiter
-highlight! link CocSem_comment                 TSComment
-highlight! link CocSem_comparison              TSOperator
-highlight! link CocSem_constParameter          TSParameter
-highlight! link CocSem_dependent               TSInclude
-highlight! link CocSem_dot                     TSOperator
-highlight! link CocSem_enum                    TSType
-highlight! link CocSem_enumMember              TSField
-highlight! link CocSem_escapeSequence          TSStringEscape
-highlight! link CocSem_event                   TSType
-highlight! link CocSem_formatSpecifier         TSStringEscape
-highlight! link CocSem_function                TSFunction
-highlight! link CocSem_interface               TSType
-highlight! link CocSem_keyword                 TSKeyword
-highlight! link CocSem_label                   TSLabel
-highlight! link CocSem_logical                 TSOperator
-highlight! link CocSem_macro                   TSConstMacro
-highlight! link CocSem_method                  TSMethod
-highlight! link CocSem_modifier                TSKeywordOperator
-highlight! link CocSem_namespace               TSNamespace
-highlight! link CocSem_number                  TSNumber
-highlight! link CocSem_operator                TSOperator
-highlight! link CocSem_parameter               TSParameter
-highlight! link CocSem_parenthesis             TSPunctBracket
-highlight! link CocSem_property                TSField
-highlight! link CocSem_punctuation             TSOperator
-highlight! link CocSem_regexp                  TSStringRegex
-highlight! link CocSem_selfKeyword             TSKeyword
-highlight! link CocSem_semicolon               TSPunctDelimiter
-highlight! link CocSem_string                  TSString
-highlight! link CocSem_struct                  TSStructure
-highlight! link CocSem_type                    TSType
-highlight! link CocSem_typeAlias               TSType
-highlight! link CocSem_typeParameter           TSType
-highlight! link CocSem_variable                TSVariable
-
 highlight! link CocErrorFloat                  ErrorFloat
 highlight! link CocWarningFloat                WarningFloat
 highlight! link CocInfoFloat                   InfoFloat
