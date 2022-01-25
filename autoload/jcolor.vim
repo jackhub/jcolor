@@ -95,7 +95,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'xString':       '#9fcb8a',
           \ 'xCharNum':      '#dba570',
           \ 'xKeyword':      '#d191e3',
-          \ 'xPreprocStm':   '#bc98ff',
+          \ 'xPreprocStm':   '#58b16e',
           \ 'xPreproc':      '#60e077',
           \ 'xURL':          '#dba570',
           \ 'xAttribute':    '#dba570',
