@@ -8,10 +8,10 @@
 
 " g:jcolor#tmux: is in tmux < 2.9 or not {{{
 let g:jcolor#tmux = executable('tmux') && $TMUX !=# '' ?
-                  \ (str2float(system("tmux -V | grep -oE '[0-9]+\.[0-9]*'")) < 2.9 ?
-                    \ 1 :
-                    \ 0) :
-                  \ 0 "}}}
+      \ (str2float(system("tmux -V | grep -oE '[0-9]+\.[0-9]*'")) < 2.9 ?
+      \ 1 :
+      \ 0) :
+      \ 0 "}}}
 function! jcolor#get_configuration() "{{{
   return {
         \ 'style': get(g:, 'jcolor_style', 'default'),
@@ -27,150 +27,104 @@ function! jcolor#get_configuration() "{{{
         \ }
 endfunction "}}}
 function! jcolor#get_palette(style) "{{{
+  " UIs
+  let palette = {
+        \ 'white':        '#ffffff',
+        \ 'black':        '#1a1b1a',
+        \ 'fg':           '#dedfe0',
+        \ 'grey_m1':      '#5a6477',
+        \ 'grey':         '#7e8c98',
+        \ 'grey_a1':      '#a2b0be',
+        \ 'bg':           '#292a2f',
+        \ 'bg_a1':        '#2f3238',
+        \ 'bg_a2':        '#383b42',
+        \ 'bg_a3':        '#3f434a',
+        \ 'bg_a4':        '#484c55',
+        \ 'bg_line_t':    '#2f3037',
+        \ 'bg_cursor_i':  '#342d3e',
+        \ 'bg_red':       '#ff6d7e',
+        \ 'bg_green':     '#a5e179',
+        \ 'bg_blue':      '#76bed3',
+        \ 'bg_yellow':    '#4a4940',
+        \ 'diff_red':     '#55393d',
+        \ 'diff_green':   '#394634',
+        \ 'diff_blue':    '#354157',
+        \ 'diff_yellow':  '#4e432f',
+        \
+        \ 'red':          '#ff7ab2',
+        \ 'green':        '#93c76b',
+        \ 'blue':         '#8addff',
+        \ 'yellow':       '#d9c87c',
+        \ 'orange':       '#ffa14f',
+        \ 'purple':       '#d9bbfe',
+        \
+        \ 'none':         'NONE'
+        \ }
+
+  " Codes
   if a:style ==# 'default'
-    let palette = {
-          \ 'white':        '#ffffff',
-          \ 'black':        '#1a1b1a',
-          \ 'bg':           '#292a2f',
-          \ 'bg_a1':        '#2f3238',
-          \ 'bg_a2':        '#383b42',
-          \ 'bg_a3':        '#3f434a',
-          \ 'bg_a4':        '#484c55',
-          \ 'bg_line_t':    '#2f3037',
-          \ 'bg_cursor_i':  '#342d3e',
-          \ 'bg_red':       '#ff6d7e',
-          \ 'bg_green':     '#a5e179',
-          \ 'bg_blue':      '#76bed3',
-          \ 'bg_yellow':    '#4a4940',
-          \ 'diff_red':     '#55393d',
-          \ 'diff_green':   '#394634',
-          \ 'diff_blue':    '#354157',
-          \ 'diff_yellow':  '#4e432f',
-          \
-          \ 'fg':           '#dedfe0',
-          \ 'grey_m1':      '#5a6477',
-          \ 'grey':         '#7e8c98',
-          \ 'grey_a1':      '#a2b0be',
-          \ 'red_m1':       '#fe8170',
-          \ 'red':          '#ff7ab2',
-          \ 'green':        '#93c76b',
-          \ 'blue_m3':      '#6599ff',
-          \ 'blue_m2':      '#4eafcb',
-          \ 'blue_m1':      '#69dffe',
-          \ 'blue':         '#8addff',
-          \ 'cyan_m2':      '#69d190',
-          \ 'cyan_m1':      '#78c1b3',
-          \ 'cyan':         '#abf1e3',
-          \ 'yellow':       '#d9c87c',
-          \ 'orange':       '#ffa14f',
-          \ 'orange_a1':    '#cb9768',
-          \ 'purple_m1':    '#b180eb',
-          \ 'purple':       '#d9bbfe',
-          \
-          \ 'none':         'NONE'
+    " from Xcode
+    let theme = {
+          \ 'xString':       '#fe8170',
+          \ 'xCharNum':      '#d9c87c',
+          \ 'xKeyword':      '#ff7ab2',
+          \ 'xPreprocStm':   '#ffa14f',
+          \ 'xPreproc':      '#ffa14f',
+          \ 'xURL':          '#6599ff',
+          \ 'xAttribute':    '#cb9768',
+          \ 'xTypeDecl':     '#69dffe',
+          \ 'xOtherDecl':    '#4eafcb',
+          \ 'xType':         '#abf1e3',
+          \ 'xField':        '#78c1b3',
+          \ 'xFunc':         '#78c1b3',
+          \ 'xOtherType':    '#d9bbfe',
+          \ 'xOtherFiled':   '#b180eb',
+          \ 'xOtherFunc':    '#b180eb',
           \ }
   elseif a:style ==# 'onedark'
     " joshdick / onedark.vim
-    let palette = {
-          \ 'white':        '#ffffff',
-          \ 'black':        '#1a1b1a',
-          \ 'bg':           '#282c34',
-          \ 'bg_a1':        '#2f3238',
-          \ 'bg_a2':        '#383b42',
-          \ 'bg_a3':        '#3f434a',
-          \ 'bg_a4':        '#484c55',
-          \ 'bg_line_t':    '#2f3037',
-          \ 'bg_cursor_i':  '#342d3e',
-          \ 'bg_red':       '#ff6d7e',
-          \ 'bg_green':     '#a5e179',
-          \ 'bg_blue':      '#76bed3',
-          \ 'bg_yellow':    '#4a4940',
-          \ 'diff_red':     '#55393d',
-          \ 'diff_green':   '#394634',
-          \ 'diff_blue':    '#354157',
-          \ 'diff_yellow':  '#4e432f',
+    " bojan / xcode-one-dark
+    let theme = {
+          \ 'fg':            '#b5bfcb',
+          \ 'grey':          '#6c7582',
+          \ 'red':           '#e68085',
+          \ 'green':         '#9fcb8a',
+          \ 'blue':          '#71bdf2',
+          \ 'yellow':        '#eacb8e',
           \
-          \ 'fg':           '#dedfe0',
-          \ 'grey_m1':      '#5a6477',
-          \ 'grey':         '#7e8c98',
-          \ 'grey_a1':      '#a2b0be',
-          \ 'red_m1':       '#d46a60',
-          \ 'red':          '#e06c75',
-          \ 'green':        '#98c379',
-          \ 'blue_m3':      '#6599ff',
-          \ 'blue_m2':      '#4eafcb',
-          \ 'blue_m1':      '#69dffe',
-          \ 'blue':         '#61afef',
-          \ 'cyan_m2':      '#8CC46F',
-          \ 'cyan_m1':      '#78c1b3',
-          \ 'cyan':         '#abf1e3',
-          \ 'yellow':       '#e5c07b',
-          \ 'orange':       '#d19a66',
-          \ 'orange_a1':    '#d19a66',
-          \ 'purple_m1':    '#c678dd',
-          \ 'purple':       '#c678dd',
-          \
-          \ 'none':         'NONE'
-          \ }
-  elseif a:style ==# 'monokai'
-    let palette = {
-          \ 'white':        '#ffffff',
-          \ 'black':        '#1a1b1a',
-          \ 'bg':           '#282c34',
-          \ 'bg_a1':        '#2f3238',
-          \ 'bg_a2':        '#383b42',
-          \ 'bg_a3':        '#3f434a',
-          \ 'bg_a4':        '#484c55',
-          \ 'bg_line_t':    '#2f3037',
-          \ 'bg_cursor_i':  '#342d3e',
-          \ 'bg_red':       '#ff6d7e',
-          \ 'bg_green':     '#a5e179',
-          \ 'bg_blue':      '#76bed3',
-          \ 'bg_yellow':    '#4a4940',
-          \ 'diff_red':     '#55393d',
-          \ 'diff_green':   '#394634',
-          \ 'diff_blue':    '#354157',
-          \ 'diff_yellow':  '#4e432f',
-          \
-          \ 'fg':           '#dedfe0',
-          \ 'grey_m1':      '#5a6477',
-          \ 'grey':         '#7e8c98',
-          \ 'grey_a1':      '#a2b0be',
-          \ 'red_m1':       '#E06C75',
-          \ 'red':          '#f67784',
-          \ 'green':        '#98C379',
-          \ 'blue_m3':      '#6599ff',
-          \ 'blue_m2':      '#4eafcb',
-          \ 'blue_m1':      '#69dffe',
-          \ 'blue':         '#6fbcf4',
-          \ 'cyan_m2':      '#8CC46F',
-          \ 'cyan_m1':      '#78c1b3',
-          \ 'cyan':         '#abf1e3',
-          \ 'yellow':       '#E5C07B',
-          \ 'orange':       '#d09a66',
-          \ 'orange_a1':    '#D19A66',
-          \ 'purple_m1':    '#C678DD',
-          \ 'purple':       '#C678DD',
-          \
-          \ 'none':         'NONE'
+          \ 'xString':       '#9fcb8a',
+          \ 'xCharNum':      '#dba570',
+          \ 'xKeyword':      '#d191e3',
+          \ 'xPreprocStm':   '#bc98ff',
+          \ 'xPreproc':      '#60e077',
+          \ 'xURL':          '#dba570',
+          \ 'xAttribute':    '#dba570',
+          \ 'xTypeDecl':     '#bda131',   
+          \ 'xOtherDecl':    '#6ca3f4',
+          \ 'xType':         '#eacb8e',
+          \ 'xField':        '#e68085',
+          \ 'xFunc':         '#71bdf2',
+          \ 'xOtherType':    '#56b6c2',
+          \ 'xOtherFiled':   '#78c1b3',
+          \ 'xOtherFunc':    '#78c1b3',
           \ }
   endif
-  return palette
+  return extend(palette, theme)
 endfunction "}}}
 function! jcolor#highlight(group, fg, bg, ...) "{{{
   execute 'highlight' a:group
         \ 'guifg=' . a:fg
         \ 'guibg=' . a:bg
         \ 'gui=' . (a:0 >= 1 ?
-          \ (a:1 ==# 'undercurl' ?
-            \ (g:jcolor#tmux ?
-              \ 'underline' :
-              \ 'undercurl') :
-            \ a:1) :
-          \ 'NONE')
+        \ (a:1 ==# 'undercurl' ?
+        \ (g:jcolor#tmux ?
+        \ 'underline' :
+        \ 'undercurl') :
+        \ a:1) :
+        \ 'NONE')
         \ 'guisp=' . (a:0 >= 2 ?
-          \ a:2 :
-          \ 'NONE')
+        \ a:2 :
+        \ 'NONE')
 endfunction "}}}
 function! jcolor#ft_gen(path, last_modified, msg) "{{{
   " Generate the `after/ftplugin` directory.

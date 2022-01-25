@@ -222,33 +222,35 @@ endif
 call jcolor#highlight('xPlainText', s:palette.fg, s:palette.none)
 call jcolor#highlight('xComment', s:palette.grey, s:palette.none)
 call jcolor#highlight('xCommentsKeyword', s:palette.yellow, s:palette.none, 'bold')
-call jcolor#highlight('xString', s:palette.red_m1, s:palette.none)
-call jcolor#highlight('xCharactersNumber', s:palette.yellow, s:palette.none)
-call jcolor#highlight('xKeyword', s:palette.red, s:palette.none, 'bold')
-call jcolor#highlight('xPreprocessor', s:palette.orange, s:palette.none)
-call jcolor#highlight('xURL', s:palette.blue_m3, s:palette.none)
-call jcolor#highlight('xAttribute', s:palette.orange_a1, s:palette.none)
-call jcolor#highlight('xDeclaration', s:palette.blue_m1, s:palette.none)
-call jcolor#highlight('xOtherDeclaration', s:palette.blue_m2, s:palette.none)
-call jcolor#highlight('xType', s:palette.cyan, s:palette.none)
-call jcolor#highlight('xField', s:palette.cyan_m1, s:palette.none)
-call jcolor#highlight('xFunction', s:palette.cyan_m2, s:palette.none)
-call jcolor#highlight('xBuiltinType', s:palette.purple, s:palette.none)
-call jcolor#highlight('xBuiltinField', s:palette.purple_m1, s:palette.none)
-call jcolor#highlight('xBuiltinFunction', s:palette.purple_m1, s:palette.none)
+
+call jcolor#highlight('xString', s:palette.xString, s:palette.none)
+call jcolor#highlight('xCharNum', s:palette.xCharNum, s:palette.none)
+call jcolor#highlight('xKeyword', s:palette.xKeyword, s:palette.none, 'bold')
+call jcolor#highlight('xPreprocStm', s:palette.xPreprocStm, s:palette.none)
+call jcolor#highlight('xPreproc', s:palette.xPreproc, s:palette.none)
+call jcolor#highlight('xURL', s:palette.xURL, s:palette.none)
+call jcolor#highlight('xAttribute', s:palette.xAttribute, s:palette.none)
+call jcolor#highlight('xTypeDecl', s:palette.xTypeDecl, s:palette.none)
+call jcolor#highlight('xOtherDecl', s:palette.xOtherDecl, s:palette.none)
+call jcolor#highlight('xType', s:palette.xType, s:palette.none)
+call jcolor#highlight('xField', s:palette.xField, s:palette.none)
+call jcolor#highlight('xFunc', s:palette.xFunc, s:palette.none)
+call jcolor#highlight('xOtherType', s:palette.xOtherType, s:palette.none)
+call jcolor#highlight('xOtherFiled', s:palette.xOtherFiled, s:palette.none)
+call jcolor#highlight('xOtherFunc', s:palette.xOtherFunc, s:palette.none)
 " }}}
 " VIM Buildtin Syntax Group: {{{
 highlight! link Comment         xComment
 
 highlight! link Constant        xField
 highlight! link String          xString
-highlight! link Character       xCharactersNumber
-highlight! link Number          xCharactersNumber
+highlight! link Character       xCharNum
+highlight! link Number          xCharNum
 highlight! link Boolean         xKeyword
-highlight! link Float           xCharactersNumber
+highlight! link Float           xCharNum
 
-highlight! link Identifier      xBuiltinType
-highlight! link Function        xFunction
+highlight! link Identifier      xOtherType
+highlight! link Function        xFunc
 
 highlight! link Statement       xKeyword
 highlight! link Conditional     xKeyword
@@ -258,11 +260,11 @@ highlight! link Operator        xKeyword
 highlight! link Keyword         xKeyword
 highlight! link Exception       xKeyword
 
-highlight! link PreProc         xPreprocessor
-highlight! link Include         xPreprocessor
-highlight! link Define          xKeyword
-highlight! link Macro           xPreprocessor
-highlight! link PreCondit       xPreprocessor
+highlight! link PreProc         xPreprocStm
+highlight! link Include         xPreprocStm
+highlight! link Define          xPreprocStm
+highlight! link Macro           xPreproc
+highlight! link PreCondit       xPreprocStm
 
 highlight! link Type            xType
 highlight! link StorageClass    xKeyword
@@ -370,7 +372,7 @@ highlight! link TSCharacter          Character
 highlight! link TSComment            Comment
 highlight! link TSConditional        Keyword
 highlight! link TSConstant           Constant
-highlight! link TSConstBuiltin       xBuiltinField
+highlight! link TSConstBuiltin       xOtherFiled
 highlight! link TSConstMacro         Macro
 highlight! link TSConstructor        Type
 highlight! link TSError              Keyword
@@ -378,7 +380,7 @@ highlight! link TSException          Keyword
 highlight! link TSField              xField
 highlight! link TSFloat              Float
 highlight! link TSFunction           Function
-highlight! link TSFuncBuiltin        xBuiltinFunction
+highlight! link TSFuncBuiltin        xOtherFunc
 highlight! link TSFuncMacro          Macro
 highlight! link TSInclude            Include
 highlight! link TSKeyword            Keyword
@@ -422,17 +424,17 @@ highlight! link TSNote               BlueBold
 highlight! link TSWarning            YellowBold
 highlight! link TSDanger             RedBold
 highlight! link TSType               Type
-highlight! link TSTypeBuiltin        xBuiltinType
+highlight! link TSTypeBuiltin        xOtherType
 highlight! link TSVariable           Fg
-highlight! link TSVariableBuiltin    xBuiltinField
+highlight! link TSVariableBuiltin    xOtherFiled
 
 "----------------------------
 " Custom Defines for clangd.
 "----------------------------
-highlight! link TSTypeDefaultLibrary  xBuiltinType
-highlight! link TSOtherDefaultLibrary xBuiltinField
-highlight! link TSTypeDeclaration     xDeclaration
-highlight! link TSOtherDeclaration    xOtherDeclaration
+highlight! link TSTypeDefaultLibrary  xOtherType
+highlight! link TSOtherDefaultLibrary xOtherFiled
+highlight! link TSTypeDeclaration     xTypeDecl
+highlight! link TSOtherDeclaration    xOtherDecl
 
 highlight! link TSMacro               Macro
 highlight! link TSClass               TSType
@@ -440,55 +442,57 @@ highlight! link TSInterface           TSType
 highlight! link TSEnum                TSType
 highlight! link TSEnumMember          TSField
 
-hi link CocSemDefaultLibrary TSOtherDefaultLibrary
-hi link CocSemDefaultLibraryClass TSTypeDefaultLibrary
-hi link CocSemDefaultLibraryInterface TSTypeDefaultLibrary
-hi link CocSemDefaultLibraryEnum TSTypeDefaultLibrary
-hi link CocSemDefaultLibraryType TSTypeDefaultLibrary
-hi link CocSemDefaultLibraryNamespace TSTypeDefaultLibrary
-
-hi link CocSemDeclaration TSOtherDeclaration
-hi link CocSemDeclarationClass TSTypeDeclaration
-hi link CocSemDeclarationInterface TSTypeDeclaration
-hi link CocSemDeclarationEnum TSTypeDeclaration
-hi link CocSemDeclarationType TSTypeDeclaration
-hi link CocSemDeclarationNamespace TSTypeDeclaration
-hi link CocSemDeclarationVariable TSVariable
-hi link CocSemDeclarationParameter TSVariable
-hi link CocSemDeclarationMacro TSMacro
-
 " }}}
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
-highlight! link CocErrorFloat                  ErrorFloat
-highlight! link CocWarningFloat                WarningFloat
-highlight! link CocInfoFloat                   InfoFloat
-highlight! link CocHintFloat                   HintFloat
-highlight! link CocErrorHighlight              ErrorText
-highlight! link CocWarningHighlight            WarningText
-highlight! link CocInfoHighlight               InfoText
-highlight! link CocHintHighlight               HintText
-highlight! link CocHighlightText               CurrentWord
-highlight! link CocHoverRange                  CurrentWord
-highlight! link CocErrorSign                   RedSign
-highlight! link CocWarningSign                 YellowSign
-highlight! link CocInfoSign                    BlueSign
-highlight! link CocHintSign                    GreenSign
-highlight! link CocWarningVirtualText          VirtualTextWarning
-highlight! link CocErrorVirtualText            VirtualTextError
-highlight! link CocInfoVirtualText             VirtualTextInfo
-highlight! link CocHintVirtualText             VirtualTextHint
-highlight! link CocErrorLine                   ErrorLine
-highlight! link CocWarningLine                 WarningLine
-highlight! link CocInfoLine                    InfoLine
-highlight! link CocHintLine                    HintLine
-highlight! link CocCodeLens                    Grey
-highlight! link CocFadeOut                     Grey
-highlight! link CocStrikeThrough               Grey
-highlight! link CocListMode                    StatusLine
-highlight! link CocListPath                    StatusLine
-highlight! link CocTreeOpenClose               Grey
-highlight! link HighlightedyankRegion          Visual
+
+hi link CocSemDefaultLibrary          TSOtherDefaultLibrary
+hi link CocSemDefaultLibraryClass     TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryInterface TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryEnum      TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryType      TSTypeDefaultLibrary
+hi link CocSemDefaultLibraryNamespace TSTypeDefaultLibrary
+
+hi link CocSemDeclaration             TSOtherDeclaration
+hi link CocSemDeclarationClass        TSTypeDeclaration
+hi link CocSemDeclarationInterface    TSTypeDeclaration
+hi link CocSemDeclarationType         TSTypeDeclaration
+hi link CocSemDeclarationNamespace    TSTypeDeclaration
+hi link CocSemDeclarationVariable     TSVariable
+hi link CocSemDeclarationParameter    TSVariable
+hi link CocSemDeclarationProperty     TSVariable
+hi link CocSemDeclarationEnumMember   TSVariable
+hi link CocSemDeclarationMacro        TSMacro
+
+highlight! link CocErrorFloat         ErrorFloat
+highlight! link CocWarningFloat       WarningFloat
+highlight! link CocInfoFloat          InfoFloat
+highlight! link CocHintFloat          HintFloat
+highlight! link CocErrorHighlight     ErrorText
+highlight! link CocWarningHighlight   WarningText
+highlight! link CocInfoHighlight      InfoText
+highlight! link CocHintHighlight      HintText
+highlight! link CocHighlightText      CurrentWord
+highlight! link CocHoverRange         CurrentWord
+highlight! link CocErrorSign          RedSign
+highlight! link CocWarningSign        YellowSign
+highlight! link CocInfoSign           BlueSign
+highlight! link CocHintSign           GreenSign
+highlight! link CocWarningVirtualText VirtualTextWarning
+highlight! link CocErrorVirtualText   VirtualTextError
+highlight! link CocInfoVirtualText    VirtualTextInfo
+highlight! link CocHintVirtualText    VirtualTextHint
+highlight! link CocErrorLine          ErrorLine
+highlight! link CocWarningLine        WarningLine
+highlight! link CocInfoLine           InfoLine
+highlight! link CocHintLine           HintLine
+highlight! link CocCodeLens           Grey
+highlight! link CocFadeOut            Grey
+highlight! link CocStrikeThrough      Grey
+highlight! link CocListMode           StatusLine
+highlight! link CocListPath           StatusLine
+highlight! link CocTreeOpenClose      Grey
+highlight! link HighlightedyankRegion Visual
 
 " }}}
 " Yggdroot/LeaderF{{{
@@ -755,6 +759,7 @@ highlight! link dartMetadata OrangeItalic
 " ft_end }}}
 " ft_begin: c/cpp/objc/objcpp {{{
 " builtin: {{{
+highlight! link cDefine Define
 highlight! link cType TSTypeBuiltin
 highlight! link cConstant TSMacro
 highlight! link cLabel Keyword
