@@ -435,6 +435,7 @@ highlight! link TSTypeDefaultLibrary  xOtherType
 highlight! link TSOtherDefaultLibrary xOtherFiled
 highlight! link TSTypeDeclaration     xTypeDecl
 highlight! link TSOtherDeclaration    xOtherDecl
+highlight! link TSMacroDeclaration    xPreprocStm
 
 highlight! link TSMacro               Macro
 highlight! link TSClass               TSType
@@ -446,23 +447,22 @@ highlight! link TSEnumMember          TSField
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
 
-hi link CocSemDefaultLibrary          TSOtherDefaultLibrary
 hi link CocSemDefaultLibraryClass     TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryInterface TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryEnum      TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryType      TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryNamespace TSTypeDefaultLibrary
+hi link CocSemDefaultLibrary          TSOtherDefaultLibrary
 
-hi link CocSemDeclaration             TSOtherDeclaration
 hi link CocSemDeclarationClass        TSTypeDeclaration
 hi link CocSemDeclarationInterface    TSTypeDeclaration
+hi link CocSemDeclarationEnum         TSTypeDeclaration
 hi link CocSemDeclarationType         TSTypeDeclaration
 hi link CocSemDeclarationNamespace    TSTypeDeclaration
-hi link CocSemDeclarationVariable     TSVariable
-hi link CocSemDeclarationParameter    TSVariable
-hi link CocSemDeclarationProperty     TSVariable
-hi link CocSemDeclarationEnumMember   TSVariable
-hi link CocSemDeclarationMacro        TSMacro
+hi link CocSemDeclarationFunction     TSOtherDeclaration
+hi link CocSemDeclarationMethod       TSOtherDeclaration
+hi link CocSemDeclarationMacro        TSMacroDeclaration
+hi link CocSemDeclaration             TSVariable
 
 highlight! link CocErrorFloat         ErrorFloat
 highlight! link CocWarningFloat       WarningFloat
