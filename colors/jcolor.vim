@@ -31,8 +31,8 @@ endif
 " Common Highlight Groups: {{{
 " UI: {{{
 " Cursor, column, lines {{{
-let g:jcolor_bg_a1 = s:palette.bg_a1[0]
-let g:jcolor_bg_cursor = s:palette.bg_cursor_i[0]
+let g:jcolor_bg_a1 = s:palette.bg_a1
+let g:jcolor_bg_cursor = s:palette.bg_cursor_i
 augroup JCOLOR_UI
   autocmd!
   autocmd InsertEnter * execute 'highlight CursorLine guibg=' . g:jcolor_bg_cursor . ' guifg=NONE'
@@ -230,7 +230,7 @@ call jcolor#highlight('xPreprocStm', s:palette.xPreprocStm, s:palette.none)
 call jcolor#highlight('xPreproc', s:palette.xPreproc, s:palette.none)
 call jcolor#highlight('xURL', s:palette.xURL, s:palette.none)
 call jcolor#highlight('xAttribute', s:palette.xAttribute, s:palette.none)
-call jcolor#highlight('xTypeDecl', s:palette.xTypeDecl, s:palette.none)
+call jcolor#highlight('xTypeDecl', s:palette.xTypeDecl, s:palette.none, 'bold')
 call jcolor#highlight('xOtherDecl', s:palette.xOtherDecl, s:palette.none)
 call jcolor#highlight('xType', s:palette.xType, s:palette.none)
 call jcolor#highlight('xField', s:palette.xField, s:palette.none)
