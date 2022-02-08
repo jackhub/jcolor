@@ -76,7 +76,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'xOtherDecl':    '#4eafcb',
           \ 'xType':         '#abf1e3',
           \ 'xField':        '#78c1b3',
-          \ 'xFunc':         '#78c1b3',
+          \ 'xFunc':         '#93c66c',
           \ 'xOtherType':    '#d9bbfe',
           \ 'xOtherFiled':   '#b180eb',
           \ 'xOtherFunc':    '#b180eb',
