@@ -212,7 +212,7 @@ endif
 if &diff
   call jcolor#highlight('CurrentWord', s:palette.bg, s:palette.green)
 elseif s:configuration.current_word ==# 'grey background'
-  call jcolor#highlight('CurrentWord', s:palette.none, s:palette.bg_a2)
+  call jcolor#highlight('CurrentWord', s:palette.none, s:palette.bg_a4)
 else
   call jcolor#highlight('CurrentWord', s:palette.none, s:palette.none, s:configuration.current_word)
 endif
