@@ -31,8 +31,8 @@ endif
 " Common Highlight Groups: {{{
 " UI: {{{
 " Cursor, column, lines {{{
-let g:jcolor_bg_a1 = s:palette.bg_a1[0]
-let g:jcolor_bg_cursor = s:palette.bg_cursor_i[0]
+let g:jcolor_bg_a1 = s:palette.bg_a1
+let g:jcolor_bg_cursor = s:palette.bg_cursor_i
 augroup JCOLOR_UI
   autocmd!
   autocmd InsertEnter * execute 'highlight CursorLine guibg=' . g:jcolor_bg_cursor . ' guifg=NONE'
@@ -230,7 +230,7 @@ call jcolor#highlight('xPreprocStm', s:palette.xPreprocStm, s:palette.none)
 call jcolor#highlight('xPreproc', s:palette.xPreproc, s:palette.none)
 call jcolor#highlight('xURL', s:palette.xURL, s:palette.none)
 call jcolor#highlight('xAttribute', s:palette.xAttribute, s:palette.none)
-call jcolor#highlight('xTypeDecl', s:palette.xTypeDecl, s:palette.none)
+call jcolor#highlight('xTypeDecl', s:palette.xTypeDecl, s:palette.none, 'bold')
 call jcolor#highlight('xOtherDecl', s:palette.xOtherDecl, s:palette.none)
 call jcolor#highlight('xType', s:palette.xType, s:palette.none)
 call jcolor#highlight('xField', s:palette.xField, s:palette.none)
@@ -435,6 +435,7 @@ highlight! link TSTypeDefaultLibrary  xOtherType
 highlight! link TSOtherDefaultLibrary xOtherFiled
 highlight! link TSTypeDeclaration     xTypeDecl
 highlight! link TSOtherDeclaration    xOtherDecl
+highlight! link TSMacroDeclaration    xPreprocStm
 
 highlight! link TSMacro               Macro
 highlight! link TSClass               TSType
@@ -446,23 +447,22 @@ highlight! link TSEnumMember          TSField
 " neoclide/coc.nvim {{{
 call jcolor#highlight('CocHoverRange', s:palette.none, s:palette.none, 'bold,underline')
 
-hi link CocSemDefaultLibrary          TSOtherDefaultLibrary
 hi link CocSemDefaultLibraryClass     TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryInterface TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryEnum      TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryType      TSTypeDefaultLibrary
 hi link CocSemDefaultLibraryNamespace TSTypeDefaultLibrary
+hi link CocSemDefaultLibrary          TSOtherDefaultLibrary
 
-hi link CocSemDeclaration             TSOtherDeclaration
 hi link CocSemDeclarationClass        TSTypeDeclaration
 hi link CocSemDeclarationInterface    TSTypeDeclaration
+hi link CocSemDeclarationEnum         TSTypeDeclaration
 hi link CocSemDeclarationType         TSTypeDeclaration
 hi link CocSemDeclarationNamespace    TSTypeDeclaration
-hi link CocSemDeclarationVariable     TSVariable
-hi link CocSemDeclarationParameter    TSVariable
-hi link CocSemDeclarationProperty     TSVariable
-hi link CocSemDeclarationEnumMember   TSVariable
-hi link CocSemDeclarationMacro        TSMacro
+hi link CocSemDeclarationFunction     TSOtherDeclaration
+hi link CocSemDeclarationMethod       TSOtherDeclaration
+hi link CocSemDeclarationMacro        TSMacroDeclaration
+hi link CocSemDeclaration             TSVariable
 
 highlight! link CocErrorFloat         ErrorFloat
 highlight! link CocWarningFloat       WarningFloat

@@ -76,7 +76,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'xOtherDecl':    '#4eafcb',
           \ 'xType':         '#abf1e3',
           \ 'xField':        '#78c1b3',
-          \ 'xFunc':         '#78c1b3',
+          \ 'xFunc':         '#93c66c',
           \ 'xOtherType':    '#d9bbfe',
           \ 'xOtherFiled':   '#b180eb',
           \ 'xOtherFunc':    '#b180eb',
@@ -85,6 +85,7 @@ function! jcolor#get_palette(style) "{{{
     " joshdick / onedark.vim
     " bojan / xcode-one-dark
     let theme = {
+          \ 'bg':            '#272c32',
           \ 'fg':            '#b5bfcb',
           \ 'grey':          '#6c7582',
           \ 'red':           '#e68085',
@@ -95,8 +96,8 @@ function! jcolor#get_palette(style) "{{{
           \ 'xString':       '#9fcb8a',
           \ 'xCharNum':      '#dba570',
           \ 'xKeyword':      '#d191e3',
-          \ 'xPreprocStm':   '#58b16e',
-          \ 'xPreproc':      '#60e077',
+          \ 'xPreprocStm':   '#53a667',
+          \ 'xPreproc':      '#5ebd75',
           \ 'xURL':          '#dba570',
           \ 'xAttribute':    '#dba570',
           \ 'xTypeDecl':     '#bda131',   
@@ -104,9 +105,9 @@ function! jcolor#get_palette(style) "{{{
           \ 'xType':         '#eacb8e',
           \ 'xField':        '#e68085',
           \ 'xFunc':         '#71bdf2',
-          \ 'xOtherType':    '#56b6c2',
-          \ 'xOtherFiled':   '#78c1b3',
-          \ 'xOtherFunc':    '#78c1b3',
+          \ 'xOtherType':    '#6ad1dd',
+          \ 'xOtherFiled':   '#56b6c2',
+          \ 'xOtherFunc':    '#4f9aa4',
           \ }
   endif
   return extend(palette, theme)
