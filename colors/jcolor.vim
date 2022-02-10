@@ -119,10 +119,10 @@ call jcolor#highlight('SpellBad', s:palette.none, s:palette.none, 'undercurl', s
 call jcolor#highlight('SpellCap', s:palette.none, s:palette.none, 'undercurl', s:palette.yellow)
 call jcolor#highlight('SpellLocal', s:palette.none, s:palette.none, 'undercurl', s:palette.blue)
 call jcolor#highlight('SpellRare', s:palette.none, s:palette.none, 'undercurl', s:palette.purple)
-call jcolor#highlight('Debug', s:palette.yellow, s:palette.none)
-call jcolor#highlight('debugPC', s:palette.bg, s:palette.green)
-call jcolor#highlight('debugBreakpoint', s:palette.bg, s:palette.red)
 call jcolor#highlight('Substitute', s:palette.bg, s:palette.yellow)
+
+call jcolor#highlight('debugPC', s:palette.none, s:palette.diff_green)
+call jcolor#highlight('debugBreakpoint', s:palette.bg, s:palette.red)
 
 if s:configuration.show_eob
   call jcolor#highlight('EndOfBuffer', s:palette.bg_a4, s:palette.bg)

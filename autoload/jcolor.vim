@@ -47,7 +47,7 @@ function! jcolor#get_palette(style) "{{{
         \ 'bg_blue':      '#76bed3',
         \ 'bg_yellow':    '#4a4940',
         \ 'diff_red':     '#55393d',
-        \ 'diff_green':   '#394634',
+        \ 'diff_green':   '#2e4434',
         \ 'diff_blue':    '#354157',
         \ 'diff_yellow':  '#4e432f',
         \
