@@ -105,9 +105,9 @@ function! jcolor#get_palette(style) "{{{
           \ 'xType':         '#eacb8e',
           \ 'xField':        '#e68085',
           \ 'xFunc':         '#71bdf2',
-          \ 'xOtherType':    '#6ad1dd',
-          \ 'xOtherFiled':   '#4f9aa4',
-          \ 'xOtherFunc':    '#4f9aa4',
+          \ 'xOtherType':    '#5bcbcc',
+          \ 'xOtherFiled':   '#4fa0a2',
+          \ 'xOtherFunc':    '#4fa0a2',
           \ }
   endif
   return extend(palette, theme)
