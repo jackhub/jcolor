@@ -87,7 +87,7 @@ function! jcolor#get_palette(style) "{{{
     let theme = {
           \ 'bg':            '#272c32',
           \ 'fg':            '#b5bfcb',
-          \ 'grey':          '#6c7582',
+          \ 'grey':          '#7a8490',
           \ 'red':           '#e68085',
           \ 'green':         '#9fcb8a',
           \ 'blue':          '#71bdf2',
@@ -104,7 +104,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'xOtherDecl':    '#6ca3f4',
           \ 'xType':         '#eacb8e',
           \ 'xField':        '#e68085',
-          \ 'xFunc':         '#71bdf2',
+          \ 'xFunc':         '#7cb2f6',
           \ 'xOtherType':    '#5bcbcc',
           \ 'xOtherFiled':   '#4fa0a2',
           \ 'xOtherFunc':    '#4fa0a2',
