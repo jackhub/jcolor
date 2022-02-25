@@ -87,7 +87,7 @@ function! jcolor#get_palette(style) "{{{
     let theme = {
           \ 'bg':            '#272c32',
           \ 'fg':            '#b5bfcb',
-          \ 'grey':          '#7a8490',
+          \ 'grey':          '#6c7582',
           \ 'red':           '#e68085',
           \ 'green':         '#9fcb8a',
           \ 'blue':          '#71bdf2',
