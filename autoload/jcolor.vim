@@ -100,7 +100,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'xPreproc':      '#5ebd75',
           \ 'xURL':          '#dba570',
           \ 'xAttribute':    '#dba570',
-          \ 'xTypeDecl':     '#bda131',   
+          \ 'xTypeDecl':     '#eacb8e',   
           \ 'xOtherDecl':    '#6ca3f4',
           \ 'xType':         '#e5c07b',
           \ 'xField':        '#e18f94',
