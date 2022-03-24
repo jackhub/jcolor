@@ -103,7 +103,7 @@ function! jcolor#get_palette(style) "{{{
           \ 'xTypeDecl':     '#eacb8e',   
           \ 'xOtherDecl':    '#6ca3f4',
           \ 'xType':         '#e5c07b',
-          \ 'xField':        '#e18f94',
+          \ 'xField':        '#df8e90',
           \ 'xFunc':         '#7cb2f6',
           \ 'xOtherType':    '#5bcbcc',
           \ 'xOtherFiled':   '#4fa0a2',
